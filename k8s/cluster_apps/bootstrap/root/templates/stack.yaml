@@ -14,12 +14,12 @@ spec:
           - path: {{ $stack.path }}/*
   template:
     metadata:
-      name: '{{ `{{path.basename}}` }}'
+      name: '{{ `{{path.basename}}` }}' # path.basename on "/directory/directory2" would produce "directory2"
     spec:
       destination:
         name: in-cluster
         namespace: '{{ default `{{path.basename}}` $stack.namespace }}'
-      project: default
+      project: '{{ default "default" $stack.project }}'
       source:
         repoURL: {{ $.Values.gitops.repo }}
         path: '{{ `{{path}}` }}'
