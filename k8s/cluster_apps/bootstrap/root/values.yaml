@@ -1,6 +1,6 @@
 gitops:
   repo: https://github.com/kannancmohan/argocd-test
-  revision: master
+  revision: main
 stacks:
   - name: bootstrap
     namespace: argocd
