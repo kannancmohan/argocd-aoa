@@ -1,9 +1,9 @@
-{{- range $index, $stack := .Values.stacks }}
+{{- range $index, $appSet := .Values.applicationSet }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: {{ $stack.name }}
+  name: {{ $appSet.name }}
   namespace: {{ $.Release.Namespace }}
 spec:
   generators:
@@ -11,15 +11,15 @@ spec:
         repoURL: {{ $.Values.gitops.repo }}
         revision: {{ $.Values.gitops.revision }}
         directories:
-          - path: {{ $stack.path }}/*
+          - path: {{ $appSet.path }}/*
   template:
     metadata:
       name: '{{ `{{path.basename}}` }}' # path.basename on "/directory/directory2" would produce "directory2"
     spec:
       destination:
         name: in-cluster
-        namespace: '{{ default `{{path.basename}}` $stack.namespace }}'
-      project: '{{ default "default" $stack.project }}'
+        namespace: '{{ default `{{path.basename}}` $appSet.namespace }}'
+      project: '{{ default "default" $appSet.project }}'
       source:
         # helm:
         #   valueFiles:

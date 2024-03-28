@@ -1,10 +1,14 @@
 gitops:
   repo: https://github.com/kannancmohan/argocd-test
   revision: main
+
+# argocd AppProject
 projects:
   - name: platform
   - name: apps
-stacks:
+
+# argocd ApplicationSet
+applicationSet:
   - name: bootstrap
     namespace: argocd
     path: k8s/cluster_apps/bootstrap
