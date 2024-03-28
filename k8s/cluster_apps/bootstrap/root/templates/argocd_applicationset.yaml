@@ -16,8 +16,6 @@ spec:
     metadata:
       name: '{{ `{{path.basename}}` }}' # path.basename on "/directory/directory2" would produce "directory2"
     spec:
-      # finalizers:
-      #   - resources-finalizer.argocd.argoproj.io
       destination:
         name: in-cluster
         namespace: '{{ default `{{path.basename}}` $stack.namespace }}'
@@ -34,6 +32,7 @@ spec:
         automated:
           prune: true
           selfHeal: true
+          allow_empty: true
         retry:
           limit: 10
           backoff:
