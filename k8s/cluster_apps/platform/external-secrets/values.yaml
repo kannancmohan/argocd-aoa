@@ -1,3 +1,5 @@
+external-secrets:
+  installCRDs: true
 # extraVolumeMounts:
 #   - mountPath: /etc/ssl/certs/custom-root.pem
 #     subPath: custom-root.pem
