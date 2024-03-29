@@ -33,7 +33,7 @@ argo-cd:
         cert-manager.io/cluster-issuer: default-root-cert-issuer
       # hostname: &host argocd.k3s.local
       extraHosts:
-        - name: *host
+        - name: &host argocd.k3s.local
           path: /
           pathType: Prefix
           service:
