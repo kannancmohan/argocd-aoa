@@ -19,6 +19,8 @@ spec:
   duration: 43800h # 5y
   issuerRef:
     name: self-signed-cert-issuer
+    kind: Issuer
+    group: cert-manager.io
   isCA: true
 
 ---
