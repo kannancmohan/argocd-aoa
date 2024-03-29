@@ -14,7 +14,7 @@ spec:
           - path: {{ $appSet.path }}/*
   template:
     metadata:
-      name: '{{ `{{path.basename}}` }}' # path.basename on "/directory/directory2" would produce "directory2"
+      name: '{{ `{{path.basename}}` }}' # eg: path.basename on "/directory/directory2" would produce "directory2"
     spec:
       destination:
         name: in-cluster
@@ -34,13 +34,13 @@ spec:
           selfHeal: true
           # allow_empty: true
         retry:
-          limit: 10
+          limit: 10 # Maximum number of attempts for retrying a failed sync
           backoff:
             duration: 1m
             factor: 2
             maxDuration: 16m
         syncOptions:
-          - CreateNamespace=true
-          - ApplyOutOfSyncOnly=true
-          - ServerSideApply=true
+          - CreateNamespace=true # will create the namespace specified in spec.destination.namespace if it doesn't exist
+          - ApplyOutOfSyncOnly=true # sync only out-of-sync resources
+          - ServerSideApply=true # If set to true, ArgoCD will use kubectl apply — server-side command to apply changes
 {{- end }}
