@@ -6,8 +6,8 @@ argo-cd:
   # applicationSet:
   #   enabled: false
   server:
-    # extraArgs:
-    #   - --insecure
+    extraArgs:
+      - --insecure
     # config:
     #   resource.ignoreResourceUpdatesEnabled: true
     #   resource.customizations.ignoreResourceUpdates.all: |
@@ -33,13 +33,13 @@ argo-cd:
         cert-manager.io/cluster-issuer: default-root-cert-issuer
       hostname: &host argocd.k3s.local
       extraHosts:
-        - name: &host argocd.k3s.local
+        - name: *host
           # path: /
           # pathType: Prefix
           # service:
           #   name: main
           #   port: http
-      # tls: true
+      tls: true
       extraTls:
         - hosts:
           - *host # list of hosts included in the TLS certificate
