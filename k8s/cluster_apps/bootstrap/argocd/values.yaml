@@ -31,7 +31,7 @@ argo-cd:
       ingressClassName: traefik
       annotations:
         cert-manager.io/cluster-issuer: default-root-cert-issuer
-      hostname: &host argocd.dev.k3s.local
+      hostname: &host argocd.k3s.local
       # extraHosts:
       #   - name: *host
       #     path: /
