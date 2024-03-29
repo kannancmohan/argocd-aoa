@@ -23,6 +23,14 @@ spec:
     name: self-signed-cert-issuer
     kind: Issuer
     group: cert-manager.io
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  subject:
+    organizations:
+      - ACME Inc.
+    organizationalUnits:
+      - Widgets
 
 ---
 # Create an Issuer that uses the above generated CA certificate to issue certs
