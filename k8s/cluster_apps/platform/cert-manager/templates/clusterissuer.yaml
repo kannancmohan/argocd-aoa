@@ -15,13 +15,14 @@ kind: Certificate
 metadata:
   name: self-signed-tls-cert
 spec:
+  isCA: true
+  commonName: self-signed-tls-cert
   secretName: self-signed-tls-cert # certificate are stored as secret in k8s
   duration: 43800h # 5y
   issuerRef:
     name: self-signed-cert-issuer
     kind: Issuer
     group: cert-manager.io
-  isCA: true
 
 ---
 # Create an Issuer that uses the above generated CA certificate to issue certs
