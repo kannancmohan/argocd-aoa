@@ -1,0 +1,53 @@
+{{- if and .Values.cert-manager.enabled -}}
+# self-signed certificate issuer 
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: self-signed-cert-issuer
+spec:
+  selfSigned: {}
+
+---
+# self-signed certificate 
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: self-signed-tls-cert
+spec:
+  secretName: self-signed-tls-cert # certificate are stored as secret in k8s
+  duration: 43800h # 5y
+  # revisionHistoryLimit: {{ .Values.admissionWebhooks.certManager.revisionHistoryLimit }}
+  issuerRef:
+    name: self-signed-cert-issuer
+  # commonName: "ca.webhook.kubevela"
+  isCA: true
+
+---
+# Create an Issuer that uses the above generated CA certificate to issue certs
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: default-root-cert-issuer
+  # namespace: {{ .Release.Namespace }}
+spec:
+  ca:
+    secretName: self-signed-tls-cert
+
+# ---
+# # generate a serving certificate for the apiservices to use
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#   name: {{ template "kubevela.fullname" . }}-admission
+#   namespace: {{ .Release.Namespace }}
+# spec:
+#   secretName: {{ template "kubevela.fullname" . }}-admission
+#   duration: 8760h # 1y
+#   revisionHistoryLimit: {{ .Values.admissionWebhooks.certManager.revisionHistoryLimit }}
+#   issuerRef:
+#     name: {{ template "kubevela.fullname" . }}-root-issuer
+#   dnsNames:
+#     - {{ template "kubevela.name" . }}-webhook.{{ .Release.Namespace }}.svc
+#     - {{ template "kubevela.name" . }}-webhook.{{ .Release.Namespace }}.svc.cluster.local
+
+{{- end }}
