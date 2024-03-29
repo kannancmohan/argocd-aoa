@@ -32,9 +32,9 @@ argo-cd:
       annotations:
         cert-manager.io/cluster-issuer: default-root-cert-issuer
       hostname: &host argocd.k3s.local
-      # extraHosts:
-      #   - name: *host
-      #     path: /
+      extraHosts:
+        - name: *host
+          path: /
       # tls: true
       extraTls:
         - hosts:
