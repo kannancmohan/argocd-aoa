@@ -6,8 +6,8 @@ argo-cd:
   # applicationSet:
   #   enabled: false
   server:
-    extraArgs:
-      - --insecure
+    # extraArgs:
+    #   - --insecure
     # config:
     #   resource.ignoreResourceUpdatesEnabled: true
     #   resource.customizations.ignoreResourceUpdates.all: |
@@ -30,20 +30,20 @@ argo-cd:
       enabled: true
       ingressClassName: traefik
       annotations:
-        # cert-manager.io/cluster-issuer: default-root-cert-issuer
+        cert-manager.io/cluster-issuer: default-root-cert-issuer
       hostname: &host argocd.k3s.local
-      # extraHosts:
-      #   - name: &host argocd.k3s.local
-      #     path: /
-      #     pathType: Prefix
-      #     service:
-      #       name: main
-      #       port: http
+      extraHosts:
+        - name: &host argocd.k3s.local
+          # path: /
+          # pathType: Prefix
+          # service:
+          #   name: main
+          #   port: http
       # tls: true
-      # extraTls:
-      #   - hosts:
-      #     - *host # list of hosts included in the TLS certificate
-      #     secretName: argocd-tls-cert # name of the secret used to terminate TLS traffic on port 443
+      extraTls:
+        - hosts:
+          - *host # list of hosts included in the TLS certificate
+          secretName: argocd-tls-cert # name of the secret used to terminate TLS traffic on port 443
     # metrics: &metrics
     #   enabled: true
     #   serviceMonitor:
