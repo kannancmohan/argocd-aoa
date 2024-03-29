@@ -31,17 +31,18 @@ argo-cd:
       ingressClassName: traefik
       annotations:
         cert-manager.io/cluster-issuer: default-root-cert-issuer
-      hosts:
-        - host: &host argocd.dev.k3s.local
-          paths:
-            - path: /
-              pathType: Prefix
-              service:
-                name: main
-                port: http
+      hostname: &host argocd.dev.k3s.local
+      extraHosts:
+        - name: *host
+          path: /
       # hosts:
-      #   - &host argocd.dev.k3s.local
-      # hostname: &host argocd.dev.k3s.local
+      #   - host: *host
+      #     paths:
+      #       - path: /
+      #         pathType: Prefix
+      #         service:
+      #           name: main
+      #           port: http
       tls:
         - secretName: argocd-tls-cert # name of the secret used to terminate TLS traffic on port 443
           hosts: # list of hosts included in the TLS certificate
