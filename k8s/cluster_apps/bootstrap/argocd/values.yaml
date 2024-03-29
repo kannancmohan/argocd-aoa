@@ -35,10 +35,14 @@ argo-cd:
       # extraHosts:
       #   - name: *host
       #     path: /
-      tls:
-        - secretName: argocd-tls-cert # name of the secret used to terminate TLS traffic on port 443
-          hosts: # list of hosts included in the TLS certificate
-            - *host
+      extraTls:
+        - hosts:
+          - *host # list of hosts included in the TLS certificate
+          secretName: argocd-tls-cert # name of the secret used to terminate TLS traffic on port 443
+      # tls:
+      #   - secretName: argocd-tls-cert # name of the secret used to terminate TLS traffic on port 443
+      #     hosts: # list of hosts included in the TLS certificate
+      #       - *host
     # metrics: &metrics
     #   enabled: true
     #   serviceMonitor:
