@@ -35,6 +35,7 @@ argo-cd:
       # extraHosts:
       #   - name: *host
       #     path: /
+      tls: true
       extraTls:
         - hosts:
           - *host # list of hosts included in the TLS certificate
