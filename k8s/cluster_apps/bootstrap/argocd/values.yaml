@@ -32,7 +32,15 @@ argo-cd:
       annotations:
         cert-manager.io/cluster-issuer: default-root-cert-issuer
       hosts:
-        - &host argocd.dev.k3s.local
+        - host: &host argocd.dev.k3s.local
+          paths:
+            - path: /
+              pathType: Prefix
+              service:
+                name: main
+                port: http
+      # hosts:
+      #   - &host argocd.dev.k3s.local
       # hostname: &host argocd.dev.k3s.local
       tls:
         - secretName: argocd-tls-cert # name of the secret used to terminate TLS traffic on port 443
