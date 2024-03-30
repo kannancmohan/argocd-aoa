@@ -37,7 +37,7 @@ argo-cd:
       enabled: true
       ingressClassName: traefik
       annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        # traefik.ingress.kubernetes.io/router.entrypoints: websecure
         cert-manager.io/cluster-issuer: default-root-cert-issuer
       hostname: &host argocd.dev.local
       # extraHosts:
