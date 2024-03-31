@@ -12,8 +12,8 @@ spec:
         revision: {{ $.Values.gitops.revision }}
         directories:
           - path: {{ $appSet.path }}/*
-        files:
-          - path: "{{.path}}/config.json"
+        # files:
+        #   - path: "{{.path}}/config.json"
 
   template:
     metadata:
