@@ -14,11 +14,11 @@ spec:
       revision: {{ $.Values.gitops.revision }}
       directories:
         - path: {{ $appSet.path }}/*
-  # - git:
-  #     repoURL: {{ $.Values.gitops.repo }}
-  #     revision: {{ $.Values.gitops.revision }}
-  #     files:
-  #       - path: {{ $appSet.path }}/**/config.json
+  - git:
+      repoURL: {{ $.Values.gitops.repo }}
+      revision: {{ $.Values.gitops.revision }}
+      files:
+        - path: {{ $appSet.path }}/**/config.json
   template:
     metadata:
       name: '{{ `{{.path.basename}}` }}' # eg: path.basename on "/directory/directory2" would produce "directory2"
