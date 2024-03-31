@@ -16,4 +16,4 @@ applicationSet:
   - name: platform
     # namespace: argocd
     path: k8s/cluster_apps/platform
-    project: platform  
+    project: platform
