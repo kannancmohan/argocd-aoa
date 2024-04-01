@@ -20,6 +20,7 @@ spec:
                 - path: {{ $appSet.path }}/*
               values:
                 selector: '{{ `{{ path }}` }}'
+                appName: '{{ `{{ path.basename }}` }}'
           - git:
               repoURL: {{ $.Values.gitops.repo }}
               revision: {{ $.Values.gitops.revision }}
@@ -27,10 +28,11 @@ spec:
                 - path: {{ $appSet.path }}/**/config.json
               values:
                 selector: '{{ `{{ path }}` }}'
+                appName: '{{ `{{ app.name }}` }}'
   template:
     metadata:
-      name: '{{ `{{path.basename}}` }}'
-      #name: '{{ default `{{path.basename}}` `{{app.name}}` }}'
+      #name: '{{ `{{path.basename}}` }}'
+      name: '{{ default `{{path.basename}}` `{{values.appName}}` }}'
     spec:
       destination:
         name: in-cluster
