@@ -1,5 +1,6 @@
 {
     "app": {
-        "name": "cert-manager-generator"
+        "name": "cert-manager-generator",
+        "preSync": true
     }
 }
