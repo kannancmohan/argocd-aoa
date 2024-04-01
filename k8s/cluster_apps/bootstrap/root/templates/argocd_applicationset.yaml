@@ -11,22 +11,23 @@ spec:
   generators:
     - merge:
         mergeKeys:
-          - values.selector
+          # - values.selector
+          - path.basename
         generators:
           - git:
               repoURL: {{ $.Values.gitops.repo }}
               revision: {{ $.Values.gitops.revision }}
               directories:
                 - path: {{ $appSet.path }}/*
-              values:
-                selector: '{{ `{{ path }}` }}'
+              # values:
+              #   selector: '{{ `{{ path }}` }}'
           - git:
               repoURL: {{ $.Values.gitops.repo }}
               revision: {{ $.Values.gitops.revision }}
               files:
                 - path: {{ $appSet.path }}/**/config.json
-              values:
-                selector: '{{ `{{ path }}` }}'
+              # values:
+              #   selector: '{{ `{{ path }}` }}'
   template:
     metadata:
       # name: '{{ `{{path.basename}}` }}' # eg: path.basename on "/directory/directory2" would produce "directory2"
