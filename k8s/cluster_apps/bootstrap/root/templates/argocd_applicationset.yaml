@@ -9,11 +9,23 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-    - git:
-        repoURL: "{{ $.Values.gitops.repo }}"
-        revision: {{ $.Values.gitops.revision }}
-        directories:
-          - path: {{ $appSet.path }}/*
+    - matrix:
+        generators:
+          - git:
+              repoURL: {{ $.Values.gitops.repo }}
+              revision: {{ $.Values.gitops.revision }}
+              directories:
+                - path: {{ $appSet.path }}/*
+          - git:
+              repoURL: {{ $.Values.gitops.repo }}
+              revision: {{ $.Values.gitops.revision }}
+              files:
+                - path: {{ $appSet.path }}/**/config.json
+    # - git:
+    #     repoURL: "{{ $.Values.gitops.repo }}"
+    #     revision: {{ $.Values.gitops.revision }}
+    #     directories:
+    #       - path: {{ $appSet.path }}/*
   template:
     metadata:
       name: '{{ `{{.path.basename}}` }}'
