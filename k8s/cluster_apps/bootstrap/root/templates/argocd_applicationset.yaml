@@ -10,10 +10,10 @@ spec:
   goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
-      repoURL: {{ $.Values.gitops.repo }}
-      revision: {{ $.Values.gitops.revision }}
-      directories:
-        - path: {{ $appSet.path }}/*
+        repoURL: "{{ $.Values.gitops.repo }}"
+        revision: {{ $.Values.gitops.revision }}
+        directories:
+          - path: {{ $appSet.path }}/*
   template:
     metadata:
       name: '{{ `{{.path.basename}}` }}'
