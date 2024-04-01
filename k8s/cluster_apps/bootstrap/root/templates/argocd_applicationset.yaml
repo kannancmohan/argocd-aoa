@@ -6,44 +6,27 @@ metadata:
   name: {{ $appSet.name }}
   namespace: {{ $.Release.Namespace }}
 spec:
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
+  # goTemplate: true
+  # goTemplateOptions: ["missingkey=error"]
   generators:
-    # - merge:
-    #     mergeKeys:
-    #       - values.selector
-    #     generators:
-    #       - git:
-    #           repoURL: {{ $.Values.gitops.repo }}
-    #           revision: {{ $.Values.gitops.revision }}
-    #           directories:
-    #             - path: {{ $appSet.path }}/*
-    #           values:
-    #             selector: '{{ `{{ .path.path }}` }}'
-    #       - git:
-    #           repoURL: {{ $.Values.gitops.repo }}
-    #           revision: {{ $.Values.gitops.revision }}
-    #           files:
-    #             - path: {{ $appSet.path }}/**/config.json
-    #           values:
-    #             selector: '{{ `{{ .path.path }}` }}'
-    # - matrix:
-    #     generators:
-    #       - git:
-    #           repoURL: {{ $.Values.gitops.repo }}
-    #           revision: {{ $.Values.gitops.revision }}
-    #           directories:
-    #             - path: {{ $appSet.path }}/*
-    #       - git:
-    #           repoURL: {{ $.Values.gitops.repo }}
-    #           revision: {{ $.Values.gitops.revision }}
-    #           files:
-    #             - path: {{ $appSet.path }}/**/config.json
-    - git:
-        repoURL: "{{ $.Values.gitops.repo }}"
-        revision: {{ $.Values.gitops.revision }}
-        directories:
-          - path: {{ $appSet.path }}/*
+    - merge:
+        mergeKeys:
+          - values.selector
+        generators:
+          - git:
+              repoURL: "{{ $.Values.gitops.repo }}"
+              revision: {{ $.Values.gitops.revision }}
+              directories:
+                - path: {{ $appSet.path }}/*
+              values:
+                selector: '{{ `{{ .path.path }}` }}'
+          - git:
+              repoURL: {{ $.Values.gitops.repo }}
+              revision: {{ $.Values.gitops.revision }}
+              files:
+                - path: {{ $appSet.path }}/**/config.json
+              values:
+                selector: '{{ `{{ .path.path }}` }}'
   template:
     metadata:
       name: '{{ `{{.path.basename}}` }}'
