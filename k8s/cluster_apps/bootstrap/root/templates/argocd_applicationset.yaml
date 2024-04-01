@@ -32,7 +32,11 @@ spec:
   template:
     metadata:
       #name: '{{ `{{path.basename}}` }}'
-      name: '{{ default `{{path.basename}}` `{{app.name}}` }}'
+      {{ if values.appName }}
+      name: '{{ default `{{path.basename}}` `{{values.appName}}` }}'
+      {{ else }}
+      name: '{{ `{{path.basename}}` }}'
+      {{ end }}
     spec:
       destination:
         name: in-cluster
