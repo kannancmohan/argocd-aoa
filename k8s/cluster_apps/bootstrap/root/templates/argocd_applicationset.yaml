@@ -32,12 +32,12 @@ spec:
   template:
     metadata:
       #name: '{{ `{{path.basename}}` }}'
-{{- if `{{values.appName}}` }}
-      name: '{{ default `{{path.basename}}` `{{values.appName}}` }}'
+{{- if `{{app.name}}` }}
+      name: '{{ default `{{path.basename}}` `{{app.name}}` }}'
 {{- else }}
       name: '{{ `{{path.basename}}` }}'
 {{- end }}
-{{- if `{{values.enablePreSync}}` }}
+{{- if `{{app.enablePreSync}}` }}
       annotations:
         argocd.argoproj.io/hook: PreSync
 {{- end }}
