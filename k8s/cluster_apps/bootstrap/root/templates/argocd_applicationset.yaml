@@ -6,32 +6,15 @@ metadata:
   name: {{ $appSet.name }}
   namespace: {{ $.Release.Namespace }}
 spec:
-  # goTemplate: true
-  # goTemplateOptions: ["missingkey=error"]
   generators:
-    - merge:
-        mergeKeys:
-          # - values.selector
-          - path
-        generators:
-          - git:
-              repoURL: {{ $.Values.gitops.repo }}
-              revision: {{ $.Values.gitops.revision }}
-              directories:
-                - path: {{ $appSet.path }}/*
-              # values:
-              #   selector: '{{ `{{ path }}` }}'
-          - git:
-              repoURL: {{ $.Values.gitops.repo }}
-              revision: {{ $.Values.gitops.revision }}
-              files:
-                - path: {{ $appSet.path }}/**/config.json
-              # values:
-              #   selector: '{{ `{{ path }}` }}'
+    - git:
+        repoURL: {{ $.Values.gitops.repo }}
+        revision: {{ $.Values.gitops.revision }}
+        directories:
+          - path: {{ $appSet.path }}/*
   template:
     metadata:
-      # name: '{{ `{{path.basename}}` }}' # eg: path.basename on "/directory/directory2" would produce "directory2"
-      name: '{{ default `{{path.basename}}` `{{app.name}}` }}'
+      name: '{{ `{{path.basename}}` }}' # eg: path.basename on "/directory/directory2" would produce "directory2"
     spec:
       destination:
         name: in-cluster
@@ -43,7 +26,7 @@ spec:
         #     - $values/k8s/cluster_apps/apps-values.yaml
         #     - values.yaml
         repoURL: {{ $.Values.gitops.repo }}
-        path: '{{ `{{ path }}` }}'
+        path: '{{ `{{path}}` }}'
         targetRevision: {{ $.Values.gitops.revision }}
       syncPolicy:
         automated:
