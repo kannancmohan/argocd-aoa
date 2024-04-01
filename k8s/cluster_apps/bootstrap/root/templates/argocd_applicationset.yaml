@@ -23,12 +23,11 @@ spec:
                 - path: {{ $appSet.path }}/**/config.json
   template:
     metadata:
-      # name: '{{ `{{path.basename}}` }}' # eg: path.basename on "/directory/directory2" would produce "directory2"
-      name: '{{ default `{{path.basename}}` `{{app.name}}` }}'
+      name: '{{ `{{.path.basename}}` }}'
     spec:
       destination:
         name: in-cluster
-        namespace: '{{ default `{{path.basename}}` $appSet.namespace }}'
+        namespace: '{{ default `{{.path.basename}}` $appSet.namespace }}'
       project: '{{ default "default" $appSet.project }}'
       source:
         # helm:
@@ -36,7 +35,7 @@ spec:
         #     - $values/k8s/cluster_apps/apps-values.yaml
         #     - values.yaml
         repoURL: {{ $.Values.gitops.repo }}
-        path: '{{ `{{ path }}` }}'
+        path: '{{ `{{ .path.path }}` }}'
         targetRevision: {{ $.Values.gitops.revision }}
       syncPolicy:
         automated:
