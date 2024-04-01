@@ -32,11 +32,15 @@ spec:
   template:
     metadata:
       #name: '{{ `{{path.basename}}` }}'
-    {{- if `{{values.appName}}` }}
+    {{ if `{{values.appName}}` }}
       name: '{{ default `{{path.basename}}` `{{values.appName}}` }}'
-    {{- else }}
+    {{ else }}
       name: '{{ `{{path.basename}}` }}'
-    {{- end }}
+    {{ end }}
+    {{ if `{{values.enablePreSync}}` }}
+      annotations:
+        argocd.argoproj.io/hook: PreSync
+    {{ end }}
     spec:
       destination:
         name: in-cluster
