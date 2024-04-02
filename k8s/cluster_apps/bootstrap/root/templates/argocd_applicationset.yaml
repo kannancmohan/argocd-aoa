@@ -35,7 +35,7 @@ spec:
     metadata:
       name: '{{ default `{{path.basename}}` `{{values.appName}}` }}'
       annotations:
-      {{- if eq `{{values.hasConfig}}` "true" }}
+      {{- if eq `{{values.appName}}` "cert-manager-generator" }}
         argocd.argoproj.io/hook: PreSync
       {{- end }}
     spec:
