@@ -33,11 +33,12 @@ spec:
                 hasConfig: 'true'
   template:
     metadata:
-    {{- if eq `{{values.hasConfig}}` "true" }}
-      name: '{{ default `{{path.basename}}` `{{app.name}}` }}'
-    {{- else }}
-      name: '{{ `{{path.basename}}` }}'
-    {{- end }}
+      name: '{{ default `{{path.basename}}` `{{values.appName}}` }}'
+    # {{- if eq `{{values.hasConfig}}` "true" }}
+    #   name: '{{ default `{{path.basename}}` `{{values.appName}}` }}'
+    # {{- else }}
+    #   name: '{{ `{{path.basename}}` }}'
+    # {{- end }}
     spec:
       destination:
         name: in-cluster
