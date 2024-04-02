@@ -64,8 +64,8 @@ spec:
           - ServerSideApply=true # If set to true, ArgoCD will use kubectl apply — server-side command to apply changes
   templatePatch: |
     metadata:
+      {{ `{{- if hasKey . "values.appName" }}` }}
       annotations:
-      {{ `{{- if app.enablePreSync }}` }}
         argocd.argoproj.io/hook: PreSync
       {{ `{{- end }}` }}
 {{- end }}
