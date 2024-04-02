@@ -34,10 +34,6 @@ spec:
   template:
     metadata:
       name: '{{ default `{{path.basename}}` `{{values.appName}}` }}'
-      {{- if eq `{{values.hasConfig}}` "true"}}
-      annotations:
-        argocd.argoproj.io/hook: PreSync
-      {{- end }}
     spec:
       destination:
         name: in-cluster
@@ -66,4 +62,10 @@ spec:
           - CreateNamespace=true # will create the namespace specified in spec.destination.namespace if it doesn't exist
           - ApplyOutOfSyncOnly=true # sync only out-of-sync resources
           - ServerSideApply=true # If set to true, ArgoCD will use kubectl apply — server-side command to apply changes
+  templatePatch: |
+    metadata:
+      annotations:
+      {{- if `{{app.enablePreSync}}` }}
+        argocd.argoproj.io/hook: PreSync
+      {{- end }}
 {{- end }}
