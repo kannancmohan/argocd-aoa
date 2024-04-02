@@ -31,7 +31,7 @@ spec:
                 appName: '{{ `{{ app.name }}` }}'
   template:
     metadata:
-    {{- if hasKey . `{{app}}` }}
+    {{- if hasKey $ `{{app}}` }}
       name: '{{ default `{{path.basename}}` `{{app.name}}` }}'
     {{- else }}
       name: '{{ `{{path.basename}}` }}'
