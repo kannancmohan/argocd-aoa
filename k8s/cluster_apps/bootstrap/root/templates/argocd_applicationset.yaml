@@ -31,16 +31,7 @@ spec:
                 appName: '{{ `{{ app.name }}` }}'
   template:
     metadata:
-      #name: '{{ `{{path.basename}}` }}'
-{{- if `{{app.name}}` }}
-      name: '{{ default `{{path.basename}}` `{{app.name}}` }}'
-{{- else }}
-      name: '{{ `{{path.basename}}` }}'
-{{- end }}
-{{- if `{{app.enablePreSync}}` }}
-      annotations:
-        argocd.argoproj.io/hook: PreSync
-{{- end }}
+      name: "{{ dig `app` `name` `{{path.basename}}` . }}"
     spec:
       destination:
         name: in-cluster
