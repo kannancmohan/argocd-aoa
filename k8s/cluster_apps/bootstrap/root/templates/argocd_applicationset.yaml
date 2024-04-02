@@ -34,7 +34,7 @@ spec:
   template:
     metadata:
       name: '{{ default `{{path.basename}}` `{{values.appName}}` }}'
-      {{- if `{{values.hasConfig}}`}}
+      {{- if eq `{{values.hasConfig}}` "true"}}
       annotations:
         argocd.argoproj.io/hook: PreSync
       {{- end }}
