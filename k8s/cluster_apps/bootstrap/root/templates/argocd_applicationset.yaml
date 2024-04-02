@@ -63,9 +63,9 @@ spec:
           - ApplyOutOfSyncOnly=true # sync only out-of-sync resources
           - ServerSideApply=true # If set to true, ArgoCD will use kubectl apply — server-side command to apply changes
   templatePatch: |
+    {{ if eq `{{values.hasConfig}}` "true" }}
     metadata:
-      {{ `{{- if hasKey . "values.appName" }}` }}
       annotations:
         argocd.argoproj.io/hook: PreSync
-      {{ `{{- end }}` }}
+    {{- end }}
 {{- end }}
