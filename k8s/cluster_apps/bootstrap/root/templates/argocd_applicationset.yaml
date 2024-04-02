@@ -34,11 +34,10 @@ spec:
   template:
     metadata:
       name: '{{ default `{{path.basename}}` `{{values.appName}}` }}'
-    # {{- if eq `{{values.hasConfig}}` "true" }}
-    #   name: '{{ default `{{path.basename}}` `{{values.appName}}` }}'
-    # {{- else }}
-    #   name: '{{ `{{path.basename}}` }}'
-    # {{- end }}
+      annotations:
+      {{- if eq `{{values.hasConfig}}` "true" }}
+        argocd.argoproj.io/hook: PreSync
+      {{- end }}
     spec:
       destination:
         name: in-cluster
