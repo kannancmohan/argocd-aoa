@@ -21,7 +21,7 @@ spec:
               values:
                 selector: '{{ `{{ path }}` }}'
                 appName: '{{ `{{ path.basename }}` }}'
-                hasConfig: 'false'
+                hasConfig: "false"
           - git:
               repoURL: {{ $.Values.gitops.repo }}
               revision: {{ $.Values.gitops.revision }}
@@ -30,7 +30,7 @@ spec:
               values:
                 selector: '{{ `{{ path }}` }}'
                 appName: '{{ `{{ app.name }}` }}'
-                hasConfig: 'true'
+                hasConfig: "true"
   template:
     metadata:
       name: '{{ default `{{path.basename}}` `{{values.appName}}` }}'
@@ -63,8 +63,9 @@ spec:
           - ApplyOutOfSyncOnly=true # sync only out-of-sync resources
           - ServerSideApply=true # If set to true, ArgoCD will use kubectl apply — server-side command to apply changes
   templatePatch: |
-    {{`metadata:
+    metadata:
       labels:
-          app: default path.basename values.appName
-    `}}
+      {{- if `{{ values.hasConfig }}` }}
+          app: {{ default "test4" `{{values.appName}}` }}
+      {{- end }}
 {{- end }}
