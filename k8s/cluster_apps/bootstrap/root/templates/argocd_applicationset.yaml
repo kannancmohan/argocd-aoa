@@ -31,7 +31,11 @@ spec:
                 appName: '{{ `{{ app.name }}` }}'
   template:
     metadata:
-      name: "{{ dig `app` `name` `{{path.basename}}` . }}"
+    {{- if hasKey . `{{app}}` }}
+      name: '{{ default `{{path.basename}}` `{{app.name}}` }}'
+    {{- else }}
+      name: '{{ `{{path.basename}}` }}'
+    {{- end }}
     spec:
       destination:
         name: in-cluster
