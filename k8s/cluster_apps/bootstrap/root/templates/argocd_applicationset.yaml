@@ -6,8 +6,8 @@ metadata:
   name: {{ $appSet.name }}
   namespace: {{ $.Release.Namespace }}
 spec:
-  # goTemplate: true
-  # goTemplateOptions: ["missingkey=error"]
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
     - merge:
         mergeKeys:
@@ -19,8 +19,8 @@ spec:
               directories:
                 - path: {{ $appSet.path }}/*
               values:
-                selector: '{{ `{{ path }}` }}'
-                appName: '{{ `{{ path.basename }}` }}'
+                selector: '{{ `{{ .path.path }}` }}'
+                appName: '{{ `{{ .path.basename }}` }}'
                 hasConfig: 'false'
           - git:
               repoURL: {{ $.Values.gitops.repo }}
@@ -28,16 +28,16 @@ spec:
               files:
                 - path: {{ $appSet.path }}/**/config.json
               values:
-                selector: '{{ `{{ path }}` }}'
-                appName: '{{ `{{ app.name }}` }}'
+                selector: '{{ `{{ .path.path }}` }}'
+                appName: '{{ `{{ .app.name }}` }}'
                 hasConfig: 'true'
   template:
     metadata:
-      name: '{{ default `{{path.basename}}` `{{values.appName}}` }}'
+      name: '{{ default `{{ .path.basename }}` `{{ .values.appName }}` }}'
     spec:
       destination:
         name: in-cluster
-        namespace: '{{ default `{{path.basename}}` $appSet.namespace }}'
+        namespace: '{{ default `{{ .path.basename }}` $appSet.namespace }}'
       project: '{{ default "default" $appSet.project }}'
       source:
         # helm:
@@ -45,7 +45,7 @@ spec:
         #     - $values/k8s/cluster_apps/apps-values.yaml
         #     - values.yaml
         repoURL: {{ $.Values.gitops.repo }}
-        path: '{{ `{{ path }}` }}'
+        path: '{{ `{{ .path.path }}` }}'
         targetRevision: {{ $.Values.gitops.revision }}
       syncPolicy:
         automated:
@@ -63,7 +63,7 @@ spec:
           - ApplyOutOfSyncOnly=true # sync only out-of-sync resources
           - ServerSideApply=true # If set to true, ArgoCD will use kubectl apply — server-side command to apply changes
   templatePatch: |
-  {{ if eq `{{values.appName}}` "cert-manager-generator" }}
+  {{ if eq `{{.values.appName}}` "cert-manager-generator" }}
     metadata:
       annotations:
         argocd.argoproj.io/hook: PreSync
