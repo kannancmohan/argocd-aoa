@@ -65,7 +65,7 @@ spec:
   templatePatch: |
     metadata:
       annotations:
-      {{- if `{{app.enablePreSync}}` }}
+      {{ `{{- if app.enablePreSync }}` }}
         argocd.argoproj.io/hook: PreSync
-      {{- end }}
+      {{ `{{- end }}` }}
 {{- end }}
