@@ -21,7 +21,7 @@ spec:
               values:
                 selector: '{{ `{{ path }}` }}'
                 appName: '{{ `{{ path.basename }}` }}'
-                hasConfig: "false"
+                hasConfig: ""
           - git:
               repoURL: {{ $.Values.gitops.repo }}
               revision: {{ $.Values.gitops.revision }}
@@ -65,5 +65,5 @@ spec:
   templatePatch: |
     metadata:
       labels:
-          app: {{- if dig `{{ app.name }}` "" . }} {{ default "test4" `{{values.appName}}` }} {{- end }}
+        {{- if `{{values.hasConfig}}` }}app: {{ default "test4" `{{values.appName}}` }}{{- end }}
 {{- end }}
