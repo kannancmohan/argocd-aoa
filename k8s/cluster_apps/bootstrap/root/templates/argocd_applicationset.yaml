@@ -37,7 +37,7 @@ spec:
     metadata:
       name: '{{ `{{values.appName}}` }}'
       annotations:
-        argocd.argoproj.io/sync-wave: '{{ `{{dig "values" "syncWave" "0" . }}` }}'
+        argocd.argoproj.io/sync-wave: '{{ `{{ dig "values" "syncWave" "0" . }}` }}'
     spec:
       destination:
         name: in-cluster
