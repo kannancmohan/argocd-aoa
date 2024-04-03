@@ -32,7 +32,7 @@ spec:
                 selector: '{{ `{{ path }}` }}'
                 appName: '{{ `{{ app.name }}` }}'
                 hasConfig: "true"
-                syncWave: "0"
+                syncWave: '{{ `{{ app.syncWave }}` }}'
   template:
     metadata:
       name: '{{ `{{values.appName}}` }}'
