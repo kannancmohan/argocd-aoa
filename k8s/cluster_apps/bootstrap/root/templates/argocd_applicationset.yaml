@@ -65,7 +65,5 @@ spec:
   templatePatch: |
     metadata:
       labels:
-      {{- if `{{ values.hasConfig }}` }}
-          app: {{ default "test4" `{{values.appName}}` }}
-      {{- end }}
+          app: {{- if dig `{{ app.name }}` "" . }} {{ default "test4" `{{values.appName}}` }} {{- end }}
 {{- end }}
