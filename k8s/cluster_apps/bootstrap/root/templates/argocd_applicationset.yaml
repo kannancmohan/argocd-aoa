@@ -22,6 +22,7 @@ spec:
                 selector: '{{ `{{ path }}` }}'
                 appName: '{{ `{{ path.basename }}` }}'
                 hasConfig: ""
+                syncWave: "0"
           - git:
               repoURL: '{{ $.Values.gitops.repo }}'
               revision: '{{ $.Values.gitops.revision }}'
@@ -31,9 +32,12 @@ spec:
                 selector: '{{ `{{ path }}` }}'
                 appName: '{{ `{{ app.name }}` }}'
                 hasConfig: "true"
+                syncWave: "0"
   template:
     metadata:
       name: '{{ `{{values.appName}}` }}'
+      annotations:
+        argocd.argoproj.io/sync-wave: '{{ `{{values.syncWave}}` }}'
     spec:
       destination:
         name: in-cluster
