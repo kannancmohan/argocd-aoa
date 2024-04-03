@@ -32,12 +32,12 @@ spec:
                 selector: '{{ `{{ path }}` }}'
                 appName: '{{ `{{ app.name }}` }}'
                 hasConfig: "true"
-                syncWave: '{{ `{{ dig "app" "syncWave" "0" . }}` }}'
+                syncWave: '{{ `{{ app.syncWave }}` }}'
   template:
     metadata:
       name: '{{ `{{values.appName}}` }}'
       annotations:
-        argocd.argoproj.io/sync-wave: '{{ `{{values.syncWave}}` }}'
+        argocd.argoproj.io/sync-wave: '{{ `{{ dig "values" "syncWave" "0" . }}` }}'
     spec:
       destination:
         name: in-cluster
