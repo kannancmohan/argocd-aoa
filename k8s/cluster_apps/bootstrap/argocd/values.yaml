@@ -15,11 +15,12 @@ argo-cd:
   server:
     # extraArgs:
     #   - --insecure
+    # Added based on https://kubito.dev/posts/enable-argocd-sync-wave-between-apps/
     config:
-      resource.ignoreResourceUpdatesEnabled: true
-      resource.customizations.ignoreResourceUpdates.all: |
-        jsonPointers:
-          - /status
+      # resource.ignoreResourceUpdatesEnabled: true
+      # resource.customizations.ignoreResourceUpdates.all: |
+      #   jsonPointers:
+      #     - /status
       resource.customizations.health.argoproj.io_Application: |
         hs = {}
         hs.status = "Progressing"
