@@ -37,7 +37,7 @@ spec:
     metadata:
       name: '{{ `{{values.appName}}` }}'
       annotations:
-        argocd.argoproj.io/sync-wave: '{{ default "0" `{{values.syncWave}}` }}'
+        argocd.argoproj.io/sync-wave: '{{ `{{values.syncWave}}` }}'
     spec:
       destination:
         name: in-cluster
