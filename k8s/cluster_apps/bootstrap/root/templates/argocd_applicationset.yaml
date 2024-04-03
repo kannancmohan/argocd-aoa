@@ -20,7 +20,7 @@ spec:
                 - path: {{ $appSet.path }}/*
               values:
                 selector: '{{ `{{ path }}` }}'
-                appName: '{{ `{{ path.basename }}` }}'
+                appName: ""
                 hasConfig: ""
           - git:
               repoURL: {{ $.Values.gitops.repo }}
@@ -65,7 +65,5 @@ spec:
   templatePatch: |
     {{`metadata:
       labels:
-      {{- if values.hasConfig }}
-        app: values.appName}}
-      {{- end }}`}}
+        {{- if {{values.hasConfig}} }}app: {{values.appName}}{{- end }}`}}
 {{- end }}
