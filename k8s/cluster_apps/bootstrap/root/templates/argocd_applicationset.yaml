@@ -20,7 +20,7 @@ spec:
                 - path: {{ $appSet.path }}/*
               values:
                 selector: '{{ `{{ path }}` }}'
-                appName: ""
+                appName: '{{ `{{ path.basename }}` }}'
                 hasConfig: ""
           - git:
               repoURL: {{ $.Values.gitops.repo }}
@@ -33,7 +33,7 @@ spec:
                 hasConfig: "true"
   template:
     metadata:
-      name: '{{ default `{{path.basename}}` `{{values.appName}}` }}'
+      name: '{{ `{{values.appName}}` }}'
     spec:
       destination:
         name: in-cluster
