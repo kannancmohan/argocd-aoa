@@ -20,7 +20,7 @@ spec:
                 - path: '{{ $appSet.path }}/*'
               values:
                 selector: '{{ `{{ path }}` }}'
-                appEnabled: '{{ `{{ app.enabled }}` }}'
+                appEnabled: 'true'
                 appName: '{{ `{{ path.basename }}` }}'
                 hasConfig: ""
                 syncWave: "0"
@@ -35,6 +35,11 @@ spec:
                 appName: '{{ `{{ app.name }}` }}'
                 hasConfig: "true"
                 syncWave: '{{ `{{ app.syncWave }}` }}'
+            selector:
+                matchExpressions:
+                  - key: appEnabled
+                    operator: In
+                    values: ['true']
   template:
     metadata:
       name: '{{ `{{values.appName}}` }}'
