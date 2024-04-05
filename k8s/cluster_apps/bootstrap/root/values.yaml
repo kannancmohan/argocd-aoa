@@ -3,17 +3,17 @@ gitops:
   revision: main
 
 # argocd AppProject
-projects:
+argoProjects:
   - name: platform
   - name: apps
 
 # argocd ApplicationSet
-applicationSet:
+argoApplicationSet:
   - name: bootstrap
-    namespace: argocd
+    appNamespace: argocd
     path: k8s/cluster_apps/bootstrap
     # project: core
   - name: platform
     # namespace: argocd
     path: k8s/cluster_apps/platform
-    project: platform
+    appProject: platform

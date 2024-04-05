@@ -50,3 +50,33 @@ openssl verify -CAfile \
 <(kubectl -n cert-manager get secret self-signed-tls-cert -o jsonpath='{.data.ca\.crt}' | base64 -d) \
 <(kubectl -n argocd get secret argocd-tls-cert -o jsonpath='{.data.tls\.crt}' | base64 -d)
 ```
+
+<table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
+    <tr>
+        <th colspan="2">Monitoring</th>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><a href="https://prometheus.io/">Prometheus</a></td>
+        <td>Monitoring & alerting solution that collects metrics data and stores that data in a time series database</td>
+    </tr>
+    <tr>
+        <td><a href="https://thanos.io/">Thanos</a></td>
+        <td>Thanos provides a highly available Prometheus setup with extended storage capabilities - Its an extension built for Prometheus.</td>
+    </tr>
+    <tr>
+        <td><a href="https://grafana.com/docs/loki/latest/get-started/overview/">Loki</a></td>
+        <td>The server responsible for storing logs and processing queries</td>
+    </tr>
+    <tr>
+        <td><a href="https://grafana.com/docs/loki/latest/send-data/promtail/">Promtail</a></td>
+        <td>The agent responsible for gathering logs and sending them to Loki</td>
+    </tr>
+    <tr>
+        <td><a href="https://grafana.com/">Grafana</a></td>
+        <td>Allows to query, visualize, alert on, and explore metrics, logs, and traces no matter where it's stored.</td>
+    </tr>
+</table>

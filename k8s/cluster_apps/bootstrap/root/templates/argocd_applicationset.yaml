@@ -1,4 +1,4 @@
-{{- range $index, $appSet := .Values.applicationSet }}
+{{- range $index, $appSet := .Values.argoApplicationSet }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
@@ -41,8 +41,8 @@ spec:
     spec:
       destination:
         name: in-cluster
-        namespace: '{{ default `{{path.basename}}` $appSet.namespace }}'
-      project: '{{ default "default" $appSet.project }}'
+        namespace: '{{ default `{{path.basename}}` $appSet.appNamespace }}'
+      project: '{{ default "default" $appSet.appProject }}'
       source:
         # helm:
         #   valueFiles:
