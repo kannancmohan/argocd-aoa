@@ -1,7 +1,7 @@
 {
     "app": {
         "enabled": "false",
-        "name": "Monitoring stack",
+        "name": "monitoring-stack",
         "syncWave": "0"
     }
 }
