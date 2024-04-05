@@ -35,11 +35,11 @@ spec:
                 appName: '{{ `{{ app.name }}` }}'
                 hasConfig: "true"
                 syncWave: '{{ `{{ app.syncWave }}` }}'
-            selector:
-                matchExpressions:
-                  - key: appEnabled
-                    operator: In
-                    values: ['true']
+              selector:
+                  matchExpressions:
+                    - key: values.appEnabled
+                      operator: In
+                      values: ['true']
   template:
     metadata:
       name: '{{ `{{values.appName}}` }}'
