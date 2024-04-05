@@ -1,7 +1,7 @@
 {
     "app": {
+        "enabled": "true",
         "name": "cert-manager-generator",
-        "enablePreSync": true,
         "syncWave": "-10"
     }
 }

@@ -20,6 +20,7 @@ spec:
                 - path: '{{ $appSet.path }}/*'
               values:
                 selector: '{{ `{{ path }}` }}'
+                appEnabled: '{{ `{{ app.enabled }}` }}'
                 appName: '{{ `{{ path.basename }}` }}'
                 hasConfig: ""
                 syncWave: "0"
@@ -30,10 +31,12 @@ spec:
                 - path: '{{ $appSet.path }}/**/config.json'
               values:
                 selector: '{{ `{{ path }}` }}'
+                appEnabled: '{{ `{{ app.enabled }}` }}'
                 appName: '{{ `{{ app.name }}` }}'
                 hasConfig: "true"
                 syncWave: '{{ `{{ app.syncWave }}` }}'
   template:
+{{- if eq `{{values.appEnabled}}` "true" }}
     metadata:
       name: '{{ `{{values.appName}}` }}'
       annotations:
@@ -72,4 +75,5 @@ spec:
   #     labels:
   #       app: {{ `{{values.appName}}` }}
   #   {{ `{{- else }}` }}
+{{- end }}
 {{- end }}
