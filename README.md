@@ -51,6 +51,44 @@ openssl verify -CAfile \
 <(kubectl -n argocd get secret argocd-tls-cert -o jsonpath='{.data.tls\.crt}' | base64 -d)
 ```
 
+### Monitoring
+Prometheus, Grafana, and Node Exporters are commonly used to monitor system-level application insights. These tools specifically provide node and container statistics, which allow developers to analyse real-time metrics of containers and nodes
+
+#### Monitoring Tools
+<table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Installation</th>
+    </tr>
+    <tr>
+        <td><a href="https://prometheus.io/">Prometheus</a></td>
+        <td>Monitoring & alerting solution that collects metrics data and stores that data in a time series database</td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+    </tr>
+    <tr>
+        <td><a href="https://grafana.com/">Grafana</a></td>
+        <td>Allows to query, visualize, alert on, and explore metrics, logs, and traces no matter where it's stored.</td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/prometheus/node_exporter">Prometheus Node Exporter</a></td>
+        <td>Agent that gathers system(Hardware and OS) level metrics and exposes them in a format which can be ingested by Prometheus.</td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/kubernetes/kube-state-metrics">kube-state-metrics</a></td>
+        <td>Add-on that generates metrics about state of Kubernetes cluster objects. It listens to the Kubernetes API server and gathers information about resources and objects, such as Deployments, Pods, Services, and StatefulSets</td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+    </tr>
+    <tr>
+        <td><a href="https://prometheus.io/docs/alerting/latest/alertmanager/">Prometheus Alertmanager</a></td>
+        <td>The Alertmanager handles alerts sent by client applications such as the Prometheus server. It takes care of deduplicating, grouping, and routing them to the correct receiver integrations such as email etc</td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+    </tr>
+</table>
+
+
 <table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
     <tr>
         <th colspan="2">Monitoring</th>

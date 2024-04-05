@@ -11,7 +11,7 @@ helm template \
 
 ## Wait for argocd server 
 echo 'Waiting for argocd server to start..' 
-kubectl wait -n argocd  --timeout=90s --for condition=Ready pod -l app.kubernetes.io/name=argocd-server &&
+kubectl wait -n argocd  --timeout=120s --for condition=Ready pod -l app.kubernetes.io/name=argocd-server &&
 
 ## create argocd resource Project and ApplicationSet
 helm template --namespace argocd argocd ./k8s/cluster_apps/bootstrap/root | kubectl apply -n argocd -f -
