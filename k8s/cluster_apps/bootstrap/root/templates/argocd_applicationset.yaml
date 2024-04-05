@@ -35,7 +35,6 @@ spec:
                 appName: '{{ `{{ app.name }}` }}'
                 hasConfig: "true"
                 syncWave: '{{ `{{ app.syncWave }}` }}'
-{{- if eq `{{values.appEnabled}}` "true" }}
   template:
     metadata:
       name: '{{ `{{values.appName}}` }}'
@@ -75,5 +74,4 @@ spec:
   #     labels:
   #       app: {{ `{{values.appName}}` }}
   #   {{ `{{- else }}` }}
-{{- end }}
 {{- end }}
