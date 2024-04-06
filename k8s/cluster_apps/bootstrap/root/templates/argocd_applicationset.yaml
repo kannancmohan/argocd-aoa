@@ -76,5 +76,5 @@ spec:
     metadata:
       labels:
         app: {{ `{{values.appName}}` }}
-    {{ `{{- else -}}` }}
+    {{ `{{- end -}}` }}
 {{- end }}
