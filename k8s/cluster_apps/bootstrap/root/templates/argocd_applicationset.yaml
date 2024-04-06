@@ -30,7 +30,7 @@ spec:
                 - path: '{{ $appSet.path }}/**/config.json'
               values:
                 repoPath: '{{ `{{ path }}` }}'
-                appEnabled: '{{ `{{ {{- if app.enabled -}} "true" {{- else -}} "true" {{- end -}}  }}` }}'
+                appEnabled: '{{ `{{- if app.enabled -}} "true" {{- else -}} "true" {{- end -}}` }}'
                 appName: '{{ `{{ app.name }}` }}'
                 syncWave: '{{ `{{ app.syncWave }}` }}'
       selector:
