@@ -1,11 +1,13 @@
+{{- range $index, $appSet := .Values.argoApplicationSet }}
+---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: platform
+  name: {{ $appSet.name }}
   namespace: {{ $.Release.Namespace }}
 spec:
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
+  # goTemplate: true
+  # goTemplateOptions: ["missingkey=error"]
   generators:
     - merge:
         mergeKeys:
@@ -15,45 +17,44 @@ spec:
               repoURL: '{{ $.Values.gitops.repo }}'
               revision: '{{ $.Values.gitops.revision }}'
               directories:
-                - path: 'k8s/cluster_apps/platform/*'
+                - path: '{{ $appSet.path }}/*'
               values:
-                repoPath: '{{`{{ .path.path }}`}}'
+                repoPath: '{{ `{{ path }}` }}'
                 appEnabled: 'true'
-                appName: '{{`{{ .path.basename }}`}}'
+                appName: '{{ `{{ path.basename }}` }}'
                 syncWave: "0"
           - git:
               repoURL: '{{ $.Values.gitops.repo }}'
               revision: '{{ $.Values.gitops.revision }}'
               files:
-                - path: 'k8s/cluster_apps/platform/**/config.json'
+                - path: '{{ $appSet.path }}/**/config.json'
               values:
-                repoPath: '{{`{{ .path.path }}`}}'
-                appEnabled: '{{`{{ .app.enabled }}`}}'
-                appName: '{{`{{ .app.name }}`}}'
-                syncWave: '{{`{{ .app.syncWave }}`}}'
+                repoPath: '{{ `{{ path }}` }}'
+                appEnabled: '{{ `{{ app.enabled }}` }}'
+                appName: '{{ `{{ app.name }}` }}'
+                syncWave: '{{ `{{ app.syncWave }}` }}'
       selector:
           matchExpressions:
             - key: values.appEnabled
               operator: In
               values: ['true']
-
   template:
     metadata:
-      name: '{{`{{ .values.appName }}`}}'
+      name: '{{ `{{values.appName}}` }}'
       annotations:
-        argocd.argoproj.io/sync-wave: '{{`{{ .values.syncWave }}`}}'
+        argocd.argoproj.io/sync-wave: '{{ `{{values.syncWave}}` }}'
     spec:
       destination:
         name: in-cluster
-        namespace: '{{`{{ .path.basename }}`}}'
-      project: 'platform'
+        namespace: '{{ default `{{path.basename}}` $appSet.appNamespace }}'
+      project: '{{ default "default" $appSet.appProject }}'
       source:
         # helm:
         #   valueFiles:
         #     - $values/k8s/cluster_apps/apps-values.yaml
         #     - values.yaml
         repoURL: {{ $.Values.gitops.repo }}
-        path: '{{`{{ .path.path }}`}}'
+        path: '{{ `{{ path }}` }}'
         targetRevision: {{ $.Values.gitops.revision }}
       syncPolicy:
         automated:
@@ -76,3 +77,4 @@ spec:
   #     labels:
   #       app: {{ `{{values.appName}}` }}
   #   {{ `{{- else }}` }}
+{{- end }}
