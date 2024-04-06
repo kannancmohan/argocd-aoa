@@ -74,7 +74,5 @@ spec:
   templatePatch: |
     {{`metadata:
       labels:
-      {{- if values.appName }}
-        app: {{ values.appName }}
-      {{- end }}`}}
+        app: {{ values.appName }}`}}
 {{- end }}
