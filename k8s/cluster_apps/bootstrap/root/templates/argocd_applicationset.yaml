@@ -1,9 +1,7 @@
-{{- range $index, $appSet := .Values.argoApplicationSet }}
----
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: {{ $appSet.name }}
+  name: platform
   namespace: {{ $.Release.Namespace }}
 spec:
   goTemplate: true
@@ -17,7 +15,7 @@ spec:
               repoURL: '{{ $.Values.gitops.repo }}'
               revision: '{{ $.Values.gitops.revision }}'
               directories:
-                - path: '{{ $appSet.path }}/*'
+                - path: 'k8s/cluster_apps/platform/*'
               values:
                 repoPath: '{{`{{ .path.path }}`}}'
                 appEnabled: 'true'
@@ -27,7 +25,7 @@ spec:
               repoURL: '{{ $.Values.gitops.repo }}'
               revision: '{{ $.Values.gitops.revision }}'
               files:
-                - path: '{{ $appSet.path }}/**/config.json'
+                - path: 'k8s/cluster_apps/platform/**/config.json'
               values:
                 repoPath: '{{`{{ .path.path }}`}}'
                 appEnabled: '{{`{{ .app.enabled }}`}}'
@@ -47,8 +45,8 @@ spec:
     spec:
       destination:
         name: in-cluster
-        namespace: '{{`{{ default .path.basename $appSet.appNamespace }}`}}'
-      project: '{{`{{ default "default" $appSet.appProject }}`}}'
+        namespace: '{{`{{ .path.basename }}`}}'
+      project: 'platform'
       source:
         # helm:
         #   valueFiles:
@@ -78,4 +76,3 @@ spec:
   #     labels:
   #       app: {{ `{{values.appName}}` }}
   #   {{ `{{- else }}` }}
-{{- end }}
