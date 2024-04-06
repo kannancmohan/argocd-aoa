@@ -54,8 +54,10 @@ openssl verify -CAfile \
 ### Monitoring
 Prometheus, Grafana, and Node Exporters are commonly used to monitor system-level application insights. These tools specifically provide node and container statistics, which allow developers to analyse real-time metrics of containers and nodes
 
-#### Monitoring Tools
 <table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
+    <tr>
+        <th colspan="3">Monitoring Tools</th>
+    </tr>
     <tr>
         <th>Name</th>
         <th>Description</th>
