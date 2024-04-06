@@ -76,6 +76,5 @@ spec:
         labels:
         {{- if values.appName }}
           app: {{ values.appName }}
-            prune: true
         {{- end }}`}}
 {{- end }}
