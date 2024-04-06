@@ -73,8 +73,8 @@ spec:
           - ServerSideApply=true # If set to true, ArgoCD will use kubectl apply — server-side command to apply changes
   templatePatch: |
     {{`metadata:
-        labels:
-        {{- if values.appName }}
-          app: {{ values.appName }}
-        {{- end }}`}}
+      labels:
+      {{- if values.appName }}
+        app: {{ values.appName }}
+      {{- end }}`}}
 {{- end }}
