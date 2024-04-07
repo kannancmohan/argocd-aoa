@@ -64,13 +64,13 @@ Prometheus, Grafana, and Node Exporters are commonly used to monitor system-leve
         <th>Installation</th>
     </tr>
     <tr>
-        <td><a href="https://prometheus.io/">Prometheus</a></td>
-        <td>Monitoring & alerting solution that collects metrics data and stores that data in a time series database</td>
+        <td><a href="https://github.com/prometheus-operator/prometheus-operator">Prometheus Operator</a></td>
+        <td>A k8s operator automates the configuration and management of the Prometheus monitoring stack that runs on a Kubernetes cluster</td>
         <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
     </tr>
     <tr>
-        <td><a href="https://grafana.com/">Grafana</a></td>
-        <td>Allows to query, visualize, alert on, and explore metrics, logs, and traces no matter where it's stored.</td>
+        <td><a href="https://prometheus.io/">Prometheus</a></td>
+        <td>Monitoring & alerting solution that collects metrics data and stores that data in a time series database</td>
         <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
     </tr>
     <tr>
@@ -89,8 +89,8 @@ Prometheus, Grafana, and Node Exporters are commonly used to monitor system-leve
         <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
     </tr>
     <tr>
-        <td><a href="https://github.com/prometheus-operator/prometheus-operator">Prometheus Operator</a></td>
-        <td>A k8s operator automates the configuration and management of the Prometheus monitoring stack that runs on a Kubernetes cluster</td>
+        <td><a href="https://grafana.com/">Grafana</a></td>
+        <td>Allows to query, visualize, alert on, and explore metrics, logs, and traces no matter where it's stored.</td>
         <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
     </tr>
 </table>
