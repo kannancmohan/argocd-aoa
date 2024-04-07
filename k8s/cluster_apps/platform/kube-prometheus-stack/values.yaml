@@ -1,8 +1,8 @@
 kube-prometheus-stack:
-  # grafana:
-  #   enabled: false
-  #   forceDeployDatasources: true
-  #   forceDeployDashboards: true
+  grafana:
+    enabled: false
+    forceDeployDatasources: true
+    forceDeployDashboards: true
   #   additionalDataSources:
   #     - name: Loki
   #       type: loki
