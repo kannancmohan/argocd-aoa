@@ -1,0 +1,24 @@
+grafana:
+  # ingress:
+  #   enabled: true
+  #   ingressClassName: nginx
+  #   annotations:
+  #     cert-manager.io/cluster-issuer: default-root-cert-issuer
+  #   hosts:
+  #     - &host grafana.dev.local
+  #   tls:
+  #     - secretName: grafana-general-tls
+  #       hosts:
+  #         - *host
+  sidecar:
+    dashboards:
+      enabled: true
+      searchNamespace: kube-prometheus-stack
+    datasources:
+      enabled: true
+      searchNamespace: kube-prometheus-stack
+  # envFromSecret: grafana-secrets
+  ## Grafana's primary configuration ref: http://docs.grafana.org/installation/configuration/
+  # grafana.ini:
+  #   server:
+  #     root_url: https://grafana.dev.local

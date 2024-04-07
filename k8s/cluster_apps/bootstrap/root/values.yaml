@@ -10,10 +10,8 @@ argoProjects:
 # argocd ApplicationSet
 argoApplicationSet:
   - name: bootstrap
-    appNamespace: argocd
     path: k8s/cluster_apps/bootstrap
-    # project: core
+    appNamespace: argocd
   - name: platform
-    # namespace: argocd
     path: k8s/cluster_apps/platform
     appProject: platform
