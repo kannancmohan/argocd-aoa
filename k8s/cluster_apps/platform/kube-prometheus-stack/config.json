@@ -1,7 +1,7 @@
 {
     "app": {
         "enabled": "true",
-        "name": "monitoring-stack",
+        "name": "kube-prometheus-stack",
         "syncWave": "0"
     }
 }
