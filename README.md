@@ -88,6 +88,39 @@ Prometheus, Grafana, and Node Exporters are commonly used to monitor system-leve
         <td>The Alertmanager handles alerts sent by client applications such as the Prometheus server. It takes care of deduplicating, grouping, and routing them to the correct receiver integrations such as email etc</td>
         <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
     </tr>
+    <tr>
+        <td><a href="https://github.com/prometheus-operator/prometheus-operator">Prometheus Operator</a></td>
+        <td>A k8s operator automates the configuration and management of the Prometheus monitoring stack that runs on a Kubernetes cluster</td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+    </tr>
+</table>
+
+### Logging
+Loki, Promtail and Grafana is used for log aggregation and  visualization
+<table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
+    <tr>
+        <th colspan="3">Logging Tools</th>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Installation</th>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/grafana/loki">Loki</a></td>
+        <td>Inspired from prometheus, Loki is a datastore optimized for efficiently holding log data. It is a TSDB (Time-series database), it stores logs as split and gzipped chunks of data</td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+    </tr>
+    <tr>
+        <td><a href="https://prometheus.io/">Promtail</a></td>
+        <td>Promtail is a logs collector agent that collects, (re)labels and ships logs to Loki. </td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+    </tr>
+    <tr>
+        <td><a href="https://grafana.com/">Grafana</a></td>
+        <td>Allows to query and visualize logs</td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+    </tr>
 </table>
 
 
