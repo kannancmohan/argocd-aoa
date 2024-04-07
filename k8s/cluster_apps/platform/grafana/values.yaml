@@ -13,10 +13,10 @@ grafana:
   sidecar:
     dashboards:
       enabled: true
-      searchNamespace: kube-prometheus-stack
+      searchNamespace: ALL
     datasources:
       enabled: true
-      searchNamespace: kube-prometheus-stack
+      searchNamespace: ALL
   # envFromSecret: grafana-secrets
   ## Grafana's primary configuration ref: http://docs.grafana.org/installation/configuration/
   # grafana.ini:
