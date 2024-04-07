@@ -32,6 +32,16 @@ kubectl --namespace kube-system port-forward deployments/traefik 9000:9000
 kubectl -n argocd port-forward svc/argocd-server 8080:443
 ```
 
+### prometheus gui 
+```
+kubectl port-forward svc/kube-prometheus-stack-prometheus 9090:9090 -n kube-prometheus-stack
+```
+
+### grafana gui 
+```
+kubectl port-forward svc/grafana 3000:80 -n grafana
+```
+
 ## Certificate verification 
 ### verifying certificate  of a host 
 ```
@@ -65,7 +75,7 @@ Prometheus, Grafana, and Node Exporters are commonly used to monitor system-leve
     </tr>
     <tr>
         <td><a href="https://github.com/prometheus-operator/prometheus-operator">Prometheus Operator</a></td>
-        <td>A k8s operator automates the configuration and management of the Prometheus monitoring stack that runs on a Kubernetes cluster</td>
+        <td>A k8s operator that automates the configuration and management of the Prometheus monitoring stack</td>
         <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
     </tr>
     <tr>
@@ -91,7 +101,7 @@ Prometheus, Grafana, and Node Exporters are commonly used to monitor system-leve
     <tr>
         <td><a href="https://grafana.com/">Grafana</a></td>
         <td>Allows to query, visualize, alert on, and explore metrics, logs, and traces no matter where it's stored.</td>
-        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/grafana/grafana">Grafana helm chart</a>  </td>
     </tr>
 </table>
 
@@ -119,7 +129,7 @@ Loki, Promtail and Grafana is used for log aggregation and  visualization
     <tr>
         <td><a href="https://grafana.com/">Grafana</a></td>
         <td>Allows to query and visualize logs</td>
-        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/grafana/grafana">Grafana helm chart</a>  </td>
     </tr>
 </table>
 
@@ -133,23 +143,7 @@ Loki, Promtail and Grafana is used for log aggregation and  visualization
         <th>Description</th>
     </tr>
     <tr>
-        <td><a href="https://prometheus.io/">Prometheus</a></td>
-        <td>Monitoring & alerting solution that collects metrics data and stores that data in a time series database</td>
-    </tr>
-    <tr>
         <td><a href="https://thanos.io/">Thanos</a></td>
         <td>Thanos provides a highly available Prometheus setup with extended storage capabilities - Its an extension built for Prometheus.</td>
-    </tr>
-    <tr>
-        <td><a href="https://grafana.com/docs/loki/latest/get-started/overview/">Loki</a></td>
-        <td>The server responsible for storing logs and processing queries</td>
-    </tr>
-    <tr>
-        <td><a href="https://grafana.com/docs/loki/latest/send-data/promtail/">Promtail</a></td>
-        <td>The agent responsible for gathering logs and sending them to Loki</td>
-    </tr>
-    <tr>
-        <td><a href="https://grafana.com/">Grafana</a></td>
-        <td>Allows to query, visualize, alert on, and explore metrics, logs, and traces no matter where it's stored.</td>
     </tr>
 </table>
