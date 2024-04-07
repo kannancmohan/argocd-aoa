@@ -14,9 +14,20 @@ grafana:
     dashboards:
       enabled: true
       searchNamespace: ALL
+    # datasources:
+    #   enabled: true
+    #   searchNamespace: ALL
     datasources:
       enabled: true
-      searchNamespace: ALL
+      defaultDatasourceEnabled: true
+      isDefaultDatasource: true
+      uid: prometheus
+      annotations: {}
+      httpMethod: POST
+      createPrometheusReplicasDatasources: false
+      label: grafana_datasource
+      labelValue: "1"
+      exemplarTraceIdDestinations: {}
   # envFromSecret: grafana-secrets
   ## Grafana's primary configuration ref: http://docs.grafana.org/installation/configuration/
   # grafana.ini:
