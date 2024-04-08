@@ -4,7 +4,7 @@ metadata:
   name: test-ingress
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.org/rewrites: "serviceName=argocd-server rewrite=/;serviceName=grafana rewrite=/grafana/"
+    nginx.org/rewrites: "serviceName=argocd-server rewrite=/"
 spec:
   ingressClassName: nginx
   rules:
@@ -18,10 +18,10 @@ spec:
             name: argocd-server
             port:
               number: 80
-      - path: /grafana/
-        pathType: Prefix
-        backend:
-          service:
-            name: grafana
-            port:
-              number: 80
+      # - path: /grafana/
+      #   pathType: Prefix
+      #   backend:
+      #     service:
+      #       name: grafana
+      #       port:
+      #         number: 80
