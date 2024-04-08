@@ -12,9 +12,9 @@ metadata:
     # nginx.ingress.kubernetes.io/cors-allow-origin: '$http_origin'
     # nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
     # nginx.org/rewrites: "serviceName=argocd-server rewrite=/"
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    # nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    # nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    # nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
 spec:
   ingressClassName: nginx
   rules:
@@ -22,7 +22,7 @@ spec:
     http:
       paths:
       - path: /argocd(/|$)(.*)
-        pathType: ImplementationSpecific
+        pathType: Prefix
         backend:
           service:
             name: argocd-server
