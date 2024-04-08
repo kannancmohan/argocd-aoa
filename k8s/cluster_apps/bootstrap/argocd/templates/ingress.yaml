@@ -16,6 +16,8 @@ metadata:
     # nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     # nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     # ingress.kubernetes.io/app-root: "/"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   ingressClassName: nginx
   rules:
@@ -23,7 +25,7 @@ spec:
     http:
       paths:
       - path: /argocd(/|$)(.*)
-        pathType: Prefix
+        pathType: ImplementationSpecific
         backend:
           service:
             name: argocd-server
