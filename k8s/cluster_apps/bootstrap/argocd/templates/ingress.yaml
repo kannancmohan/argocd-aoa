@@ -25,12 +25,12 @@ spec:
     http:
       paths:
       - path: /argocd(/|$)(.*)
-        pathType: ImplementationSpecific
+        pathType: Prefix
         backend:
           service:
             name: argocd-server
             port:
-              number: 80
+              number: 443
       # - path: /grafana/
       #   pathType: Prefix
       #   backend:
