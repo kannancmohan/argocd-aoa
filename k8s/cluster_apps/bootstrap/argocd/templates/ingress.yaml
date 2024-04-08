@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: test-ingress
   annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.org/rewrites: "serviceName=argocd-server rewrite=/;serviceName=coffee-svc rewrite=/beans/"
 spec:
   ingressClassName: nginx
