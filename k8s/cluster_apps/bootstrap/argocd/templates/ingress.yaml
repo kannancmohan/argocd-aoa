@@ -3,15 +3,18 @@ kind: Ingress
 metadata:
   name: test-ingress
   annotations:
-    nginx.org/rewrites: "serviceName=argocd-server rewrite=/"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    # nginx.org/rewrites: "serviceName=argocd-server rewrite=/"
 spec:
   ingressClassName: nginx
   rules:
   - host: argocd.dev.local
     http:
       paths:
-      - path: /argocd/
-        pathType: Prefix
+      - path: /argocd(/|$)(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: argocd-server
