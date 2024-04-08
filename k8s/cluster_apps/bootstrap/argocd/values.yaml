@@ -40,7 +40,8 @@ argo-cd:
       annotations:
         # traefik.ingress.kubernetes.io/router.entrypoints: websecure
         cert-manager.io/cluster-issuer: default-root-cert-issuer
-        nginx.ingress.kubernetes.io/rewrite-target: /
+        nginx.org/rewrites: "serviceName=argocd-server rewrite=/"
+        # nginx.ingress.kubernetes.io/rewrite-target: /
         # nginx.ingress.kubernetes.io/enable-cors: "true"
         # nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, OPTIONS"
         # nginx.ingress.kubernetes.io/cors-allow-origin: '$http_origin'
@@ -61,13 +62,13 @@ argo-cd:
               name: argocd-server
               port:
                 number: 80
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: argocd-server
-              port:
-                number: 80
+        # - path: /
+        #   pathType: Prefix
+        #   backend:
+        #     service:
+        #       name: argocd-server
+        #       port:
+        #         number: 80
       extraTls:
         - secretName: argocd-server-tls
           hosts:
