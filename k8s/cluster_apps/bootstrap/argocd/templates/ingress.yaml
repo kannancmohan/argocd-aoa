@@ -4,14 +4,14 @@ metadata:
   name: test-ingress
   annotations:
     # nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-    # nginx.ingress.kubernetes.io/use-regex: "true"
-    # nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
     # nginx.ingress.kubernetes.io/ssl-redirect: "false"
     # nginx.ingress.kubernetes.io/enable-cors: "true"
     # nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, OPTIONS"
     # nginx.ingress.kubernetes.io/cors-allow-origin: '$http_origin'
     # nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
-    nginx.org/rewrites: "serviceName=argocd-server rewrite=/"
+    # nginx.org/rewrites: "serviceName=argocd-server rewrite=/"
 spec:
   ingressClassName: nginx
   rules:
