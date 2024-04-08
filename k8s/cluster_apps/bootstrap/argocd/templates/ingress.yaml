@@ -4,7 +4,7 @@ metadata:
   name: test-ingress
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.org/rewrites: "serviceName=argocd-server rewrite=/;serviceName=coffee-svc rewrite=/beans/"
+    nginx.org/rewrites: "serviceName=argocd-server rewrite=/;serviceName=grafana rewrite=/grafana/"
 spec:
   ingressClassName: nginx
   rules:
@@ -18,10 +18,10 @@ spec:
             name: argocd-server
             port:
               number: 80
-      - path: /coffee/
+      - path: /grafana/
         pathType: Prefix
         backend:
           service:
-            name: coffee-svc
+            name: grafana
             port:
               number: 80
