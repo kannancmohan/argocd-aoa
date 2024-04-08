@@ -35,40 +35,24 @@ argo-cd:
         end
         return hs
     ingress:
-      enabled: false
+      enabled: true
       ingressClassName: nginx
       annotations:
         # traefik.ingress.kubernetes.io/router.entrypoints: websecure
         cert-manager.io/cluster-issuer: default-root-cert-issuer
-        nginx.org/rewrites: "serviceName=argocd-server rewrite=/"
-        # nginx.ingress.kubernetes.io/rewrite-target: /
-        # nginx.ingress.kubernetes.io/enable-cors: "true"
-        # nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, OPTIONS"
-        # nginx.ingress.kubernetes.io/cors-allow-origin: '$http_origin'
-        # nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
-        # nginx.ingress.kubernetes.io/rewrite-target: /$2
-        # nginx.ingress.kubernetes.io/use-regex: "true"
-        # nginx.ingress.kubernetes.io/ssl-redirect: "false"
       hostname: &host argocd.dev.local
       # extraHosts:
       #   - name: &host argocd.local.info
       #     path: /
       #     pathType: Prefix
-      extraPaths:
-        - path: /gitops/(.*)
-          pathType: Prefix
-          backend:
-            service:
-              name: argocd-server
-              port:
-                number: 80
-        # - path: /
-        #   pathType: Prefix
-        #   backend:
-        #     service:
-        #       name: argocd-server
-        #       port:
-        #         number: 80
+      # extraPaths:
+      #   - path: /
+      #     pathType: Prefix
+      #     backend:
+      #       service:
+      #         name: argocd-server
+      #         port:
+      #           number: 80
       extraTls:
         - secretName: argocd-server-tls
           hosts:
