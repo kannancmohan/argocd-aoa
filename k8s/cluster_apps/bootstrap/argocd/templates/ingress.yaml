@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-ingress
+  annotations:
+    nginx.org/rewrites: "serviceName=argocd-server rewrite=/;serviceName=coffee-svc rewrite=/beans/"
+spec:
+  rules:
+  - host: argocd.dev.local
+    http:
+      paths:
+      - path: /argocd/
+        pathType: Prefix
+        backend:
+          service:
+            name: argocd-server
+            port:
+              number: 80
+      - path: /coffee/
+        pathType: Prefix
+        backend:
+          service:
+            name: coffee-svc
+            port:
+              number: 80
