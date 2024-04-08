@@ -27,7 +27,7 @@ spec:
       #       name: grafana
       #       port:
       #         number: 80
-  tls:
-  - hosts:
-    - argocd.dev.local
-    secretName: argocd-server-tls
+  # tls:
+  # - hosts:
+  #   - argocd.dev.local
+  #   secretName: argocd-server-tls
