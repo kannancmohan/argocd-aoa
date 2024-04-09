@@ -8,6 +8,15 @@ spec:
       - /argocd
 ---
 apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-http-https
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: argocd-http
@@ -42,7 +51,7 @@ spec:
       services:
         - kind: Service
           name: argocd-server
-          port: 80
+          port: http
       middlewares:
         - name: stripprefix
     - kind: Rule
@@ -51,9 +60,10 @@ spec:
       services:
         - kind: Service
           name: argocd-server
-          port: 80
+          port: http
           scheme: h2c
       middlewares:
         - name: stripprefix
   tls:
     certResolver: default-root-cert-issuer
+    secretName: argocd-server-tls
