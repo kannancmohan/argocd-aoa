@@ -1,11 +1,11 @@
-# apiVersion: traefik.containo.us/v1alpha1
-# kind: Middleware
-# metadata:
-#   name: stripprefix
-# spec:
-#   stripPrefix:
-#     prefixes:
-#       - /argocd
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: stripprefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /argocd
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -17,19 +17,23 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`argocd.dev.local`)
+      match: Host(`argocd.dev.local`) && PathPrefix(`/argocd`)
       priority: 10
       services:
         - kind: Service
           name: argocd-server
           port: 80
+      middlewares:
+        - name: stripprefix
     - kind: Rule
-      match: Host(`argocd.dev.local`) && Headers(`Content-Type`, `application/grpc`)
+      match: Host(`argocd.dev.local`) && PathPrefix(`/argocd`) && Headers(`Content-Type`, `application/grpc`)
       priority: 11
       services:
         - kind: Service
           name: argocd-server
           port: 80
           scheme: h2c
+      middlewares:
+        - name: stripprefix
   tls:
     certResolver: default-root-cert-issuer
