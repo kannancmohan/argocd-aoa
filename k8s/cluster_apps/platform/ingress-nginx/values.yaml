@@ -6,5 +6,7 @@ ingress-nginx:
       enabled: true
       serviceMonitor:
         enabled: true
+    extraArgs:
+      --enable-ssl-passthrough
   # tcp:
   #   22: gitea/gitea-ssh:22
