@@ -34,6 +34,7 @@ spec:
     services:
       - kind: Service
         name: argocd-server
+        passHostHeader: true
         port: http
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -51,6 +52,7 @@ spec:
       services:
         - kind: Service
           name: argocd-server
+          passHostHeader: true
           port: http
       middlewares:
         - name: stripprefix
@@ -60,6 +62,7 @@ spec:
       services:
         - kind: Service
           name: argocd-server
+          passHostHeader: true
           port: http
           scheme: h2c
       middlewares:
