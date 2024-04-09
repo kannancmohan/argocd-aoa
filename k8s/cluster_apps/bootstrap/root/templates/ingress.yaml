@@ -6,42 +6,45 @@ spec:
   stripPrefix:
     prefixes:
       - /argocd
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: redirect-http-https
-spec:
-  redirectScheme:
-    scheme: https
-    permanent: true
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: argocd-http
-  namespace: argocd
-spec:
-  entryPoints:
-    - web
-  routes:
-  - kind: Rule
-    match: Host(`argocd.dev.local`) && PathPrefix(`/argocd`)
-    priority: 10
-    middlewares:
-      - name: redirect-http-https
-      - name: stripprefix
-    services:
-      - kind: Service
-        name: argocd-server
-        passHostHeader: true
-        port: http
+# ---
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: Middleware
+# metadata:
+#   name: redirect-http-https
+# spec:
+#   redirectScheme:
+#     scheme: https
+#     permanent: true
+# ---
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   name: argocd-http
+#   namespace: argocd
+# spec:
+#   entryPoints:
+#     - web
+#   routes:
+#   - kind: Rule
+#     match: Host(`argocd.dev.local`) && PathPrefix(`/argocd`)
+#     priority: 10
+#     middlewares:
+#       - name: redirect-http-https
+#       - name: stripprefix
+#     services:
+#       - kind: Service
+#         name: argocd-server
+#         passHostHeader: true
+#         port: http
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: argocd-https
   namespace: argocd
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: traefik-redirect-to-https@kubernetescrd
+    cert-manager.io/cluster-issuer: default-root-cert-issuer
 spec:
   entryPoints:
     - websecure
@@ -52,7 +55,7 @@ spec:
       services:
         - kind: Service
           name: argocd-server
-          passHostHeader: false
+          # passHostHeader: false
           port: http
       middlewares:
         - name: stripprefix
@@ -62,11 +65,11 @@ spec:
       services:
         - kind: Service
           name: argocd-server
-          passHostHeader: false
+          # passHostHeader: false
           port: http
           scheme: h2c
       middlewares:
         - name: stripprefix
   tls:
-    certResolver: default-root-cert-issuer
+    # certResolver: default-root-cert-issuer
     secretName: argocd-server-tls
