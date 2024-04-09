@@ -1,0 +1,7 @@
+{
+    "app": {
+        "enabled": "false",
+        "name": "ingress-nginx",
+        "syncWave": "-50"
+    }
+}

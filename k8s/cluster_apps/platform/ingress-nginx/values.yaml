@@ -1,5 +1,4 @@
 ingress-nginx:
-  enabled: false
   controller:
     admissionWebhooks:
       timeoutSeconds: 30

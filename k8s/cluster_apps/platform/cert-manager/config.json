@@ -2,6 +2,6 @@
     "app": {
         "enabled": "true",
         "name": "cert-manager-generator",
-        "syncWave": "-10"
+        "syncWave": "-100"
     }
 }
