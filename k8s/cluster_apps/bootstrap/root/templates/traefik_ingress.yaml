@@ -1,12 +1,13 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: stripprefix
-  namespace: kube-system
-spec:
-  stripPrefix:
-    prefixes:
-      - /argocd
+# ---
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: Middleware
+# metadata:
+#   name: stripprefix
+#   namespace: kube-system
+# spec:
+#   stripPrefix:
+#     prefixes:
+#       - /argocd
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
