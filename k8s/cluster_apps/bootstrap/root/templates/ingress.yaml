@@ -1,11 +1,11 @@
-# apiVersion: traefik.containo.us/v1alpha1
-# kind: Middleware
-# metadata:
-#   name: stripprefix
-# spec:
-#   stripPrefix:
-#     prefixes:
-#       - /argocd
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: stripprefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /argocd
 # ---
 # apiVersion: traefik.containo.us/v1alpha1
 # kind: Middleware
@@ -60,8 +60,8 @@ spec:
           # passHostHeader: false
           port: http
           namespace: argocd
-      # middlewares:
-      #   - name: stripprefix
+      middlewares:
+        - name: stripprefix
     - kind: Rule
       # match: Host(`argocd.dev.local`) && Headers(`Content-Type`, `application/grpc`)
       # match: Host(`argocd.dev.local`) && PathPrefix(`/argocd`) && Headers(`Content-Type`, `application/grpc`)
@@ -74,8 +74,8 @@ spec:
           port: http
           scheme: h2c
           namespace: argocd
-      # middlewares:
-      #   - name: stripprefix
+      middlewares:
+        - name: stripprefix
   tls:
     # certResolver: default-root-cert-issuer
     secretName: argocd-server-tls
