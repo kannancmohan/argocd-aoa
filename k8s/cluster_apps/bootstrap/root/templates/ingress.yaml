@@ -52,7 +52,7 @@ spec:
     - kind: Rule
       # match: Host(`argocd.dev.local`) && PathPrefix(`/argocd`)
       # match: Host(`argocd.dev.local`)
-      match: Host(`192.168.0.61`) && PathPrefix(`/argo`)
+      match: Host(`argocd.dev.local`) && PathPrefix(`/argocd`)
       priority: 10
       services:
         - kind: Service
@@ -65,7 +65,7 @@ spec:
     - kind: Rule
       # match: Host(`argocd.dev.local`) && Headers(`Content-Type`, `application/grpc`)
       # match: Host(`argocd.dev.local`) && PathPrefix(`/argocd`) && Headers(`Content-Type`, `application/grpc`)
-      match: Host(`192.168.0.61`) && PathPrefix(`/argo`) && Headers(`Content-Type`, `application/grpc`)
+      match: Host(`argocd.dev.local`) && PathPrefix(`/argocd`) && Headers(`Content-Type`, `application/grpc`)
       priority: 11
       services:
         - kind: Service
