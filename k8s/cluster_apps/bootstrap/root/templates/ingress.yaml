@@ -52,7 +52,7 @@ spec:
       services:
         - kind: Service
           name: argocd-server
-          passHostHeader: true
+          passHostHeader: false
           port: http
       middlewares:
         - name: stripprefix
@@ -62,7 +62,7 @@ spec:
       services:
         - kind: Service
           name: argocd-server
-          passHostHeader: true
+          passHostHeader: false
           port: http
           scheme: h2c
       middlewares:
