@@ -1,15 +1,16 @@
 grafana:
-  # ingress:
-  #   enabled: true
-  #   ingressClassName: nginx
-  #   annotations:
-  #     cert-manager.io/cluster-issuer: default-root-cert-issuer
-  #   hosts:
-  #     - &host grafana.dev.local
-  #   tls:
-  #     - secretName: grafana-general-tls
-  #       hosts:
-  #         - *host
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    annotations:
+      cert-manager.io/cluster-issuer: default-root-cert-issuer
+    path: /grafana
+    hosts:
+      - &host argocd.dev.local
+    tls:
+      - secretName: grafana-general-tls
+        hosts:
+          - *host
   sidecar:
     dashboards:
       enabled: true
