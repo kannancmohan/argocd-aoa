@@ -10,8 +10,8 @@ argo-cd:
   configs:
     params:
       server.insecure: true
-      # server.basehref: /argocd
-      server.rootpath: /argocd
+      server.basehref: '/argocd'
+      server.rootpath: '/argocd'
     secret:
       argocdServerAdminPassword: "$2a$10$oRPU/09Terdo4pBYlCwSz.8S13d.vhjUjxv1uil0OM3IXc7tZOqV6"
   server:
