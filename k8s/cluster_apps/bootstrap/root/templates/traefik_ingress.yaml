@@ -13,13 +13,13 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: traefik-dashboard
-  namespace: kube-system
+  namespace: default
 spec:
   entryPoints:
     - web
   routes:
     # - match: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
-    - match: Host(`argocd.dev.local`) && PathPrefix(`/PathPrefix(`/dashboard`)`) ||  Host(`argocd.dev.local`) && PathPrefix(`/PathPrefix(`/api`)`)
+    - match: Host(`argocd.dev.local`) && PathPrefix(`/dashboard`) ||  Host(`argocd.dev.local`) && PathPrefix(`/api`)
       kind: Rule
       services:
         - name: api@internal
