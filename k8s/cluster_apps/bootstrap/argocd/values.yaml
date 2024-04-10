@@ -46,9 +46,10 @@ argo-cd:
       annotations:
         # traefik.ingress.kubernetes.io/router.entrypoints: websecure
         cert-manager.io/cluster-issuer: default-root-cert-issuer
-        nginx.ingress.kubernetes.io/use-regex: "true"
-        nginx.ingress.kubernetes.io/rewrite-target: /$2
+        # nginx.ingress.kubernetes.io/use-regex: "true"
+        # nginx.ingress.kubernetes.io/rewrite-target: /$2
       hostname: &host argocd.dev.local
+      path: /argocd
       # path: /argocd(/|$)(.*)
       # extraHosts:
       #   - name: &host argocd.local.info
