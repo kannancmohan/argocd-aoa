@@ -6,8 +6,8 @@ metadata:
   namespace: argocd
   annotations:
     cert-manager.io/cluster-issuer: default-root-cert-issuer
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    # nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     nginx.ingress.kubernetes.io/server-snippets: |
       location /argocd {
         proxy_pass         https://localhost:8080/argocd/;
