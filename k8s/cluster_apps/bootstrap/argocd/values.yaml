@@ -41,7 +41,7 @@ argo-cd:
         end
         return hs
     ingress:
-      enabled: true
+      enabled: false
       ingressClassName: nginx
       annotations:
         # traefik.ingress.kubernetes.io/router.entrypoints: websecure
@@ -51,8 +51,8 @@ argo-cd:
         # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
         # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
       hostname: &host argocd.dev.local
-      path: /argocd/
-      pathType: ImplementationSpecific
+      # path: /argocd/
+      # pathType: ImplementationSpecific
       # path: /argocd(/|$)(.*)
       # extraHosts:
       #   - name: &host argocd.local.info
