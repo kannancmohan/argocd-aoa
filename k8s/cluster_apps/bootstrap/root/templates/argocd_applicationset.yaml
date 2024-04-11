@@ -76,5 +76,5 @@ spec:
   templatePatch: |
     {{`metadata:
       labels:
-        app: {{ values.appName }}`}}
+        app.kubernetes.io/name: {{ values.appName }}`}}
 {{- end }}
