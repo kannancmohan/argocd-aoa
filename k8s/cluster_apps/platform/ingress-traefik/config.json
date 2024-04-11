@@ -1,7 +1,7 @@
 {
     "app": {
         "enabled": "true",
-        "name": "ingress-traefik",
+        "name": "traefik",
         "nameSpace": "kube-system",
         "syncWave": "-50"
     }
