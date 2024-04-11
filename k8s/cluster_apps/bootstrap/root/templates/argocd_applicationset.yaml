@@ -22,6 +22,7 @@ spec:
                 repoPath: '{{ `{{ path }}` }}'
                 appEnabled: 'true'
                 appName: '{{ `{{ path.basename }}` }}'
+                appNameSpace: '{{ `{{ path.basename }}` }}'
                 syncWave: "0"
           - git:
               repoURL: '{{ $.Values.gitops.repo }}'
@@ -32,6 +33,7 @@ spec:
                 repoPath: '{{ `{{ path }}` }}'
                 appEnabled: '{{ `{{ app.enabled }}` }}'
                 appName: '{{ `{{ app.name }}` }}'
+                appNameSpace: '{{ `{{ path.basename }}` }}'
                 syncWave: '{{ `{{ app.syncWave }}` }}'
       selector:
           matchExpressions:
@@ -46,7 +48,7 @@ spec:
     spec:
       destination:
         name: in-cluster
-        namespace: '{{ default `{{path.basename}}` $appSet.appNamespace }}'
+        namespace: '{{ default `{{values.appNameSpace}}` $appSet.appNamespace }}'
       project: '{{ default "default" $appSet.appProject }}'
       source:
         # helm:
