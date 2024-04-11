@@ -26,7 +26,7 @@ traefik:
     mountPath: /var/log/traefik
   ingressRoute:
     dashboard:
-      enabled: true
+      enabled: false
       matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
       # matchRule: Host(`argocd.dev.local`) && PathPrefix(`/dashboard`) || Host(`argocd.dev.local`) && PathPrefix(`/api`)
       # tls:
