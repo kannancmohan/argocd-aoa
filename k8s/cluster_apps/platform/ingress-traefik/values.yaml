@@ -24,6 +24,6 @@ traefik:
     mountPath: /var/log/traefik
   ingressRoute:
     dashboard:
-      enabled: false
+      enabled: true
     healthcheck:
-      enabled: false
+      enabled: true
