@@ -10,34 +10,19 @@ traefik:
         headers:
           defaultmode: keep
       # filters:
-  # additionalArguments:
-  #   - "--accesslog"
-  #   - "--accesslog.format=json"
-  #   - "--accesslog.filepath=/var/log/traefik/access.log"
   deployment:
     additionalContainers:
       - name: tail-accesslogs
         image: busybox
         args: [ "/bin/sh", "-c", "tail -n+1 -F /var/log/traefik/access.log" ]
-        imagePullPolicy: Always
-        resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
         volumeMounts:
-        - mountPath: /var/log/traefik
-          name: logs
-  #   additionalContainers:
-  #     - name: tail-accesslogs
-  #       image: busybox
-  #       args: [ "/bin/sh", "-c", "tail -n+1 -F /var/log/traefik/access.log" ]
-  #       volumeMounts:
-  #         - name: logs
-  #           mountPath: /var/log/traefik
-  #   additionalVolumes:
-  #   - name: logs
-  # additionalVolumeMounts:
-  # - name: logs
-  #   mountPath: /var/log/traefik
+          - name: logs
+            mountPath: /var/log/traefik
+    additionalVolumes:
+    - name: logs
+  additionalVolumeMounts:
+  - name: logs
+    mountPath: /var/log/traefik
   ingressRoute:
     dashboard:
       enabled: false
