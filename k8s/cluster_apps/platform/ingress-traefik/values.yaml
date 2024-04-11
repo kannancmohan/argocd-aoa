@@ -27,10 +27,10 @@ traefik:
   ingressRoute:
     dashboard:
       enabled: true
-      # matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
-      matchRule: Host(`argocd.dev.local`) && PathPrefix(`/dashboard`) || Host(`argocd.dev.local`) && PathPrefix(`/api`)
-      tls:
-        certResolver: default-root-cert-issuer
-        secretName: argocd-server-tls
+      matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+      # matchRule: Host(`argocd.dev.local`) && PathPrefix(`/dashboard`) || Host(`argocd.dev.local`) && PathPrefix(`/api`)
+      # tls:
+      #   certResolver: default-root-cert-issuer
+      #   secretName: argocd-server-tls
     healthcheck:
       enabled: false
