@@ -49,7 +49,7 @@ argo-cd:
         # nginx.ingress.kubernetes.io/use-regex: "true"
         # nginx.ingress.kubernetes.io/rewrite-target: /$2
       hostname: &host argocd.dev.local
-      path: /argocd
+      # path: /argocd
       # path: /argocd(/|$)(.*)
       # extraHosts:
       #   - name: &host argocd.local.info
