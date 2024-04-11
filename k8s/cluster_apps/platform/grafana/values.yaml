@@ -1,14 +1,14 @@
 grafana:
   ingress:
-    enabled: true
+    enabled: false
     ingressClassName: traefik
     annotations:
       cert-manager.io/cluster-issuer: default-root-cert-issuer
       # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-      nginx.ingress.kubernetes.io/use-regex: "true"
+      # nginx.ingress.kubernetes.io/use-regex: "true"
       # nginx.ingress.kubernetes.io/rewrite-target: /$2
-    path: /grafana/.*
+    path: /grafana/
     hosts:
       - &host argocd.dev.local
     tls:

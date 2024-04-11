@@ -10,6 +10,7 @@ traefik:
         headers:
           defaultmode: keep
       # filters:
+
   deployment:
     additionalContainers:
       - name: tail-accesslogs
@@ -25,6 +26,7 @@ traefik:
     mountPath: /var/log/traefik
   ingressRoute:
     dashboard:
-      enabled: false
+      enabled: true
+      matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
     healthcheck:
       enabled: false
