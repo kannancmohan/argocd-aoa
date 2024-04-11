@@ -1,6 +1,6 @@
 {
     "app": {
-        "enabled": "true",
+        "enabled": "false",
         "name": "traefik",
         "nameSpace": "kube-system",
         "syncWave": "-50"
