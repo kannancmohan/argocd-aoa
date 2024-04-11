@@ -1,0 +1,29 @@
+traefik:
+  logs:
+    general:
+      level: DEBUG
+    access:
+      enabled: true
+      format: json
+      filePath: /var/log/traefik/access.log
+      fields:
+        headers:
+          defaultmode: keep
+  deployment:
+    additionalContainers:
+      - name: tail-accesslogs
+        image: busybox
+        args: [ "/bin/sh", "-c", "tail -n+1 -F /var/log/traefik/access.log" ]
+        volumeMounts:
+          - name: logs
+            mountPath: /var/log/traefik
+    additionalVolumes:
+    - name: logs
+  additionalVolumeMounts:
+  - name: logs
+    mountPath: /var/log/traefik
+  ingressRoute:
+    dashboard:
+      enabled: false
+    healthcheck:
+      enabled: false
