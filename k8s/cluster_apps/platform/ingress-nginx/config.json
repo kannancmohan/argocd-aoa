@@ -2,6 +2,7 @@
     "app": {
         "enabled": "false",
         "name": "ingress-nginx",
+        "nameSpace": "ingress-nginx",
         "syncWave": "-50"
     }
 }

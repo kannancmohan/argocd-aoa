@@ -33,7 +33,7 @@ spec:
                 repoPath: '{{ `{{ path }}` }}'
                 appEnabled: '{{ `{{ app.enabled }}` }}'
                 appName: '{{ `{{ app.name }}` }}'
-                appNameSpace: '{{ `{{ path.basename }}` }}'
+                appNameSpace: '{{ `{{ app.nameSpace }}` }}'
                 syncWave: '{{ `{{ app.syncWave }}` }}'
       selector:
           matchExpressions:
