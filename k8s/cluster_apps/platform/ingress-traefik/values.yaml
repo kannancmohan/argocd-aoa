@@ -27,6 +27,7 @@ traefik:
   ingressRoute:
     dashboard:
       enabled: true
-      matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+      # matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+      matchRule: Host(`argocd.dev.local`) && PathPrefix(`/dashboard`) || Host(`argocd.dev.local`) && PathPrefix(`/api`)
     healthcheck:
       enabled: false
