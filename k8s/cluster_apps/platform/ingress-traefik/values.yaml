@@ -26,4 +26,4 @@ traefik:
     dashboard:
       enabled: true
     healthcheck:
-      enabled: true
+      enabled: false
