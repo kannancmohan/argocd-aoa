@@ -1,4 +1,8 @@
 traefik:
+  additionalArguments:
+    - "--providers.kubernetesingress=true"
+    - "--providers.kubernetesingress.ingressendpoint.ip=localhost"
+    # - "--providers.kubernetesingress.ingressendpoint.hostname=dc.traefik.k8s.cajun.pro"
   logs:
     general:
       level: DEBUG
@@ -12,6 +16,7 @@ traefik:
       # filters:
 
   deployment:
+    # replicas: 3
     additionalContainers:
       - name: tail-accesslogs
         image: busybox
