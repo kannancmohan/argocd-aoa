@@ -1,8 +1,8 @@
 traefik:
   additionalArguments:
     - "--providers.kubernetesingress=true"
-    - "--providers.kubernetesingress.ingressendpoint.ip=localhost"
-    # - "--providers.kubernetesingress.ingressendpoint.hostname=dc.traefik.k8s.cajun.pro"
+    - "--providers.kubernetesingress.ingressendpoint.ip=127.0.0.1"
+    # - "--providers.kubernetesingress.ingressendpoint.hostname=localhost"
   logs:
     general:
       level: DEBUG
