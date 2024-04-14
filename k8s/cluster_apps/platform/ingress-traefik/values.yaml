@@ -26,9 +26,9 @@ traefik:
     mountPath: /var/log/traefik
   ingressRoute:
     dashboard:
-      enabled: false
-      matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
-      # matchRule: Host(`argocd.dev.local`) && PathPrefix(`/dashboard`) || Host(`argocd.dev.local`) && PathPrefix(`/api`)
+      enabled: true
+      # matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+      matchRule: Host(`traefik.dev.local`) && PathPrefix(`/dashboard`) || Host(`traefik.dev.local`) && PathPrefix(`/api`)
       # tls:
       #   certResolver: default-root-cert-issuer
       #   secretName: argocd-server-tls

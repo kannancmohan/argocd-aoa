@@ -41,7 +41,7 @@ argo-cd:
         end
         return hs
     ingress:
-      enabled: false
+      enabled: true
       ingressClassName: traefik
       annotations:
         # traefik.ingress.kubernetes.io/router.entrypoints: websecure
