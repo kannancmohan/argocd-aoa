@@ -119,7 +119,7 @@ Loki, Promtail and Grafana is used for log aggregation and  visualization
     <tr>
         <td><a href="https://github.com/grafana/loki">Loki</a></td>
         <td>Inspired from prometheus, Loki is a datastore optimized for efficiently holding log data. It is a TSDB (Time-series database), it stores logs as split and gzipped chunks of data</td>
-        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/grafana/loki-distributed">loki-distributed</a>  </td>
     </tr>
     <tr>
         <td><a href="https://prometheus.io/">Promtail</a></td>
