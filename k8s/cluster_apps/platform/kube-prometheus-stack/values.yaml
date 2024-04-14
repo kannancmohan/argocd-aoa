@@ -5,10 +5,10 @@ kube-prometheus-stack:
     forceDeployDatasources: true
     # set to true , so as to create grafana dashboard configmap. This will be generated even if grafana is disabled in kube-prometheus-stack
     forceDeployDashboards: true
-  #   additionalDataSources:
-  #     - name: Loki
-  #       type: loki
-  #       url: http://loki.loki:3100
+    additionalDataSources:
+      - name: Loki
+        type: loki
+        url: http://loki-loki-distributed:3100
   prometheus:
     prometheusSpec:
       # following avoid configuration using Helm graphic values
