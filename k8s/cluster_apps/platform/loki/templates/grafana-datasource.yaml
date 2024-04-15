@@ -19,5 +19,5 @@ data:
     - name: Loki
       type: loki
       access: proxy
-      url: http://{{(include "loki.gatewayFullname" .)}}:3100
+      url: http://{{(include "loki.gatewayFullname" .)}}.svc.cluster.local
       isDefault: false
