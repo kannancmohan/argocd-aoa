@@ -8,11 +8,11 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Namespace }}
     grafana_datasource: "1"
 data:
-  datasource-loki-distributed.yaml: |-
+  datasource.yaml: |-
     apiVersion: 1
     datasources:
     - name: Loki
       type: loki
       access: proxy
-      url: http://{{(include "loki.gatewayFullname" .)}}
+      url: http://{{(include "loki.gatewayFullname" .)}}:3100
       isDefault: false
