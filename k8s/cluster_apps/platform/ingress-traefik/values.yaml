@@ -19,15 +19,16 @@ traefik:
 
   deployment:
     # replicas: 3
-    additionalContainers:
-      - name: tail-accesslogs
-        image: busybox
-        args: [ "/bin/sh", "-c", "tail -n+1 -F /var/log/traefik/access.log" ]
-        volumeMounts:
-          - name: logs
-            mountPath: /var/log/traefik
-    additionalVolumes:
-    - name: logs
+    ### uncomment to enable container tails access log
+    # additionalContainers:
+    #   - name: tail-accesslogs
+    #     image: busybox
+    #     args: [ "/bin/sh", "-c", "tail -n+1 -F /var/log/traefik/access.log" ]
+    #     volumeMounts:
+    #       - name: logs
+    #         mountPath: /var/log/traefik
+    # additionalVolumes:
+    # - name: logs
   additionalVolumeMounts:
   - name: logs
     mountPath: /var/log/traefik
