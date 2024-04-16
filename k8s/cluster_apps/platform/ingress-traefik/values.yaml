@@ -27,8 +27,8 @@ traefik:
     #     volumeMounts:
     #       - name: logs
     #         mountPath: /var/log/traefik
-    # additionalVolumes:
-    # - name: logs
+    additionalVolumes:
+    - name: logs
   additionalVolumeMounts:
   - name: logs
     mountPath: /var/log/traefik
