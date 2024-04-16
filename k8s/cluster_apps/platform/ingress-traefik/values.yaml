@@ -19,7 +19,7 @@ traefik:
 
   deployment:
     # replicas: 3
-    ### uncomment to enable container tails access log
+    ### uncomment to enable container that tails access log
     # additionalContainers:
     #   - name: tail-accesslogs
     #     image: busybox
