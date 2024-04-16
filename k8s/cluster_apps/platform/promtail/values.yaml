@@ -4,5 +4,5 @@ promtail:
     enabled: true
   config:
     clients:
-      - url: http://loki-loki-distributed-gateway.svc.cluster.local/loki/api/v1/push
+      - url: http://loki-loki-distributed-gateway/loki/api/v1/push
       # - url: http://loki-gateway.svc.cluster.local/loki/api/v1/push
