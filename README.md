@@ -1,6 +1,5 @@
 ### Monitoring
-The sw stack used for monitoring system and applications. These tools specifically provide node and container statistics, which allow developers to analyse real-time metrics of containers and nodes
-
+The software stack used for monitoring system and applications. These tools allow to analyze real-time metrics of containers and nodes
 <table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
     <tr>
         <th colspan="3">Monitoring Tools</th>
@@ -112,6 +111,11 @@ kubectl port-forward svc/kube-prometheus-stack-prometheus 9090:9090 -n kube-prom
 ### grafana gui 
 ```
 kubectl port-forward svc/grafana 3000:80 -n grafana
+```
+
+### grafana password 
+```
+kubectl get secret grafana -o jsonpath="{.data.admin-password}" -n grafana | base64 --decode 
 ```
 
 ## Certificate verification 

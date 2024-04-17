@@ -15,5 +15,3 @@ kubectl wait -n argocd  --timeout=120s --for condition=Ready pod -l app.kubernet
 
 ## create argocd resource Project and ApplicationSet
 helm template --namespace argocd argocd ./k8s/cluster_apps/bootstrap/root | kubectl apply -n argocd -f -
-
-# kubectl patch secret argocd-secret -n argocd -p '{"data": {"admin.password": null}}'
