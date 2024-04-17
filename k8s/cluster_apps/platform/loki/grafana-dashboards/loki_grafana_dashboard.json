@@ -1,45 +1,12 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_LOKI",
-      "label": "Loki",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "loki",
-      "pluginName": "Loki"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "8.1.5"
-    },
-    {
-      "type": "panel",
-      "id": "logs",
-      "name": "Logs",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "loki",
-      "name": "Loki",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -54,15 +21,19 @@
       }
     ]
   },
+  "description": "Logs collected from Kubernetes, stored in Loki",
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": 15141,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1634887608093,
+  "id": 28,
   "links": [],
   "panels": [
     {
-      "datasource": "${DS_LOKI}",
+      "datasource": {
+        "type": "loki",
+        "uid": "P8E80F9AEF21F6940"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -70,6 +41,9 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -81,6 +55,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -124,15 +99,21 @@
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "hidden",
-          "placement": "bottom"
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
           "expr": "sum(count_over_time({namespace=~\"$namespace\", stream=~\"$stream\", container =~\"$container\"} |= \"$query\" [$__interval]))",
           "instant": false,
           "legendFormat": "Log count",
@@ -143,7 +124,10 @@
       "type": "timeseries"
     },
     {
-      "datasource": "${DS_LOKI}",
+      "datasource": {
+        "type": "loki",
+        "uid": "P8E80F9AEF21F6940"
+      },
       "description": "Logs from services running in Kubernetes",
       "gridPos": {
         "h": 25,
@@ -164,6 +148,10 @@
       },
       "targets": [
         {
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
           "expr": "{namespace=~\"$namespace\", stream=~\"$stream\", container =~\"$container\"} |= \"$query\"",
           "refId": "A"
         }
@@ -172,8 +160,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 30,
-  "style": "dark",
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": [
@@ -184,7 +171,6 @@
           "value": ""
         },
         "description": "String to search for",
-        "error": null,
         "hide": 0,
         "label": "Search Query",
         "name": "query",
@@ -201,14 +187,18 @@
       },
       {
         "allValue": ".+",
-        "current": {},
-        "datasource": "${DS_LOKI}",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "P8E80F9AEF21F6940"
+        },
         "definition": "label_values(namespace)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
-        "label": null,
         "multi": true,
         "name": "namespace",
         "options": [],
@@ -221,14 +211,18 @@
       },
       {
         "allValue": ".+",
-        "current": {},
-        "datasource": "${DS_LOKI}",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "P8E80F9AEF21F6940"
+        },
         "definition": "label_values(stream)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
-        "label": null,
         "multi": true,
         "name": "stream",
         "options": [],
@@ -241,14 +235,18 @@
       },
       {
         "allValue": ".+",
-        "current": {},
-        "datasource": "${DS_LOKI}",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "P8E80F9AEF21F6940"
+        },
         "definition": "label_values(container)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": true,
-        "label": null,
         "multi": true,
         "name": "container",
         "options": [],
@@ -269,6 +267,6 @@
   "timezone": "",
   "title": "Loki Kubernetes Logs",
   "uid": "o6-BGgnnk",
-  "version": 15,
-  "description": "Logs collected from Kubernetes, stored in Loki"
+  "version": 2,
+  "weekStart": ""
 }
