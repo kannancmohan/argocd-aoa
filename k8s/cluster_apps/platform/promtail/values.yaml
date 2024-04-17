@@ -6,13 +6,13 @@ promtail:
   config:
     clients:
       - url: http://loki-loki-distributed-gateway.loki.svc.cluster.local/loki/api/v1/push
-    snippets:
-      extraScrapeConfigs: |
-        - job_name: auditlogs
-          static_configs:
-            - targets:
-                - localhost
-              labels:
-                job: auditlogs
-                host: ${HOSTNAME}
-                __path__: /var/log/audit/kube/*.log
+    # snippets:
+    #   extraScrapeConfigs: |
+    #     - job_name: auditlogs
+    #       static_configs:
+    #         - targets:
+    #             - localhost
+    #           labels:
+    #             job: auditlogs
+    #             host: ${HOSTNAME}
+    #             __path__: /var/log/audit/kube/*.log
