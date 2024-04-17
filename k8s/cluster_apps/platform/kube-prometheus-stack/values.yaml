@@ -17,6 +17,8 @@ kube-prometheus-stack:
       podMonitorSelectorNilUsesHelmValues: false
       probeSelectorNilUsesHelmValues: false
       scrapeConfigSelectorNilUsesHelmValues: false
+      retention: 10d
+      retentionSize: 10GB
   # alertmanager:
   #   alertmanagerSpec:
   #     containers:
