@@ -7,4 +7,4 @@ metadata:
     grafana_dashboard: "1"
 data:
   dashboard.json: |
-    {{ .Files.Get "grafana-dashboards/loki_grafana_dashboard.json" | indent 4 }}
+{{ .Files.Get "grafana-dashboards/loki_grafana_dashboard.json" | indent 4 }}
