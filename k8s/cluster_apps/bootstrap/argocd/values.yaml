@@ -50,7 +50,13 @@ argo-cd:
         - secretName: argocd-server-tls
           hosts:
             - *host
-    # metrics: &metrics
-    #   enabled: true
-    #   serviceMonitor:
-    #     enabled: true
+    metrics: &metrics
+      enabled: true
+      serviceMonitor:
+        enabled: true
+  controller:
+    metrics: *metrics
+  repoServer:
+    metrics: *metrics
+  redis:
+    metrics: *metrics
