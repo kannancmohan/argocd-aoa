@@ -1,3 +1,4 @@
+{{- $gatewayServiceName := "loki-loki-distributed-gateway" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -19,5 +20,5 @@ data:
     - name: Loki
       type: loki
       access: proxy
-      url: http://loki-loki-distributed-gateway.{{ .Release.Namespace }}.svc.{{ index .Values "loki-distributed" "global" "clusterDomain" }}
+      url: http://{{$gatewayServiceName}}.{{ .Release.Namespace }}.svc.{{ index .Values "loki-distributed" "global" "clusterDomain" }}
       isDefault: false
