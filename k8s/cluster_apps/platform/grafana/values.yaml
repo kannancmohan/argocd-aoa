@@ -1,4 +1,6 @@
 grafana:
+  # TODO define password in external secrets 
+  adminPassword: admin@grafana.com
   ingress:
     enabled: true
     ingressClassName: traefik
