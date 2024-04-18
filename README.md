@@ -12,32 +12,32 @@ The software stack used for monitoring system and applications. These tools allo
     <tr>
         <td><a href="https://github.com/prometheus-operator/prometheus-operator">Prometheus Operator</a></td>
         <td>A kubernetes operator that automates the configuration and management of the Prometheus monitoring stack</td>
-        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a></td>
     </tr>
     <tr>
         <td><a href="https://prometheus.io/">Prometheus</a></td>
         <td>Monitoring & alerting solution that collects metrics data and stores that data in a time series database</td>
-        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a></td>
     </tr>
     <tr>
         <td><a href="https://github.com/prometheus/node_exporter">Prometheus Node Exporter</a></td>
         <td>Agent that gathers system(Hardware and OS) level metrics and exposes them in a format which can be ingested by Prometheus.</td>
-        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a></td>
     </tr>
     <tr>
         <td><a href="https://github.com/kubernetes/kube-state-metrics">kube-state-metrics</a></td>
         <td>Add-on that generates metrics about state of Kubernetes cluster objects. It listens to the Kubernetes API server and gathers information about resources and objects, such as Deployments, Pods, Services, and StatefulSets</td>
-        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a></td>
     </tr>
     <tr>
         <td><a href="https://prometheus.io/docs/alerting/latest/alertmanager/">Prometheus Alertmanager</a></td>
         <td>The Alertmanager handles alerts sent by client applications such as the Prometheus server. It takes care of deduplicating, grouping, and routing them to the correct receiver integrations such as email etc</td>
-        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a></td>
     </tr>
     <tr>
         <td><a href="https://grafana.com/">Grafana</a></td>
         <td>Allows to query, visualize, alert on, and explore metrics, logs, and traces no matter where it's stored.</td>
-        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/grafana/grafana">Grafana helm chart</a>  </td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/grafana/grafana">Grafana helm chart</a></td>
     </tr>
 </table>
 
@@ -55,17 +55,22 @@ Loki, Promtail and Grafana is used for log aggregation and  visualization
     <tr>
         <td><a href="https://github.com/grafana/loki">Loki</a></td>
         <td>Inspired from prometheus, Loki is a datastore optimized for efficiently holding log data. It is a TSDB (Time-series database), it stores logs as split and gzipped chunks of data</td>
-        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/grafana/loki-distributed">loki-distributed</a>  </td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/grafana/loki-distributed">loki-distributed</a></td>
     </tr>
     <tr>
         <td><a href="https://grafana.com/docs/loki/latest/send-data/promtail/">Promtail</a></td>
         <td>Promtail is a logs collector agent that collects, (re)labels and ships logs to Loki. </td>
-        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/grafana/promtail">promtail</a>  </td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/grafana/promtail">promtail</a></td>
     </tr>
     <tr>
         <td><a href="https://grafana.com/">Grafana</a></td>
         <td>Allows to query and visualize logs</td>
-        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/grafana/grafana">Grafana helm chart</a>  </td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/grafana/grafana">Grafana helm chart</a></td>
+    </tr>
+    <tr>
+        <td>Thanos</td>
+        <td>TODO</td>
+        <td>TODO</td>
     </tr>
 </table>
 
