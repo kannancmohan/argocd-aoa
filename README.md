@@ -69,6 +69,55 @@ Loki, Promtail and Grafana is used for log aggregation and  visualization
     </tr>
 </table>
 
+### Cluster management
+<table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
+    <tr>
+        <th colspan="3">Management Tools</th>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Installation</th>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/cert-manager/cert-manager">Cert-manager</a></td>
+        <td>Automatically provision and manage TLS certificates</td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/cert-manager/cert-manager">cert-manager</a></td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/external-secrets/external-secrets">External-secrets</a></td>
+        <td>Kubernetes operator that integrates external secret management systems like AWS Secrets Manager, HashiCorp Vault, Google Secrets Manager etc</td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/external-secrets-operator/external-secrets">external-secrets</a></td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/vmware-tanzu/velero">Velero</a></td>
+        <td>To backup and migrate Kubernetes applications and their persistent volumes</td>
+        <td></td>
+    </tr>
+</table>
+
+### Ingress
+<table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
+    <tr>
+        <th colspan="3">Ingress Tools</th>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Installation</th>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/traefik/traefik">Traefik controller</a></td>
+        <td>Kubernetes ingress controller</td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/traefik/traefik">traefik</a></td>
+    </tr>
+    <tr>
+        <td>External-dns</td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
 <table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
     <tr>
         <th colspan="3">Services</th>
