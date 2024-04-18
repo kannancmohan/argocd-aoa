@@ -69,6 +69,67 @@ Loki, Promtail and Grafana is used for log aggregation and  visualization
     </tr>
 </table>
 
+<table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
+    <tr>
+        <th colspan="3">Services</th>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <th>Namespace</th>
+        <th>Port forward</th>
+    </tr>
+    <tr>
+        <td><a href="https://argocd.dev.local/">Argocd</a></td>
+        <td>argocd</td>
+        <td>kubectl -n argocd port-forward svc/argocd-server 8080:443</td>
+    </tr>
+    <tr>
+        <td>Traefik</td>
+        <td>traefik</td>
+        <td>kubectl port-forward deployments/traefik 2900:9000 --namespace traefik</td>
+    </tr>
+    <tr>
+        <td>Prometheus</td>
+        <td>kube-prometheus-stack</td>
+        <td>kubectl port-forward svc/kube-prometheus-stack-prometheus 9090:9090 -n kube-prometheus-stack</td>
+    </tr>
+    <tr>
+        <td>Prometheus-alertmanager</td>
+        <td>kube-prometheus-stack</td>
+        <td>kubectl port-forward svc/kube-prometheus-stack-alertmanager 9093:9093 -n kube-prometheus-stack</td>
+    </tr>
+    <tr>
+        <td>Prometheus-node-exporter</td>
+        <td>kube-prometheus-stack</td>
+        <td>kubectl port-forward svc/kube-prometheus-stack-prometheus-node-exporter 9100:9100 -n kube-prometheus-stack</td>
+    </tr>
+    <tr>
+        <td>Kube-state-metrics</td>
+        <td>kube-prometheus-stack</td>
+        <td>kubectl port-forward svc/kube-prometheus-stack-kube-state-metrics 9808:8080 -n kube-prometheus-stack</td>
+    </tr>
+    <tr>
+        <td><a href="https://grafana.dev.local/d/efa86fd1d0c121a26444b636a3f509a8/kubernetes-compute-resources-cluster?orgId=1&refresh=10s">Grafana dashboard</a></td>
+        <td>grafana</td>
+        <td>kubectl port-forward svc/grafana 3000:80 -n grafana</td>
+    </tr>
+    <tr>
+        <td>Loki - no gui</td>
+        <td>loki</td>
+        <td>kubectl -n loki port-forward svc/loki-loki-distributed-gateway 9080:80</td>
+    </tr>
+    <tr>
+        <td>Promtail</td>
+        <td>promtail</td>
+        <td>kubectl port-forward svc/promtail-metrics 3101:3101 -n promtail</td>
+    </tr>
+    <tr>
+        <td><a href="https://grafana.dev.local/d/o6-BGgnnk/loki-kubernetes-logs?orgId=1">Grafana logger dashboard</a></td>
+        <td>grafana</td>
+        <td>kubectl port-forward svc/grafana 3000:80 -n grafana</td>
+    </tr>
+</table>
+
 ## Self signed certificate 
 ### generate rsa private key  
 ```
@@ -81,41 +142,6 @@ openssl req -new -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -d
 
 # non-interactive and 10 years expiration
 openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 3650 -nodes -subj "/C=XX/ST=StateName/L=CityName/O=CompanyName/OU=CompanySectionName/CN=CommonNameOrHostname"
-```
-### Install
-```
-helm repo add argo https://argoproj.github.io/argo-helm
-helm install argocd argo/argo-cd --namespace argocd --create-namespace --dependency-update --set argo-cd.configs.secret.argocdServerAdminPassword=$ARGOCD_ADMIN_PWD
-helm upgrade argocd ./bootstrap/argo/ --namespace argocd  --dependency-update -f ./bootstrap/argo/values.yaml --set argo-cd.configs.secret.argocdServerAdminPassword=$ARGOCD_ADMIN_PWD
-```
-
-### Helm diff 
-```
-helm diff  upgrade argocd ./bootstrap/argo/ -n argocd  -f ./bootstrap/argo/values.yaml --set argo-cd.configs.secret.argocdServerAdminPassword=$ARGOCD_ADMIN_PWD
-```
-
-### traefik dashboard
-```
-kubectl --namespace kube-system port-forward deployments/traefik 9000:9000
-```
-### argocd 
-```
-kubectl -n argocd port-forward svc/argocd-server 8080:443
-```
-
-### prometheus gui 
-```
-kubectl port-forward svc/kube-prometheus-stack-prometheus 9090:9090 -n kube-prometheus-stack
-```
-
-### grafana gui 
-```
-kubectl port-forward svc/grafana 3000:80 -n grafana
-```
-
-### grafana password 
-```
-kubectl get secret grafana -o jsonpath="{.data.admin-password}" -n grafana | base64 --decode 
 ```
 
 ## Certificate verification 
@@ -130,7 +156,7 @@ in the output check the 'Server certificate:' section
 curl --cacert <(kubectl -n cert-manager get secret self-signed-tls-cert -o jsonpath='{.data.ca\.crt}' | base64 -d) https://argocd.dev.local
 ```
 
-###
+### verify the ca files
 ```
 openssl verify -CAfile \
 <(kubectl -n cert-manager get secret self-signed-tls-cert -o jsonpath='{.data.ca\.crt}' | base64 -d) \
