@@ -11,7 +11,7 @@ The software stack used for monitoring system and applications. These tools allo
     </tr>
     <tr>
         <td><a href="https://github.com/prometheus-operator/prometheus-operator">Prometheus Operator</a></td>
-        <td>A k8s operator that automates the configuration and management of the Prometheus monitoring stack</td>
+        <td>A kubernetes operator that automates the configuration and management of the Prometheus monitoring stack</td>
         <td>Installed as part of <a href="https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack">kube-prometheus-stack</a>  </td>
     </tr>
     <tr>
@@ -92,7 +92,7 @@ Loki, Promtail and Grafana is used for log aggregation and  visualization
     <tr>
         <td><a href="https://github.com/vmware-tanzu/velero">Velero</a></td>
         <td>To backup and migrate Kubernetes applications and their persistent volumes</td>
-        <td></td>
+        <td>TODO</td>
     </tr>
 </table>
 
@@ -114,13 +114,13 @@ Loki, Promtail and Grafana is used for log aggregation and  visualization
     <tr>
         <td>External-dns</td>
         <td></td>
-        <td></td>
+        <td>TODO</td>
     </tr>
 </table>
 
 <table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
     <tr>
-        <th colspan="3">Services</th>
+        <th colspan="3">Cluster Services</th>
     </tr>
     <tr>
         <th>Name</th>
