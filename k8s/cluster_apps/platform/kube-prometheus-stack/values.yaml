@@ -21,6 +21,7 @@ kube-prometheus-stack:
       retentionSize: 5GB
   alertmanager:
     alertmanagerSpec:
+      replicas: 2
       forceEnableClusterMode: true
     config:
       global:
