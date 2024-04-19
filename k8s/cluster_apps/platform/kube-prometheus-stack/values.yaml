@@ -49,11 +49,13 @@ kube-prometheus-stack:
     #           headers: { Subject: "[WARN]" }
     #           html: '{{ template "email.to.html" . }}'
     #           send_resolved: true
-    extraVolumeMounts:
+    # Additional VolumeMounts on the output StatefulSet definition.
+    volumeMounts:
       - name: alertmanager-smtp-secret
         mountPath: '/etc/alertmanager/secrets'
         readOnly: true
-    extraVolumes:
+    # Additional volumes on the output StatefulSet definition.
+    volumes:
       - name: alertmanager-smtp-secret
         secret:
           # Kubernetes secret name
