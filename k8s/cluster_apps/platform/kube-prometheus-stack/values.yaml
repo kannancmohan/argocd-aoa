@@ -22,7 +22,7 @@ kube-prometheus-stack:
   alertmanager:
     alertmanagerSpec:
       # replicas: 2
-      forceEnableClusterMode: true
+      # forceEnableClusterMode: true
     config:
       global:
         resolve_timeout: 5m
