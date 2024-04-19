@@ -20,9 +20,9 @@ kube-prometheus-stack:
       retention: 10d
       retentionSize: 5GB
   alertmanager:
-    # alertmanagerSpec:
-    #   replicas: 2
-    #   forceEnableClusterMode: true
+    alertmanagerSpec:
+      # replicas: 2
+      forceEnableClusterMode: true
     config:
       global:
         resolve_timeout: 5m
@@ -49,15 +49,15 @@ kube-prometheus-stack:
     #           headers: { Subject: "[WARN]" }
     #           html: '{{ template "email.to.html" . }}'
     #           send_resolved: true
-    # extraVolumeMounts:
-    #   - name: alertmanager-smtp-secret
-    #     mountPath: '/etc/alertmanager/secrets'
-    #     readOnly: true
-    # extraVolumes:
-    #   - name: alertmanager-smtp-secret
-    #     secret:
-    #       # Kubernetes secret name
-    #       secretName: alertmanager-smtp-secret
+    extraVolumeMounts:
+      - name: alertmanager-smtp-secret
+        mountPath: '/etc/alertmanager/secrets'
+        readOnly: true
+    extraVolumes:
+      - name: alertmanager-smtp-secret
+        secret:
+          # Kubernetes secret name
+          secretName: alertmanager-smtp-secret
     # templateFiles:
     #   template_1.tmpl: |-
     #     {{ define "email.to.html" }}
