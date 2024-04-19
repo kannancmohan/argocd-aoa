@@ -20,9 +20,9 @@ kube-prometheus-stack:
       retention: 10d
       retentionSize: 5GB
   alertmanager:
-    alertmanagerSpec:
-      # replicas: 2
-      # forceEnableClusterMode: true
+    # alertmanagerSpec:
+    #   replicas: 2
+    #   forceEnableClusterMode: true
     config:
       global:
         resolve_timeout: 5m
