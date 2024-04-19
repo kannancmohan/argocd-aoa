@@ -43,7 +43,7 @@ kube-prometheus-stack:
         smtp_auth_username: 'kannanmohanklm@gmaiil.com'
         # smtp_auth_password: 'YOURAUTHCODE'
         smtp_auth_password_file: '/etc/alertmanager/secrets/auth_password'
-        smtp_require_tls: false
+        # smtp_require_tls: false
         # smtp_hello: 'hello-server'
       # route specifying how to match alerts to their reivers 
       # The root route which are inherited by the child routes if they are not overwritten.
