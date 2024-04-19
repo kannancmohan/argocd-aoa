@@ -1,3 +1,4 @@
+## Helm chart values - https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml
 argo-cd:
   # global:
   #   domain: &host argocd.local.info
