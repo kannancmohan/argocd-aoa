@@ -21,11 +21,11 @@ kube-prometheus-stack:
       retentionSize: 5GB
   alertmanager:
     alertmanagerSpec:
-      replicas: 2
+      # replicas: 2
       forceEnableClusterMode: true
     config:
       global:
-        resolve_timeout: 6m
+        resolve_timeout: 5m
     #     smtp_from: 'kannanmohanklm@gmaiil.com'
     #     smtp_smarthost: 'smtp.gmail.com:587'
     #     smtp_auth_username: 'kannanmohanklm@gmaiil.com'
