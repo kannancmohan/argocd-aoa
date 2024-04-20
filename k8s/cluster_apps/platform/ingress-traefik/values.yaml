@@ -45,6 +45,6 @@ traefik:
       #   secretName: traefik-server-tls
     healthcheck:
       enabled: false
-  metrics:
-    prometheus:
-      entryPoint: metrics
+  # metrics:
+  #   prometheus:
+  #     entryPoint: metrics
