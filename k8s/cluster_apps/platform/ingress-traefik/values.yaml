@@ -45,4 +45,4 @@ traefik:
       enabled: false
   metrics:
     prometheus:
-      serviceMonitor:
+      entryPoint: metrics
