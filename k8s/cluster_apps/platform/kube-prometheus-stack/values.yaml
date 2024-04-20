@@ -39,6 +39,7 @@ kube-prometheus-stack:
             secretName: alertmanager-smtp-secret
     config:
       global:
+        # the default value used by alertmanager if the alert does not include EndsAt, after this time passes it can declare the alert as resolved
         resolve_timeout: 5m
         smtp_from: 'kannanmohanklm@gmail.com'
         smtp_smarthost: 'smtp.gmail.com:587'
@@ -51,7 +52,9 @@ kube-prometheus-stack:
         group_by: [ 'namespace' ]
         group_wait: 5s
         group_interval: 5s
+        # How long to wait before sending a notification again
         repeat_interval: 1h
+        # default receiver
         receiver: 'email'
         routes:
           - receiver: email

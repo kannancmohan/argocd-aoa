@@ -28,3 +28,5 @@ grafana:
   # grafana.ini:
   #   server:
   #     root_url: https://grafana.dev.local
+  serviceMonitor:
+    enabled: true
