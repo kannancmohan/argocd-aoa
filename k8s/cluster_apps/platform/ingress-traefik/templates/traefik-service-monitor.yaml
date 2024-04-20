@@ -18,3 +18,4 @@ spec:
   endpoints:
     - port: metrics
       path: /metrics
+      honorLabels: true
