@@ -1,4 +1,4 @@
-# For exposing metrics to prometheus 
+# Added for exposing metrics to prometheus 
 ---
 apiVersion: v1
 kind: Service
@@ -26,7 +26,6 @@ spec:
   jobLabel: traefik-metrics
   selector:
     matchLabels:
-      # app.kubernetes.io/instance: traefik
       app: {{ .Release.Name }}-metrics-service
   namespaceSelector:
     matchNames:

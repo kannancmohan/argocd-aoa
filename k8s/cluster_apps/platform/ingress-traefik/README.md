@@ -1,4 +1,4 @@
-### to enable traefik access log 
+### To enable traefik access log 
 uncomment the section under "uncomment to enable container tails access log" in values.yaml
 
 ### view access log using above container 
