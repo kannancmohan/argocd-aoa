@@ -53,7 +53,7 @@ kube-prometheus-stack:
         group_wait: 5s
         group_interval: 5s
         # How long to wait before sending a notification again
-        repeat_interval: 1h
+        repeat_interval: 4h
         # default receiver
         receiver: 'email'
         routes:
