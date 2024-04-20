@@ -46,10 +46,10 @@ kube-prometheus-stack:
         smtp_auth_username: 'kannanmohanklm@gmail.com'
         smtp_auth_identity: 'kannanmohanklm@gmail.com'
         smtp_auth_password_file: '/etc/alertmanager/secrets/auth_password'
-      # route specifying how to match alerts to their reivers
-      # The root route which are inherited by the child routes if they are not overwritten.
+      # Route specifying how to match alerts to their reivers. The root route are inherited by the child routes if they are not overwritten.
+      # Alert manager traverse thought the routes for a match and exit at the first match unless 'continue' is set
       route:
-        group_by: [ 'namespace' ]
+        group_by: [ 'namespace', 'alertname' ]
         group_wait: 5s
         group_interval: 5s
         # How long to wait before sending a notification again
@@ -57,9 +57,12 @@ kube-prometheus-stack:
         # default receiver
         receiver: 'email'
         routes:
-          - receiver: email
+          - receiver: 'null'
             matchers:
-              - alertname = "Watchdog"
+              - alertname =~ "InfoInhibitor|Watchdog"
+          - receiver: 'email'
+            matchers:
+              - severity =~ "critical|error"
       # A list of notification receivers
       receivers:
         - name: 'email'

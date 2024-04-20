@@ -15,3 +15,6 @@ kubectl wait -n argocd  --timeout=120s --for condition=Ready pod -l app.kubernet
 
 ## create argocd resource Project and ApplicationSet
 helm template --namespace argocd argocd ./k8s/cluster_apps/bootstrap/root | kubectl apply -n argocd -f -
+
+# echo "Creating 'alertmanager-smtp-secret' secret..."
+# kubectl create secret generic alertmanager-smtp-secret --from-literal=auth_password="$SMTP_AUTH_PWD" --namespace kube-prometheus-stack
