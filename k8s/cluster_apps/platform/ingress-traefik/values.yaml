@@ -43,3 +43,6 @@ traefik:
       #   secretName: traefik-server-tls
     healthcheck:
       enabled: false
+  metrics:
+    prometheus:
+      serviceMonitor:
