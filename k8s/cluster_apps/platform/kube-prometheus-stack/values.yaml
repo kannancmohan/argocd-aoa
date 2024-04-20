@@ -40,10 +40,10 @@ kube-prometheus-stack:
     config:
       global:
         resolve_timeout: 5m
-        smtp_from: 'kannanmohanklm@gmaiil.com'
+        smtp_from: 'kannanmohanklm@gmail.com'
         smtp_smarthost: 'smtp.gmail.com:587'
-        smtp_auth_username: 'kannanmohanklm@gmaiil.com'
-        smtp_auth_identity: 'kannanmohanklm@gmaiil.com'
+        smtp_auth_username: 'kannanmohanklm@gmail.com'
+        smtp_auth_identity: 'kannanmohanklm@gmail.com'
         # smtp_auth_password: 'YOURAUTHCODE'
         smtp_auth_password_file: '/etc/alertmanager/secrets/auth_password'
         # smtp_require_tls: true
@@ -64,7 +64,7 @@ kube-prometheus-stack:
       receivers:
         - name: 'email'
           email_configs:
-            - to: 'kannanmohanklm@gmaiil.com'
+            - to: 'kannanmohanklm@gmail.com'
               headers: { Subject: "[WARN]" }
               html: '{{ template "email.to.html" . }}'
               send_resolved: true
