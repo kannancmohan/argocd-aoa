@@ -59,18 +59,18 @@ kube-prometheus-stack:
         routes:
         - matchers:
           - severity=~"critical|error"
-          receiver: "email"
+          receiver: "null"
         # - matchers:
         #   - alertname=~"InfoInhibitor|Watchdog"
         #   receiver: "null"
       # A list of notification receivers
-      receivers:
-        - name: "email"
-          email_configs:
-            - to: 'kannanmohanklm@gmail.com'
-              headers: { Subject: "[WARN]" }
-              html: '{{ template "email.to.html" . }}'
-              send_resolved: true
+      # receivers:
+      #   - name: "email"
+      #     email_configs:
+      #       - to: 'kannanmohanklm@gmail.com'
+      #         headers: { Subject: "[WARN]" }
+      #         html: '{{ template "email.to.html" . }}'
+      #         send_resolved: true
     templateFiles:
       email_template.tmpl: |-
         {{ define "email.to.html" }}
