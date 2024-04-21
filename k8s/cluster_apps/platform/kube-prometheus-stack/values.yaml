@@ -48,14 +48,14 @@ kube-prometheus-stack:
         smtp_auth_password_file: '/etc/alertmanager/secrets/auth_password'
       # Route specifying how to match alerts to their reivers. The root route are inherited by the child routes if they are not overwritten. 
       # Alert manager traverse thought the routes for a match and exit at the first match unless continue is set
-      # route:
-      #   group_by: [namespace, alertname]
-      #   group_wait: 5s
-      #   group_interval: 5s
-      #   # How long to wait before sending a notification again
-      #   repeat_interval: 5h
-      #   # default receiver
-      #   receiver: 'null'
+      route:
+        group_by: [namespace, alertname]
+        group_wait: 5s
+        group_interval: 5s
+        # How long to wait before sending a notification again
+        repeat_interval: 5h
+        # default receiver
+        receiver: 'null'
       #   routes:
       #   - receiver: 'null'
       #     matchers:
