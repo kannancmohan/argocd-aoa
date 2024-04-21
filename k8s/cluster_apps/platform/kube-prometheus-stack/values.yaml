@@ -58,11 +58,11 @@ kube-prometheus-stack:
         receiver: 'null'
         routes:
         - matchers:
-          - alertname =~ "InfoInhibitor|Watchdog"
-          receiver: 'null'
-        - matchers:
           - severity =~ "critical|error"
           receiver: 'email'
+        - matchers:
+          - alertname =~ "InfoInhibitor|Watchdog"
+          receiver: 'null'
       # A list of notification receivers
       receivers:
         - name: 'email'
