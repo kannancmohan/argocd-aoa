@@ -63,14 +63,14 @@ kube-prometheus-stack:
       #   - receiver: 'email'
       #     matchers:
       #       - severity =~ "critical|error"
-      # # A list of notification receivers
-      # receivers:
-      #   - name: 'email'
-      #     email_configs:
-      #       - to: 'kannanmohanklm@gmail.com'
-      #         headers: { Subject: "[WARN]" }
-      #         html: '{{ template "email.to.html" . }}'
-      #         send_resolved: true
+      # A list of notification receivers
+      receivers:
+        - name: 'email'
+          email_configs:
+            - to: 'kannanmohanklm@gmail.com'
+              headers: { Subject: "[WARN]" }
+              html: '{{ template "email.to.html" . }}'
+              send_resolved: true
     templateFiles:
       email_template.tmpl: |-
         {{ define "email.to.html" }}
