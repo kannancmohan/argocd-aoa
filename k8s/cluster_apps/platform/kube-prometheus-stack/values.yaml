@@ -55,18 +55,19 @@ kube-prometheus-stack:
         # How long to wait before sending a notification again
         repeat_interval: 5h
         # default receiver
-        receiver: 'null'
+        receiver: "null"
         routes:
         - matchers:
-          - severity =~ "critical|error"
-          receiver: 'email'
+          - severity=~"critical|error"
+          receiver: "email"
           continue: true
         - matchers:
-          - alertname =~ "InfoInhibitor|Watchdog"
-          receiver: 'null'
+          - alertname=~"InfoInhibitor|Watchdog"
+          receiver: "null"
+          continue: true
       # A list of notification receivers
       receivers:
-        - name: 'email'
+        - name: "email"
           email_configs:
             - to: 'kannanmohanklm@gmail.com'
               headers: { Subject: "[WARN]" }
