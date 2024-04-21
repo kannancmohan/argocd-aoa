@@ -55,7 +55,7 @@ kube-prometheus-stack:
         # How long to wait before sending a notification again
         repeat_interval: 4h
         # default receiver
-        receiver: 'email'
+        receiver: 'null'
         routes:
           - receiver: 'null'
             matchers:
