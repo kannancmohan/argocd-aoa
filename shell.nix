@@ -9,6 +9,7 @@ packages = with pkgs; [
     pkgs.kubernetes-helm
     pkgs.argocd
     pkgs.k9s
+    pkgs.prometheus-alertmanager
 ];
 
 #KUBECONFIG = "~/.kube/config";
