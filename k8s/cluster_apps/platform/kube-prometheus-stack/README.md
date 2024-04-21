@@ -9,6 +9,9 @@
 #### view alertmanager configuration 
 http://localhost:9093/#/status
 
+#### Reload alertmanager configuration
+curl -X POST http://localhost:9093/-/reload
+
 #### view alertmanager routes  
 http://localhost:9093/#/status
 
