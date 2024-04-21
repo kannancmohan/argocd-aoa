@@ -56,10 +56,10 @@ kube-prometheus-stack:
         repeat_interval: 5h
         # default receiver
         receiver: 'null'
-      #   routes:
-      #   - receiver: 'null'
-      #     matchers:
-      #       - alertname =~ "InfoInhibitor|Watchdog"
+        routes:
+        - receiver: 'null'
+          matchers:
+            - alertname =~ "InfoInhibitor|Watchdog"
       #   - receiver: 'email'
       #     matchers:
       #       - severity =~ "critical|error"
