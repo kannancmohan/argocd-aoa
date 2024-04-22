@@ -43,8 +43,8 @@ traefik:
       # tls:
       #   certResolver: default-root-cert-issuer
       #   secretName: traefik-server-tls
-    healthcheck:
-      enabled: true
+    # healthcheck:
+    #   enabled: false
   # metrics:
   #   prometheus:
   #     entryPoint: metrics
