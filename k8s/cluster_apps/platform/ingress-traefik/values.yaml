@@ -7,7 +7,9 @@ traefik:
     # you need to manually set this IP to the incoming public IP that your ingress resources would use. Note it only affects
     # status and kubectl UI, and doesn't really do anything It could even be left out https://github.com/containous/traefik/issues/6303
     # - "--providers.kubernetesingress.ingressendpoint.ip=0.0.0.0"
-    - "--providers.kubernetesingress.ingressendpoint.hostname=localhost"
+    # - "--providers.kubernetesingress.ingressendpoint.hostname=localhost"
+    - "--providers.kubernetesingress.ingressendpoint.publishedservice=traefik/traefik"
+
   logs:
     general:
       level: DEBUG
