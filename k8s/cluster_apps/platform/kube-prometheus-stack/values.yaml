@@ -89,3 +89,10 @@ kube-prometheus-stack:
         </div>
         {{ end }}
         {{ end }}
+  ## Disabled monitoring of kube controller , kube proxy and kube scheduler
+  kubeControllerManager:
+    enabled: false
+  kubeScheduler:
+    enabled: false
+  kubeProxy:
+    enabled: false
