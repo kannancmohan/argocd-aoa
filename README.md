@@ -74,6 +74,29 @@ Loki, Promtail and Grafana is used for log aggregation and  visualization
     </tr>
 </table>
 
+### Security
+Trivy is used for security scanning and Grafana to visualize it
+<table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
+    <tr>
+        <th colspan="3">Security Tools</th>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Installation</th>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/aquasecurity/trivy">Trivy</a></td>
+        <td>Trivy continuously scans Kubernetes cluster for security issues</td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/trivy-operator/trivy-operator">trivy-operator</a></td>
+    </tr>
+    <tr>
+        <td><a href="https://grafana.com/">Grafana</a></td>
+        <td>Allows to visualize security vulnerabilities</td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/grafana/grafana">Grafana helm chart</a></td>
+    </tr>
+</table>
+
 ### Cluster management
 <table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
     <tr>
