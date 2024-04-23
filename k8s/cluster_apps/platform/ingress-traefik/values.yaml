@@ -8,7 +8,7 @@ traefik:
     # status and kubectl UI, and doesn't really do anything It could even be left out https://github.com/containous/traefik/issues/6303
     # - "--providers.kubernetesingress.ingressendpoint.ip=0.0.0.0"
     ## Added to fix agrocd stuck at "progressing" - https://community.traefik.io/t/traefik-ingress-not-getting-loadbalancer-ip/17445
-    - "--providers.kubernetesingress.ingressendpoint.publishedservice={{ .Release.Namespace }}/{{ .Release.Name }}"
+    - "--providers.kubernetesingress.ingressendpoint.publishedservice=traefik/traefik"
 
   logs:
     general:
