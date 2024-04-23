@@ -1,12 +1,7 @@
 ## Helm chart values - https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml
 traefik:
   additionalArguments:
-    # Added to enable exposing metrics for prometheus
-    # - "--metrics.prometheus=true"
     - "--providers.kubernetesingress=true"
-    # you need to manually set this IP to the incoming public IP that your ingress resources would use. Note it only affects
-    # status and kubectl UI, and doesn't really do anything It could even be left out https://github.com/containous/traefik/issues/6303
-    # - "--providers.kubernetesingress.ingressendpoint.ip=0.0.0.0"
     ## Added to fix agrocd stuck at "progressing" - https://community.traefik.io/t/traefik-ingress-not-getting-loadbalancer-ip/17445
     - "--providers.kubernetesingress.ingressendpoint.publishedservice=traefik/traefik"
 
