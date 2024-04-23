@@ -92,6 +92,7 @@ kube-prometheus-stack:
   ## Disabled monitoring of kube controller , kube proxy and kube scheduler
   kubeControllerManager:
     enabled: true
+    endpoints: [192.168.0.61]
     service:
       enabled: true
       port: 10257
