@@ -56,3 +56,5 @@ dex:
       - secretName: dex-general-tls
         hosts:
           - *host
+  serviceMonitor:
+    enabled: true
