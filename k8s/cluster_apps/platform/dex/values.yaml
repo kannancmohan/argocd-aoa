@@ -1,0 +1,15 @@
+dex:
+  ingress:
+    enabled: true
+    className: traefik
+    annotations:
+      cert-manager.io/cluster-issuer: default-root-cert-issuer
+    hosts:
+      - host: &host dex.dev.local
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls:
+      - secretName: dex-general-tls
+        hosts:
+          - *host
