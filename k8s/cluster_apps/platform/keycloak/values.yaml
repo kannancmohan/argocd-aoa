@@ -10,7 +10,7 @@ keycloak:
     auth:
       username: bn_keycloak
       password: "@pisix123/postgresql"
-      database: bitnami_keycloak
+      # database: bitnami_keycloak
       ## Password for the "postgres" admin user
       # postgresPassword: ""
       # existingSecret: ""
