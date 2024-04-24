@@ -5,15 +5,23 @@ keycloak:
   metrics:
     serviceMonitor:
       enabled: true
+  auth:
+    adminUser: admin
+    existingSecret: keycloak-credentials-secret
+    passwordSecretKey: admin-password
   postgresql:
     enabled: true
     auth:
       ## Password for the "postgres" admin user
-      postgresPassword: "@temp12postgresql"
+      # postgresPassword: "@temp12postgresql"
       username: bn_keycloak
-      password: "@temp12postgresql"
+      # password: "@temp12postgresql"
       database: bitnami_keycloak
-      existingSecret: ""
+      existingSecret: keycloak-credentials-secret
+      secretKeys:
+        adminPasswordKey: postgres_admin_password
+        userPasswordKey: postgres_user_password
+        # replicationPasswordKey: postgres_replication_password
     architecture: standalone
   ingress:
     enabled: true
