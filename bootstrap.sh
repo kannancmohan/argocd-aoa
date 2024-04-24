@@ -18,3 +18,5 @@ helm template --namespace argocd argocd ./k8s/cluster_apps/bootstrap/root | kube
 
 # echo "Creating 'alertmanager-smtp-secret' secret..."
 # kubectl create secret generic alertmanager-smtp-secret --from-literal=auth_password="$SMTP_AUTH_PWD" --namespace kube-prometheus-stack
+# kubectl create secret generic keycloak-credentials-secret --from-literal=admin-password="identity@keycloak" --from-literal=postgres-password="identity@keycloak" --from-literal=password="identity@keycloak" --namespace keycloak
+

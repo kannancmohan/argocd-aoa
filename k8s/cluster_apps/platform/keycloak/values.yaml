@@ -19,8 +19,8 @@ keycloak:
       database: bitnami_keycloak
       existingSecret: keycloak-credentials-secret
       secretKeys:
-        adminPasswordKey: postgres_admin_password
-        userPasswordKey: postgres_user_password
+        adminPasswordKey: postgres-password
+        userPasswordKey: password
         # replicationPasswordKey: postgres_replication_password
     architecture: standalone
   ingress:
