@@ -5,6 +5,16 @@ keycloak:
   metrics:
     serviceMonitor:
       enabled: true
+  postgresql:
+    enabled: true
+    auth:
+      username: bn_keycloak
+      password: ""
+      database: bitnami_keycloak
+      ## Password for the "postgres" admin user
+      # postgresPassword: ""
+      # existingSecret: ""
+    architecture: standalone
   ingress:
     enabled: true
     ingressClassName: traefik
