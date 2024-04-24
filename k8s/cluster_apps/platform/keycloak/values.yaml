@@ -5,3 +5,13 @@ keycloak:
   metrics:
     serviceMonitor:
       enabled: true
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    annotations:
+      cert-manager.io/cluster-issuer: default-root-cert-issuer
+    hostname: &host identity.dev.local
+    extraTls:
+      - secretName: keycloak-server-tls
+        hosts:
+          - *host
