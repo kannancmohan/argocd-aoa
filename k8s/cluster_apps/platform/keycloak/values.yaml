@@ -1,0 +1,7 @@
+## Official configuration - 
+## Helm chart values - https://github.com/bitnami/charts/blob/main/bitnami/keycloak/values.yaml
+keycloak:
+  enabled: true
+  metrics:
+    serviceMonitor:
+      enabled: true
