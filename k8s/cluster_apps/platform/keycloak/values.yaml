@@ -8,12 +8,12 @@ keycloak:
   postgresql:
     enabled: true
     auth:
-      username: bn_keycloak
-      password: "@pisix123/postgresql"
-      # database: bitnami_keycloak
       ## Password for the "postgres" admin user
-      # postgresPassword: ""
-      # existingSecret: ""
+      postgresPassword: "@temp12postgresql"
+      username: bn_keycloak
+      password: "@temp12postgresql"
+      database: bitnami_keycloak
+      existingSecret: ""
     architecture: standalone
   ingress:
     enabled: true
