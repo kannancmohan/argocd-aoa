@@ -21,7 +21,7 @@ keycloak:
       secretKeys:
         adminPasswordKey: postgres-password
         userPasswordKey: password
-        # replicationPasswordKey: postgres_replication_password
+        replicationPasswordKey: password
     architecture: standalone
   ingress:
     enabled: true
