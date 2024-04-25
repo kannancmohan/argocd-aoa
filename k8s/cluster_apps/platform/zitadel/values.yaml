@@ -2,6 +2,13 @@
 ## Helm chart values -https://github.com/zitadel/zitadel-charts/blob/main/charts/zitadel/values.yaml
 zitadel:
   enabled: true
+  replicaCount: 1
+  zitadel:
+    masterkey: MasterkeyNeedsToHave32Characters
+    # masterkeySecretName:
+    # configSecretName: zitadel-secret
+    # configmapConfig:
+    #   ExternalSecure: false
   metrics:
     enabled: true
     serviceMonitor:
