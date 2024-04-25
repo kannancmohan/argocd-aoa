@@ -1,4 +1,4 @@
-## Official configuration - 
+## Official configuration - https://zitadel.com/docs/self-hosting/manage/configure
 ## Helm chart values -https://github.com/zitadel/zitadel-charts/blob/main/charts/zitadel/values.yaml
 zitadel:
   enabled: true
