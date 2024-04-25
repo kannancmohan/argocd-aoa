@@ -22,23 +22,14 @@ kind: Cluster
 metadata:
   name: cloudnative-pg-cluster
 spec:
-  ## Number of instances required in the cluster
-  instances: 3
-  # primaryUpdateStrategy: unsupervised
-  # postgresql:
-  #   parameters:
-  #     shared_buffers: 256MB
-  #     pg_stat_statements.max: '10000'
-  #     pg_stat_statements.track: all
-  #     auto_explain.log_min_duration: '10s'
-  #   pg_hba:
-  #     - host all all 10.244.0.0/16 md5
-  bootstrap:
-    initdb:
-      database: app
-      owner: app
-      secret:
-        name: cloudnative-pg-app-user
+  ## Number of instances required in the cluster. kubectl get cluster -n cloudnative-pg 
+  instances: 2
+  # bootstrap:
+  #   initdb:
+  #     database: app
+  #     owner: app
+  #     secret:
+  #       name: cloudnative-pg-app-user
   enableSuperuserAccess: true
   superuserSecret:
     name: cloudnative-pg-superuser
