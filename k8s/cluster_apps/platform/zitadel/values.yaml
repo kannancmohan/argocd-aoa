@@ -1,0 +1,8 @@
+## Official configuration - 
+## Helm chart values -https://github.com/zitadel/zitadel-charts/blob/main/charts/zitadel/values.yaml
+zitadel:
+  enabled: true
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
