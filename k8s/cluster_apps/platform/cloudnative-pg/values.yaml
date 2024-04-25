@@ -1,0 +1,9 @@
+## Official configuration - 
+## Helm chart values - https://github.com/cloudnative-pg/charts/blob/main/charts/cloudnative-pg/values.yaml
+cloudnative-pg:
+  enabled: true
+  replicaCount: 2
+  monitoring:
+    podMonitorEnabled: true
+    grafanaDashboard:
+      create: true
