@@ -24,12 +24,12 @@ metadata:
 spec:
   ## Number of instances required in the cluster. kubectl get cluster -n cloudnative-pg 
   instances: 2
-  # bootstrap:
-  #   initdb:
-  #     database: app
-  #     owner: app
-  #     secret:
-  #       name: cloudnative-pg-app-user
+  bootstrap:
+    initdb:
+      database: app
+      owner: app
+      secret:
+        name: cloudnative-pg-app-user
   enableSuperuserAccess: true
   superuserSecret:
     name: cloudnative-pg-superuser
