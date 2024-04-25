@@ -12,10 +12,7 @@ keycloak:
   postgresql:
     enabled: true
     auth:
-      ## Password for the "postgres" admin user
-      # postgresPassword: "@temp12postgresql"
       username: bn_keycloak
-      # password: "@temp12postgresql"
       database: bitnami_keycloak
       existingSecret: keycloak-credentials-secret
       secretKeys:
