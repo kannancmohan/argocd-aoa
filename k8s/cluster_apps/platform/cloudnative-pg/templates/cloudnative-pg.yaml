@@ -22,6 +22,7 @@ kind: Cluster
 metadata:
   name: cloudnative-pg-cluster
 spec:
+  ## Number of instances required in the cluster
   instances: 3
   # primaryUpdateStrategy: unsupervised
   # postgresql:
@@ -43,4 +44,6 @@ spec:
     name: cloudnative-pg-superuser
   storage:
     # storageClass: standard
-    size: 2Gi
+    size: 1Gi
+  monitoring:
+    enablePodMonitor: true
