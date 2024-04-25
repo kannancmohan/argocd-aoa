@@ -42,5 +42,5 @@ spec:
   superuserSecret:
     name: cloudnative-pg-superuser
   storage:
-    storageClass: standard
+    # storageClass: standard
     size: 2Gi
