@@ -10,8 +10,8 @@ zitadel:
     # configmapConfig:
     #   ExternalSecure: false
     configmapConfig:
-      # ExternalPort: 443
-      # ExternalSecure: true
+      ExternalPort: 443
+      ExternalSecure: true
       ExternalDomain: "zitadel.dev.local"
       TLS:
         Enabled: false
