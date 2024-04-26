@@ -1,4 +1,4 @@
-### Test connection
+### Test postgres connection
 #### port forward the service
 ```
 kubectl -n cloudnative-pg port-forward svc/cloudnative-pg-cluster-rw 5432:5432

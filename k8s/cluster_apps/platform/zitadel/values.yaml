@@ -13,8 +13,8 @@ zitadel:
       # ExternalPort: 443
       # ExternalSecure: true
       # ExternalDomain: "auth.whitestar.systems"
-      # TLS:
-      #   Enabled: false
+      TLS:
+        Enabled: false
       Database:
         Postgres:
           MaxOpenConns: 20
