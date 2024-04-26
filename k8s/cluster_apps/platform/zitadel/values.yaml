@@ -6,9 +6,63 @@ zitadel:
   zitadel:
     masterkey: MasterkeyNeedsToHave32Characters
     # masterkeySecretName:
-    configSecretName: zitadel-config-secret
+    # configSecretName: zitadel-config-secret
     # configmapConfig:
     #   ExternalSecure: false
+    configmapConfig:
+      # ExternalPort: 443
+      # ExternalSecure: true
+      # ExternalDomain: "auth.whitestar.systems"
+      # TLS:
+      #   Enabled: false
+      Database:
+        Postgres:
+          MaxOpenConns: 20
+          MaxIdleConns: 10
+          MaxConnLifetime: 30m
+          MaxConnIdleTime: 5m
+          User:
+            SSL:
+              Mode: require
+          Admin:
+            SSL:
+              Mode: require
+  env:
+    - name: "ZITADEL_DATABASE_POSTGRES_HOST"
+      valueFrom:
+        secretKeyRef:
+          name: zitadel-postgres-secret
+          key: host
+    - name: "ZITADEL_DATABASE_POSTGRES_PORT"
+      valueFrom:
+        secretKeyRef:
+          name: zitadel-postgres-secret
+          key: port
+    - name: "ZITADEL_DATABASE_POSTGRES_DATABASE"
+      valueFrom:
+        secretKeyRef:
+          name: zitadel-postgres-secret
+          key: dbname
+    - name: "ZITADEL_DATABASE_POSTGRES_USER_USERNAME"
+      valueFrom:
+        secretKeyRef:
+          name: zitadel-postgres-secret
+          key: dbuser
+    - name: "ZITADEL_DATABASE_POSTGRES_ADMIN_USERNAME"
+      valueFrom:
+        secretKeyRef:
+          name: zitadel-postgres-secret
+          key: dbadmin
+    - name: "ZITADEL_DATABASE_POSTGRES_USER_PASSWORD"
+      valueFrom:
+        secretKeyRef:
+          name: zitadel-postgres-secret
+          key: dbuser_password
+    - name: "ZITADEL_DATABASE_POSTGRES_ADMIN_PASSWORD"
+      valueFrom:
+        secretKeyRef:
+          name: zitadel-postgres-secret
+          key: dbadmin_password
   metrics:
     enabled: true
     serviceMonitor:
