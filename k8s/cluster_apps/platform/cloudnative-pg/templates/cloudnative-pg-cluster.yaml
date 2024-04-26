@@ -10,11 +10,11 @@ spec:
     initdb:
       database: app
       owner: app
-      secret:
-        name: cloudnative-pg-app-user
+      # secret:
+      #   name: cloudnative-pg-app-user
   enableSuperuserAccess: true
-  superuserSecret:
-    name: cloudnative-pg-superuser
+  # superuserSecret:
+  #   name: cloudnative-pg-superuser
   storage:
     # storageClass: standard
     size: 1Gi
