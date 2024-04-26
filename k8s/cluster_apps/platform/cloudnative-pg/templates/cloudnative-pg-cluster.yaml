@@ -11,10 +11,10 @@ spec:
       database: app
       owner: app
       secret:
-        name: cloudnative-pg-app-user
+        name: cloudnative-pg-cluster-app
   enableSuperuserAccess: true
-  # superuserSecret:
-  #   name: cloudnative-pg-superuser
+  superuserSecret:
+    name: cloudnative-pg-cluster-superuser
   storage:
     # storageClass: standard
     size: 1Gi
