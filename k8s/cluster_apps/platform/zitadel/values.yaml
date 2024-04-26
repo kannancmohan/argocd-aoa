@@ -63,6 +63,16 @@ zitadel:
         secretKeyRef:
           name: zitadel-postgres-secret
           key: dbadmin_password
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    annotations:
+      cert-manager.io/cluster-issuer: default-root-cert-issuer
+    hostname: &host zitadel.dev.local
+    extraTls:
+      - secretName: zitadel-server-tls
+        hosts:
+          - *host
   metrics:
     enabled: true
     serviceMonitor:
