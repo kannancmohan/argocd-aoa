@@ -20,3 +20,4 @@ helm template --namespace argocd argocd ./k8s/cluster_apps/bootstrap/root | kube
 # kubectl create secret generic alertmanager-smtp-secret --from-literal=auth_password="$SMTP_AUTH_PWD" --namespace kube-prometheus-stack
 # kubectl create secret generic keycloak-credentials-secret --from-literal=admin-password="identity@keycloak" --from-literal=postgres-password="identity@keycloak" --from-literal=password="identity@keycloak" --namespace keycloak
 
+# kubectl create secret generic zitadel-postgres-secret --namespace=zitadel --from-literal=host="cloudnative-pg-cluster-rw.cloudnative-pg.svc.cluster.local" --from-literal=port="5432" --from-literal=dbname="app" --from-literal=dbuser="app" --from-literal=dbadmin="postgres" --from-literal=dbuser_password="app-password" --from-literal=dbadmin_password="admin-password"
