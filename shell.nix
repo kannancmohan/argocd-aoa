@@ -10,6 +10,7 @@ packages = with pkgs; [
     pkgs.argocd
     pkgs.k9s
     pkgs.prometheus-alertmanager
+    # pkgs.postgresql_jit
 ];
 
 #KUBECONFIG = "~/.kube/config";
