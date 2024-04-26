@@ -64,9 +64,9 @@ zitadel:
           name: zitadel-postgres-secret
           key: dbadmin_password
     - name: ZITADEL_FIRSTINSTANCE_ORG_HUMAN_USERNAME
-      value: "admin"
+      value: "admin@admin.com"
     - name: ZITADEL_FIRSTINSTANCE_ORG_HUMAN_PASSWORD
-      value: "AdminPass#1"
+      value: "AdminPass#1r"
   ingress:
     enabled: true
     className: traefik
