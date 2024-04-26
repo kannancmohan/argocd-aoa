@@ -65,11 +65,15 @@ zitadel:
           key: dbadmin_password
   ingress:
     enabled: true
-    ingressClassName: traefik
+    className: traefik
     annotations:
       cert-manager.io/cluster-issuer: default-root-cert-issuer
-    hostname: &host zitadel.dev.local
-    extraTls:
+    hosts:
+      - host: &host zitadel.dev.local
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
       - secretName: zitadel-server-tls
         hosts:
           - *host
