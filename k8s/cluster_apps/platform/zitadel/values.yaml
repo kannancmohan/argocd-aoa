@@ -12,7 +12,7 @@ zitadel:
     configmapConfig:
       # ExternalPort: 443
       # ExternalSecure: true
-      # ExternalDomain: "auth.whitestar.systems"
+      ExternalDomain: "zitadel.dev.local"
       TLS:
         Enabled: false
       Database:
