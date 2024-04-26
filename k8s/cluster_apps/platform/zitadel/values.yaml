@@ -23,10 +23,10 @@ zitadel:
           MaxConnIdleTime: 5m
           User:
             SSL:
-              Mode: disable
+              Mode: require
           Admin:
             SSL:
-              Mode: disable
+              Mode: require
   env:
     - name: "ZITADEL_DATABASE_POSTGRES_HOST"
       valueFrom:
@@ -63,6 +63,10 @@ zitadel:
         secretKeyRef:
           name: zitadel-postgres-secret
           key: dbadmin_password
+    - name: ZITADEL_FIRSTINSTANCE_ORG_HUMAN_USERNAME
+      value: "admin"
+    - name: ZITADEL_FIRSTINSTANCE_ORG_HUMAN_PASSWORD
+      value: "AdminPass#1"
   ingress:
     enabled: true
     className: traefik
