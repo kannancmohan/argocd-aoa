@@ -22,6 +22,9 @@ helm template --namespace argocd argocd ./k8s/cluster_apps/bootstrap/root | kube
 # echo "Creating keycloak secret..."
 # kubectl create secret generic keycloak-credentials-secret --from-literal=admin-password="identity@keycloak" --from-literal=postgres-password="identity@keycloak" --from-literal=password="identity@keycloak" --namespace keycloak
 
+# echo "Creating cloudnative-pg secret..."
+# kubectl create secret generic cnpg-superuser-secret --namespace=cloudnative-pg --from-literal=username="postgres" --from-literal=password="postgres@adminz" --from-literal=pgpass="postgres@adminz"
+
 # echo "Creating zitadel secret..."
 # kubectl create secret generic zitadel-database-credential --namespace=zitadel --from-literal=host="cloudnative-pg-cluster-rw.cloudnative-pg.svc.cluster.local" --from-literal=port="5432" --from-literal=dbname="zitadel" --from-literal=dbuser="zitadel" --from-literal=dbadmin="postgres" --from-literal=dbuser_password="zitadel_app1@adminz" --from-literal=dbadmin_password="postgres@adminz" --from-literal=zitadel_first_user="admin@zitadellocal.com" --from-literal=zitadel_first_pwd="AdminPass@123"
 
