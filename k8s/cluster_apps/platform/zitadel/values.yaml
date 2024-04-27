@@ -31,42 +31,48 @@ zitadel:
     - name: "ZITADEL_DATABASE_POSTGRES_HOST"
       valueFrom:
         secretKeyRef:
-          name: zitadel-postgres-secret
+          name: zitadel-database-credential
           key: host
     - name: "ZITADEL_DATABASE_POSTGRES_PORT"
       valueFrom:
         secretKeyRef:
-          name: zitadel-postgres-secret
+          name: zitadel-database-credential
           key: port
     - name: "ZITADEL_DATABASE_POSTGRES_DATABASE"
       valueFrom:
         secretKeyRef:
-          name: zitadel-postgres-secret
+          name: zitadel-database-credential
           key: dbname
     - name: "ZITADEL_DATABASE_POSTGRES_USER_USERNAME"
       valueFrom:
         secretKeyRef:
-          name: zitadel-postgres-secret
+          name: zitadel-database-credential
           key: dbuser
     - name: "ZITADEL_DATABASE_POSTGRES_USER_PASSWORD"
       valueFrom:
         secretKeyRef:
-          name: zitadel-postgres-secret
+          name: zitadel-database-credential
           key: dbuser_password
     - name: "ZITADEL_DATABASE_POSTGRES_ADMIN_USERNAME"
       valueFrom:
         secretKeyRef:
-          name: zitadel-postgres-secret
+          name: zitadel-database-credential
           key: dbadmin
     - name: "ZITADEL_DATABASE_POSTGRES_ADMIN_PASSWORD"
       valueFrom:
         secretKeyRef:
-          name: zitadel-postgres-secret
+          name: zitadel-database-credential
           key: dbadmin_password
     - name: ZITADEL_FIRSTINSTANCE_ORG_HUMAN_USERNAME
-      value: "admin@admin.com"
+      valueFrom:
+        secretKeyRef:
+          name: zitadel-database-credential
+          key: zitadel_first_user
     - name: ZITADEL_FIRSTINSTANCE_ORG_HUMAN_PASSWORD
-      value: "AdminPass@123"
+      valueFrom:
+        secretKeyRef:
+          name: zitadel-database-credential
+          key: zitadel_first_pwd
   ingress:
     enabled: true
     className: traefik
