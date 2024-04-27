@@ -9,15 +9,15 @@ metadata:
 stringData:
   username: "zitadel"
   password: "zitadel_app1@adminz"
----
-apiVersion: postgresql.cnpg.io/v1
-kind: Cluster
-metadata:
-  name: zitadel-database-cnpg-config
-spec:
-  bootstrap:
-    initdb:
-      database: zitadel
-      owner: zitadel
-      secret:
-        name: zitadel-database-cnpg-secret
+# ---
+# apiVersion: postgresql.cnpg.io/v1
+# kind: Cluster
+# metadata:
+#   name: zitadel-database-cnpg-config
+# spec:
+#   bootstrap:
+#     initdb:
+#       database: zitadel
+#       owner: zitadel
+#       secret:
+#         name: zitadel-database-cnpg-secret
