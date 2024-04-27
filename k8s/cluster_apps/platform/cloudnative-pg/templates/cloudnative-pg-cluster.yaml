@@ -9,12 +9,12 @@ spec:
   enableSuperuserAccess: true
   superuserSecret:
     name: cnpg-superuser-secret
-  bootstrap:
-    initdb:
-      database: app
-      owner: app
-      secret:
-        name: cnpg-appuser-secret
+  # bootstrap:
+  #   initdb:
+  #     database: app
+  #     owner: app
+  #     secret:
+  #       name: cnpg-appuser-secret
   storage:
     # storageClass: standard
     size: 1Gi
