@@ -1,5 +1,7 @@
 ## Official configuration - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/
 ## Helm chart values - https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
+global:
+  ssoEnabled: true
 grafana:
   admin:
     existingSecret: grafana-credential
@@ -25,10 +27,22 @@ grafana:
       enabled: true
       # the sidecar will search for datasource config-maps inside this namespace.
       searchNamespace: ALL
-  # envFromSecret: grafana-secrets
+  envFromSecret: grafana-credential
   ## Grafana's primary configuration ref: http://docs.grafana.org/installation/configuration/
-  # grafana.ini:
-  #   server:
-  #     root_url: https://grafana.dev.local
+  {{- if index .Values "global" "ssoEnabled" }}
+  grafana.ini:
+    server:
+      root_url: https://grafana.dev.local
+    auth.generic_oauth:
+      enabled: true
+      allow_sign_up: true
+      name: Dex
+      client_id: grafana-sso
+      client_secret: $__env{GRAFANA_SSO_CLIENT_SECRET}
+      scopes: openid profile email groups
+      auth_url: https://dex.dev.local/auth
+      token_url: https://dex.dev.local/token
+      api_url: https://dex.dev.local/userinfo
+  {{- end }}
   serviceMonitor:
     enabled: true
