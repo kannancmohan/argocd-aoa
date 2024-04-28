@@ -21,6 +21,10 @@ This is a project that utilizes Infrastructure as Code and GitOps practices for 
         <td><a href="https://unbound.docs.nlnetlabs.nl/en/latest/">Unbound DNS</a></td>
         <td>Unbound is a validating, recursive, caching DNS resolver. Unbound supports DNS-over-TLS and DNS-over-HTTPS which allows clients to encrypt their communication</td>
     </tr>
+    <tr>
+        <td><a href="https://github.com/passbolt">Passbolt</a></td>
+        <td>Passbolt is an open source, security first password manager with strong focus on collaboration</td>
+    </tr>
 </table>
 
 
