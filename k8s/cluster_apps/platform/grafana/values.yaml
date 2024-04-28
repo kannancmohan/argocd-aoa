@@ -29,7 +29,7 @@ grafana:
       searchNamespace: ALL
   envFromSecret: grafana-credential
   ## Grafana's primary configuration ref: http://docs.grafana.org/installation/configuration/
-  {{- if index .Values "global" "ssoEnabled" }}
+  {{- if .Values.global.ssoEnabled }}
   grafana.ini:
     server:
       root_url: https://grafana.dev.local
