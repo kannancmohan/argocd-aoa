@@ -29,7 +29,8 @@ grafana:
       searchNamespace: ALL
   envFromSecret: grafana-credential
   ## Grafana's primary configuration ref: http://docs.grafana.org/installation/configuration/
-  {{- if .Values.global.ssoEnabled }}
+  {{- with .Values.global | default dict }}
+  {{- if .ssoEnabled }}
   grafana.ini:
     server:
       root_url: https://grafana.dev.local
@@ -43,6 +44,7 @@ grafana:
       auth_url: https://dex.dev.local/auth
       token_url: https://dex.dev.local/token
       api_url: https://dex.dev.local/userinfo
+  {{- end }}
   {{- end }}
   serviceMonitor:
     enabled: true
