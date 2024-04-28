@@ -113,7 +113,7 @@ Loki, Promtail and Grafana is used for log aggregation and  visualization
     </tr>
 </table>
 
-### Security
+### Vulnerability & Dependency scanner
 Trivy is used for security scanning and Grafana to visualize it
 <table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
     <tr>
@@ -133,6 +133,28 @@ Trivy is used for security scanning and Grafana to visualize it
         <td><a href="https://grafana.com/">Grafana</a></td>
         <td>Allows to visualize security vulnerabilities</td>
         <td>Installed as part of <a href="https://artifacthub.io/packages/helm/grafana/grafana">Grafana helm chart</a></td>
+    </tr>
+</table>
+
+### Identity provider and Manager
+<table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
+    <tr>
+        <th colspan="3">Identity provider and Manager</th>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Installation</th>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/aquasecurity/trivy">Zitadel</a></td>
+        <td>Zitadel is an identity and access management solution</td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/zitadel/zitadel">zitadel helm chart</a></td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/dexidp/dex">Dex</a></td>
+        <td>Dex is an identity service that uses OpenID Connect to manage authentication for apps</td>
+        <td>Installed as part of <a href="https://artifacthub.io/packages/helm/dex/dex">Dex helm chart</a></td>
     </tr>
 </table>
 

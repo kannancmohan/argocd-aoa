@@ -5,6 +5,7 @@ dex:
   ## https://dexidp.io/docs/configuration/
   config:
     issuer: https://dex.dev.local
+    ## TODO move storage to postgres. The storage configuration determines where dex stores its state.
     storage:
       type: kubernetes
       config:
