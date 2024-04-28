@@ -1,3 +1,38 @@
+## HomeLab
+This is a project that utilizes Infrastructure as Code and GitOps practices for automatically provisioning, operating and updating self-hosted services in my homelab.
+
+<table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
+    <tr>
+        <th colspan="2">Self Hosted Services</th>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><a href="https://kubernetes.io/">Kubernetes</a></td>
+        <td>Kubernetes is a container orchestration platform that automates many of the manual processes involved in deploying, managing and scaling containerized applications</td>
+    </tr>
+    <tr>
+        <td><a href="https://github.com/AdguardTeam/AdGuardHome">AdGuard Home</a></td>
+        <td>Adguard Home is a forwarding DNS server and DNS filtering server. It supports blocking ads & tracking</td>
+    </tr>
+    <tr>
+        <td><a href="https://unbound.docs.nlnetlabs.nl/en/latest/">Unbound DNS</a></td>
+        <td>Unbound is a validating, recursive, caching DNS resolver. Unbound supports DNS-over-TLS and DNS-over-HTTPS which allows clients to encrypt their communication</td>
+    </tr>
+</table>
+
+
+## Hardware 
+### Kubernetes Hardware 
+| VM            | Cores         | Memory| Disk|
+| ------------- |:-------------:| -----:| -----:|
+| master        | 2             | 5120  | 25G   |
+| worker1       | 1             | 3072  | 15G   |
+| worker2       | 1             | 3072  | 15G   |
+
+## Kubernetes Apps
 ### Monitoring
 The software stack used for monitoring system and applications. These tools allow to analyze real-time metrics of containers and nodes
 <table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
