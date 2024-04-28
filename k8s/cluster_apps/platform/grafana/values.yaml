@@ -1,8 +1,10 @@
 ## Official configuration - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/
 ## Helm chart values - https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 grafana:
-  # TODO define password in external secrets 
-  adminPassword: admin@grafana.com
+  admin:
+    existingSecret: grafana-credential
+    userKey: admin-user
+    passwordKey: admin-password
   ingress:
     enabled: true
     ingressClassName: traefik
