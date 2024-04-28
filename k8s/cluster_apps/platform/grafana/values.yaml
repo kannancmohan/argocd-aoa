@@ -1,7 +1,5 @@
 ## Official configuration - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/
 ## Helm chart values - https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
-global:
-  ssoEnabled: true
 grafana:
   admin:
     existingSecret: grafana-credential
@@ -29,8 +27,7 @@ grafana:
       searchNamespace: ALL
   envFromSecret: grafana-credential
   ## Grafana's primary configuration ref: http://docs.grafana.org/installation/configuration/
-  {{- with .Values.global | default dict }}
-  {{- if .ssoEnabled }}
+  ### Grafana SSO
   grafana.ini:
     server:
       root_url: https://grafana.dev.local
@@ -44,7 +41,6 @@ grafana:
       auth_url: https://dex.dev.local/auth
       token_url: https://dex.dev.local/token
       api_url: https://dex.dev.local/userinfo
-  {{- end }}
-  {{- end }}
+  ### Grafana SSO ends
   serviceMonitor:
     enabled: true
