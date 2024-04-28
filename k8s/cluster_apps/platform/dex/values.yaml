@@ -13,21 +13,24 @@ dex:
       skipApprovalScreen: true
     ## https://dexidp.io/docs/connectors/
     connectors:
-      - type: oidc
-        id: zitadel
-        name: zitadel
-        config:
-          clientID: "264743436580618784@k8s"
-          clientSecret: "CeY0fS3tJtZvwQKvXGbUXjLUH7AcZu1JvCknThqNOnbiEgjtEgK32SosYTmweiNW"
-          redirectURI: https://dex.dev.local/callback
-          issuer: https://zitadel.dev.local
-          # TODO https://github.com/dexidp/dex/pull/3188
-          # enablePKCE: true
-          scopes:
-            - openid
-            - profile
-            - email
-            - groups
+      - type: mockCallback
+        id: mock
+        name: Mock
+      # - type: oidc
+      #   id: zitadel
+      #   name: zitadel
+      #   config:
+      #     clientID: "264743436580618784@k8s"
+      #     clientSecret: 
+      #     redirectURI: https://dex.dev.local/callback
+      #     issuer: https://zitadel.dev.local
+      #     # TODO https://github.com/dexidp/dex/pull/3188
+      #     # enablePKCE: true
+      #     scopes:
+      #       - openid
+      #       - profile
+      #       - email
+      #       - groups
   #   staticClients:
   #     - id: grafana-sso
   #       name: Grafana
