@@ -1,0 +1,8 @@
+{
+    "app": {
+        "enabled": "true",
+        "name": "dex",
+        "nameSpace": "dex",
+        "syncWave": "0"
+    }
+}

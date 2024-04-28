@@ -1,0 +1,8 @@
+{
+    "app": {
+        "enabled": "true",
+        "name": "zitadel",
+        "nameSpace": "zitadel",
+        "syncWave": "0"
+    }
+}
