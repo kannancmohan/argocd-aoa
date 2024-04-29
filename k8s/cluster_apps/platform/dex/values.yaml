@@ -34,7 +34,7 @@ dex:
             - profile
             - email
             - groups
-          userNameKey: username
+          userNameKey: zitadel:username
           # claimMapping:
           #   userNameKey: name
 
