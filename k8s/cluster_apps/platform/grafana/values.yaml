@@ -46,7 +46,6 @@ grafana:
       # name_attribute_path: name
       # use_pkce: true
       tls_skip_verify_insecure: true
-
   ### Grafana SSO ends
   serviceMonitor:
     enabled: true
