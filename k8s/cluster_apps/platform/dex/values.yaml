@@ -27,7 +27,10 @@ dex:
           issuer: https://zitadel.dev.local
           # response_type: code
           insecureSkipVerify: true # ignore SSL verification
-          # insecureSkipEmailVerified: true
+          insecureSkipEmailVerified: true
+          insecureEnableGroups: true
+          userIDKey: email
+          userNameKey: email
           scopes:
             - openid
             - profile
