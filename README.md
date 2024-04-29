@@ -153,7 +153,7 @@ Trivy is used for security scanning and Grafana to visualize it
     </tr>
     <tr>
         <td><a href="https://github.com/dexidp/dex">Dex</a></td>
-        <td>Dex is an identity service that uses OpenID Connect to manage authentication for apps</td>
+        <td>Dex is an identity provider that uses OpenID Connect to manage authentication for apps</td>
         <td>Installed as part of <a href="https://artifacthub.io/packages/helm/dex/dex">Dex helm chart</a></td>
     </tr>
 </table>
