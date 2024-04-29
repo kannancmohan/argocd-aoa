@@ -34,9 +34,9 @@ dex:
             - profile
             - email
             - groups
-          # userNameKey: cognito:username
-          claimMapping:
-            userNameKey: name
+          userNameKey: username
+          # claimMapping:
+          #   userNameKey: name
 
     staticClients:
       - id: grafana-sso
