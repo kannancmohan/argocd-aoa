@@ -37,8 +37,8 @@ dex:
             # - email
             # - groups
           # userNameKey: zitadel:name
-          # claimMapping:
-          #   userNameKey: name
+          claimMapping:
+            preferred_username: preferred_username
 
     staticClients:
       - id: grafana-sso
