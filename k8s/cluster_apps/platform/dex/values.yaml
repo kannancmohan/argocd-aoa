@@ -27,12 +27,17 @@ dex:
           issuer: https://zitadel.dev.local
           # TODO https://github.com/dexidp/dex/pull/3188
           # enablePKCE: true
-          insecureSkipVerify: true
+          insecureSkipVerify: true # ignore SSL verification
+          # insecureSkipEmailVerified: true
           scopes:
             - openid
             - profile
             - email
             - groups
+          # userNameKey: cognito:username
+          claimMapping:
+            userNameKey: name
+
     staticClients:
       - id: grafana-sso
         name: Grafana
