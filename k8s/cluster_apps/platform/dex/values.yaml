@@ -26,7 +26,7 @@ dex:
           redirectURI: https://dex.dev.local/callback
           issuer: https://zitadel.dev.local
           insecureSkipVerify: true # ignore SSL verification
-          getUserInfo: true
+          # getUserInfo: true
           # insecureSkipEmailVerified: true
           # insecureEnableGroups: true
           # userIDKey: email
