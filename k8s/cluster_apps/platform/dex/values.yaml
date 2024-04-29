@@ -31,14 +31,14 @@ dex:
           # insecureEnableGroups: true
           # userIDKey: email
           # userNameKey: email
-          scopes:
-            - openid
-            - profile
+          # scopes:
+          #   - openid
+          #   - profile
             # - email
             # - groups
           # userNameKey: zitadel:name
-          claimMapping:
-            preferred_username: preferred_username
+          # claimMapping:
+          #   preferred_username: preferred_username
 
     staticClients:
       - id: grafana-sso
