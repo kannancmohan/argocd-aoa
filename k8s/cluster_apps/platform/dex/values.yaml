@@ -30,7 +30,7 @@ dex:
           # insecureSkipEmailVerified: true
           # insecureEnableGroups: true
           # userIDKey: email
-          userNameKey: preferred_username
+          # userNameKey: email
           scopes:
             - openid
             - profile
