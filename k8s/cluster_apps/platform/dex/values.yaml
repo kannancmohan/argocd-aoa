@@ -27,6 +27,7 @@ dex:
           issuer: https://zitadel.dev.local
           # TODO https://github.com/dexidp/dex/pull/3188
           # enablePKCE: true
+          insecureSkipVerify: true
           scopes:
             - openid
             - profile
