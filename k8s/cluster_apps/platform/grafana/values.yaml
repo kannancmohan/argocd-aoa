@@ -41,6 +41,11 @@ grafana:
       auth_url: https://dex.dev.local/auth
       token_url: https://dex.dev.local/token
       api_url: https://dex.dev.local/userinfo
+      login_attribute_path: preferred_username
+      groups_attribute_path: groups
+      name_attribute_path: name
+      # use_pkce: true
+
   ### Grafana SSO ends
   serviceMonitor:
     enabled: true
