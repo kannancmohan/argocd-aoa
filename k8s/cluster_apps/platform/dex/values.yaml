@@ -25,8 +25,7 @@ dex:
           clientSecret: $ZITADEL_CLIENT_SECRET
           redirectURI: https://dex.dev.local/callback
           issuer: https://zitadel.dev.local
-          # TODO https://github.com/dexidp/dex/pull/3188
-          # enablePKCE: true
+          response_type: code
           insecureSkipVerify: true # ignore SSL verification
           # insecureSkipEmailVerified: true
           scopes:
@@ -34,9 +33,9 @@ dex:
             - profile
             - email
             - groups
-          userNameKey: zitadel:username
-          # claimMapping:
-          #   userNameKey: name
+          userNameKey: zitadel:name
+          claimMapping:
+            userNameKey: name
 
     staticClients:
       - id: grafana-sso
