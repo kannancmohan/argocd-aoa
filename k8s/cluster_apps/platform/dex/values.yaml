@@ -49,9 +49,9 @@ dex:
       cert-manager.io/cluster-issuer: default-root-cert-issuer
     hosts:
       - host: &host dex.dev.local
-        # paths:
-        #   - path: /
-        #     pathType: ImplementationSpecific
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
     tls:
       - secretName: dex-general-tls
         hosts:
