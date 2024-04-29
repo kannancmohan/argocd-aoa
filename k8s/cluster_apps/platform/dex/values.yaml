@@ -34,8 +34,8 @@ dex:
           scopes:
             - openid
             - profile
-            - email
-            - groups
+            # - email
+            # - groups
           # userNameKey: zitadel:name
           # claimMapping:
           #   userNameKey: name
