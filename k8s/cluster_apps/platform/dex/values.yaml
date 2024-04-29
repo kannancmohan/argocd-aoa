@@ -25,8 +25,8 @@ dex:
           clientSecret: $ZITADEL_CLIENT_SECRET
           redirectURI: https://dex.dev.local/callback
           issuer: https://zitadel.dev.local
-          # response_type: code
           insecureSkipVerify: true # ignore SSL verification
+          getUserInfo: true
           # insecureSkipEmailVerified: true
           # insecureEnableGroups: true
           # userIDKey: email
