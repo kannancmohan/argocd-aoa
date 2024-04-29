@@ -31,12 +31,11 @@ dex:
           # insecureEnableGroups: true
           # userIDKey: email
           # userNameKey: email
-          # scopes:
-          #   - openid
-          #   - profile
-            # - email
-            # - groups
-          # userNameKey: zitadel:name
+          scopes:
+            - openid
+            - profile
+            - email
+            - groups
           # claimMapping:
           #   preferred_username: preferred_username
 
