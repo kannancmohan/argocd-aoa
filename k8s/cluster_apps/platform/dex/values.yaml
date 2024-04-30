@@ -48,7 +48,8 @@ dex:
       - id: argocd-sso
         name: Argocd
         redirectURIs:
-          - 'http://argocd.dev.local/auth/callback'
+          - 'https://argocd.dev.local/api/dex/callback'
+          - 'https://argocd.dev.local/auth/callback'
           # - 'http://argocd.dev.local/oauth2/callback'
         secretEnv: ARGOCD_SSO_CLIENT_SECRET
   envFrom:
