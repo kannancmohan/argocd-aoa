@@ -12,6 +12,16 @@ argo-cd:
   # applicationSet:
   #   enabled: false
   configs:
+    cm:
+      oidc.config: |
+        name: Dex
+        issuer: https://dex.dev.local
+        clientID: argocd-sso
+        clientSecret: $argocd-oidc-credential:clientSecret
+        requestedIDTokenClaims:
+          groups:
+            essential: true
+        requestedScopes: ["openid", "profile", "email", "groups"]
     params:
       server.insecure: true
       # server.basehref: "/argocd/"
@@ -22,6 +32,9 @@ argo-cd:
     #   policy.csv: |
     #     p, role:org-admin, applications, *, */*, allow
     #     p, role:org-admin, clusters, get, *, allow
+    ### Argocd SSO
+
+    ### Argocd SSO ends
   server:
     # extraArgs:
     #   - --insecure
