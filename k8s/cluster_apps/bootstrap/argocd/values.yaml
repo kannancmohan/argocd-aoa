@@ -1,5 +1,8 @@
 ## Helm chart values - https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml
 argo-cd:
+  rbac:
+    policy.csv: |
+      g, argo-admin, role:admin
   global:
     env:
       - name: TZ
@@ -14,6 +17,7 @@ argo-cd:
   configs:
     ### Argocd OIDC
     cm:
+      # admin.enabled: "false"
       url: https://argocd.dev.local
       oidc.config: |
         name: Dex
