@@ -12,6 +12,7 @@ argo-cd:
   # applicationSet:
   #   enabled: false
   configs:
+    ### Argocd SSO
     cm:
       oidc.config: |
         name: Dex
@@ -22,7 +23,8 @@ argo-cd:
           groups:
             essential: true
         requestedScopes: ["openid", "profile", "email", "groups"]
-        oidc.tls.insecure.skip.verify: true
+      oidc.tls.insecure.skip.verify: true
+    ### Argocd SSO ended
     params:
       server.insecure: true
       # server.basehref: "/argocd/"
