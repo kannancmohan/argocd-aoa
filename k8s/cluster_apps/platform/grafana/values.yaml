@@ -27,7 +27,7 @@ grafana:
       searchNamespace: ALL
   envFromSecret: grafana-credential
   ## Grafana's primary configuration ref: http://docs.grafana.org/installation/configuration/
-  ### Grafana SSO
+  ### Grafana OIDC
   grafana.ini:
     server:
       root_url: https://grafana.dev.local
@@ -46,6 +46,6 @@ grafana:
       # name_attribute_path: name
       # use_pkce: true
       tls_skip_verify_insecure: true
-  ### Grafana SSO ends
+  ### Grafana OIDC ends
   serviceMonitor:
     enabled: true

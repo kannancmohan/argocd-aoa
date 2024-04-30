@@ -12,7 +12,7 @@ argo-cd:
   # applicationSet:
   #   enabled: false
   configs:
-    ### Argocd SSO
+    ### Argocd OIDC
     cm:
       url: https://argocd.dev.local
       oidc.config: |
@@ -23,7 +23,7 @@ argo-cd:
         requestedIDTokenClaims: {"groups": {"essential": true}}
         requestedScopes: ["openid", "profile", "email", "groups"]
       oidc.tls.insecure.skip.verify: true
-    ### Argocd SSO ended
+    ### Argocd OIDC ended
     params:
       server.insecure: true
       # server.basehref: "/argocd/"
