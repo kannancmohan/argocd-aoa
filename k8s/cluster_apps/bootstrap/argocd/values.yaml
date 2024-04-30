@@ -1,8 +1,5 @@
 ## Helm chart values - https://github.com/argoproj/argo-helm/blob/main/charts/argo-cd/values.yaml
 argo-cd:
-  rbac:
-    policy.csv: |
-      g, argo-admin, role:admin
   global:
     env:
       - name: TZ
@@ -77,6 +74,17 @@ argo-cd:
       enabled: true
       serviceMonitor:
         enabled: true
+    rbacConfig:
+      policy.default: role:readonly
+      policy.csv: |
+        g, admin, role:admin
+        g, kannanmohanklm@gmail.com, role:readonly
+    # rbacConfig:
+    #   policy.default: role:readonly
+    #   scopes: '[email, group]'
+    #   policy.csv: |
+    #     g, nick@cajun.pro, role:admin
+    #     g, kellinmcavoy@gmail.com, role:readonly
   controller:
     metrics: *metrics
   repoServer:
