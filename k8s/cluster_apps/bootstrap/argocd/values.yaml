@@ -14,6 +14,7 @@ argo-cd:
   configs:
     ### Argocd SSO
     cm:
+      url: https://argocd.dev.local
       oidc.config: |
         name: Dex
         issuer: https://dex.dev.local
@@ -23,7 +24,7 @@ argo-cd:
           groups:
             essential: true
         requestedScopes: ["openid", "profile", "email", "groups"]
-      oidc.tls.insecure.skip.verify: true
+        oidc.tls.insecure.skip.verify: true
     ### Argocd SSO ended
     params:
       server.insecure: true
