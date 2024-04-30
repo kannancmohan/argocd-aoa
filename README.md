@@ -1,5 +1,5 @@
 ## HomeLab
-This is a project that utilizes Infrastructure as Code and GitOps practices for automatically provisioning, operating and updating self-hosted services in my homelab.
+This project utilizes IaC and GitOps practices to automate provisioning, operating and updating self-hosted services in Homelab.
 
 <table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
     <tr>
