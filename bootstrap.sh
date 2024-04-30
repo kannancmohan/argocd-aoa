@@ -26,6 +26,8 @@ helm template --namespace argocd argocd ./k8s/cluster_apps/bootstrap/root | kube
 # kubectl create secret generic cnpg-superuser-secret --namespace=cloudnative-pg --from-literal=username="postgres" --from-literal=password="postgres@adminz" --from-literal=pgpass="postgres@adminz"
 
 # echo "Creating zitadel secret..."
-# kubectl create secret generic zitadel-database-credential --namespace=zitadel --from-literal=host="cloudnative-pg-cluster-rw.cloudnative-pg.svc.cluster.local" --from-literal=port="5432" --from-literal=dbname="zitadel" --from-literal=dbuser="zitadel" --from-literal=dbadmin="postgres" --from-literal=dbuser_password="zitadel_app1@adminz" --from-literal=dbadmin_password="postgres@adminz" --from-literal=zitadel_first_user="admin@zitadellocal.com" --from-literal=zitadel_first_pwd="AdminPass@123"
+# kubectl create secret generic zitadel-credential --namespace=zitadel --from-literal=masterkey="MasterkeyNeedsToHave32Characters" --from-literal=dbhost="cloudnative-pg-cluster-rw.cloudnative-pg.svc.cluster.local" --from-literal=dbport="5432" --from-literal=dbname="zitadel" --from-literal=dbuser="zitadel" --from-literal=dbadmin="postgres" --from-literal=dbuser_password="zitadel_app1@adminz" --from-literal=dbadmin_password="postgres@adminz" --from-literal=zitadel_first_user="admin@zitadellocal.com" --from-literal=zitadel_first_pwd="AdminPass@123"
 
-# kubectl create secret generic zitadel-admin-user-secret --namespace=zitadel --from-literal=username="admin@admin.com" --from-literal=password="AdminPass@123"
+# echo "Creating dex secret..."
+# kubectl create secret generic dex-credential --namespace=dex --from-literal=ZITADEL_CLIENT_ID="265048412393635900@testproject" --from-literal=ZITADEL_CLIENT_SECRET="IemiKN5EJPWnrsbC4pWrJQ5CoLcICbbZ8E01aR4bYAAGQzmNsMMudQJI8YEJonhj" --from-literal=GRAFANA_SSO_CLIENT_SECRET="264760171249599008@testproject" --from-literal=ARGOCD_SSO_CLIENT_SECRET="133880978119599112@argoproject"
+

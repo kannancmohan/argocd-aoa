@@ -45,6 +45,11 @@ dex:
         redirectURIs:
           - 'https://grafana.dev.local/login/generic_oauth'
         secretEnv: GRAFANA_SSO_CLIENT_SECRET
+      - id: argocd-sso
+        name: Argocd
+        redirectURIs:
+          - 'http://argocd.dev.local/oauth2/callback'
+        secretEnv: ARGOCD_SSO_CLIENT_SECRET
   envFrom:
     - secretRef:
         name: dex-credential
