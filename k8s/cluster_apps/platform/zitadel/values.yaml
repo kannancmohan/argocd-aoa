@@ -4,11 +4,9 @@ zitadel:
   enabled: true
   replicaCount: 1
   zitadel:
-    masterkey: MasterkeyNeedsToHave32Characters
-    # masterkeySecretName:
+    # masterkey: MasterkeyNeedsToHave32Characters
+    masterkeySecretName: zitadel-credential
     # configSecretName: zitadel-config-secret
-    # configmapConfig:
-    #   ExternalSecure: false
     configmapConfig:
       ExternalPort: 443
       ExternalSecure: true
@@ -31,47 +29,47 @@ zitadel:
     - name: "ZITADEL_DATABASE_POSTGRES_HOST"
       valueFrom:
         secretKeyRef:
-          name: zitadel-database-credential
-          key: host
+          name: zitadel-credential
+          key: dbhost
     - name: "ZITADEL_DATABASE_POSTGRES_PORT"
       valueFrom:
         secretKeyRef:
-          name: zitadel-database-credential
-          key: port
+          name: zitadel-credential
+          key: dbport
     - name: "ZITADEL_DATABASE_POSTGRES_DATABASE"
       valueFrom:
         secretKeyRef:
-          name: zitadel-database-credential
+          name: zitadel-credential
           key: dbname
     - name: "ZITADEL_DATABASE_POSTGRES_USER_USERNAME"
       valueFrom:
         secretKeyRef:
-          name: zitadel-database-credential
+          name: zitadel-credential
           key: dbuser
     - name: "ZITADEL_DATABASE_POSTGRES_USER_PASSWORD"
       valueFrom:
         secretKeyRef:
-          name: zitadel-database-credential
+          name: zitadel-credential
           key: dbuser_password
     - name: "ZITADEL_DATABASE_POSTGRES_ADMIN_USERNAME"
       valueFrom:
         secretKeyRef:
-          name: zitadel-database-credential
+          name: zitadel-credential
           key: dbadmin
     - name: "ZITADEL_DATABASE_POSTGRES_ADMIN_PASSWORD"
       valueFrom:
         secretKeyRef:
-          name: zitadel-database-credential
+          name: zitadel-credential
           key: dbadmin_password
     - name: ZITADEL_FIRSTINSTANCE_ORG_HUMAN_USERNAME
       valueFrom:
         secretKeyRef:
-          name: zitadel-database-credential
+          name: zitadel-credential
           key: zitadel_first_user
     - name: ZITADEL_FIRSTINSTANCE_ORG_HUMAN_PASSWORD
       valueFrom:
         secretKeyRef:
-          name: zitadel-database-credential
+          name: zitadel-credential
           key: zitadel_first_pwd
   ingress:
     enabled: true
