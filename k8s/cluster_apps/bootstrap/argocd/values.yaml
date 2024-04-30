@@ -74,11 +74,11 @@ argo-cd:
       enabled: true
       serviceMonitor:
         enabled: true
-    rbacConfig:
-      policy.default: role:readonly
-      policy.csv: |
-        g, admin, role:admin
-        g, kannanmohanklm@gmail.com, role:readonly
+    # rbacConfig:
+    #   policy.default: role:readonly
+    #   policy.csv: |
+    #     g, admin, role:admin
+    #     g, kannanmohanklm@gmail.com, role:readonly
     # rbacConfig:
     #   policy.default: role:readonly
     #   scopes: '[email, group]'
