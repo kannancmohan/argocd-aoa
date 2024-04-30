@@ -20,9 +20,7 @@ argo-cd:
         issuer: https://dex.dev.local
         clientID: argocd-sso
         clientSecret: $argocd-oidc-credential:clientSecret
-        requestedIDTokenClaims:
-          groups:
-            essential: true
+        requestedIDTokenClaims: {"groups": {"essential": true}}
         requestedScopes: ["openid", "profile", "email", "groups"]
       oidc.tls.insecure.skip.verify: true
     ### Argocd SSO ended
