@@ -28,13 +28,7 @@ argo-cd:
       # Role definitions and bindings are in the form:
       #  g, subject, inherited-subject
       policy.csv: |
-        p, role:qa,  applications, *, */*, allow
-        p, role:dev, applications, *, */*, allow
-        p, role:dev, projects, *, *, allow
-        p, role:dev, repositories, *, *, allow
-        g, admin, role:qa
         g, kannanmohanklm@gmail.com, role:admin
-        g, qauser, role:qa
     ### Argocd OIDC ended
     params:
       server.insecure: true
