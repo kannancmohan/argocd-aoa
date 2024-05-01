@@ -33,7 +33,7 @@ argo-cd:
         p, role:dev, projects, *, *, allow
         p, role:dev, repositories, *, *, allow
         g, admin, role:qa
-        g, kannanmohanklm@gmail.com, role:dev
+        g, kannanmohanklm@gmail.com, role:admin
         g, qauser, role:qa
     ### Argocd OIDC ended
     params:
