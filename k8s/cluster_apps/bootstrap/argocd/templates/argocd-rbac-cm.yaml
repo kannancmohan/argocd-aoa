@@ -12,7 +12,7 @@ data:
     p, role:dev, applications, *, */*, allow
     p, role:dev, projects, *, *, allow
     p, role:dev, repositories, *, *, allow
-    g, admin, role:admin
+    g, admin, role:qa
     g, kannanmohanklm@gmail.com, role:dev
     g, qauser, role:qa
   # policy.csv: |
