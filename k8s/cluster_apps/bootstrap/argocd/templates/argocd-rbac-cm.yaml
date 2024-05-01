@@ -14,6 +14,6 @@ data:
     p, role:readexecute, applications, get, */*, allow
     p, role:readexecute, applications, sync, */*, allow
     g, admin@zitadellocal.com, role:readwrite
-    g, qa-tester, role:readexecute
+    g, kannanmohanklm@gmail.com, role:readexecute
   policy.default: role:readonly
-  scopes: '[groups, email]'
+  # scopes: '[groups, email]'
