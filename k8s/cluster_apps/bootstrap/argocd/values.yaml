@@ -29,6 +29,7 @@ argo-cd:
       #  g, subject, inherited-subject
       policy.csv: |
         g, kannanmohanklm@gmail.com, role:admin
+      scopes: "[groups, email]"
     ### Argocd OIDC ended
     params:
       server.insecure: true
