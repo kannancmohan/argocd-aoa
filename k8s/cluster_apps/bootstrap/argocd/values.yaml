@@ -21,6 +21,20 @@ argo-cd:
         requestedIDTokenClaims: {"groups": {"essential": true}}
         requestedScopes: ["openid", "profile", "email", "groups"]
       oidc.tls.insecure.skip.verify: true # skip self-signed certificate validation
+    rbac:
+      policy.default: role:readonly
+      # Policy rules are in the form: where subject can be role/user/group
+      #  p, subject, resource, action, object, effect
+      # Role definitions and bindings are in the form:
+      #  g, subject, inherited-subject
+      policy.csv: |
+        p, role:qa,  applications, *, */*, allow
+        p, role:dev, applications, *, */*, allow
+        p, role:dev, projects, *, *, allow
+        p, role:dev, repositories, *, *, allow
+        g, admin, role:qa
+        g, kannanmohanklm@gmail.com, role:dev
+        g, qauser, role:qa
     ### Argocd OIDC ended
     params:
       server.insecure: true
