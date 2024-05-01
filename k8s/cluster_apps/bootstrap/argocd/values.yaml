@@ -12,6 +12,7 @@ argo-cd:
     cm:
       # admin.enabled: "false"
       url: https://argocd.dev.local
+      ## https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
       oidc.config: |
         name: Dex
         issuer: https://dex.dev.local
