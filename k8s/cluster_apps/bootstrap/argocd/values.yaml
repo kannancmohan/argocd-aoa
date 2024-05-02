@@ -27,10 +27,10 @@ argo-cd:
       #  p, subject, resource, action, object, effect
       # Role definitions and bindings are in the form:
       #  g, subject, inherited-subject
+      ## Make sure the below roles (administrator and users) are configured in your identity provider
       policy.csv: |
-        g, kannanmohanklm@gmail.com, role:admin
-        g, admin_user, role:admin
-      # scopes: "[groups, email]"
+        g, administrator, role:admin
+        g, users, role:readonly
       scopes: "[groups]"
     ### Argocd OIDC ended
     params:
