@@ -1,5 +1,5 @@
 ## HomeLab
-This project utilizes IaC and GitOps practices to automate provisioning, operating and updating self-hosted services in Homelab.
+A project that utilizes IaC and GitOps practices for automating provisioning and operation of self-hosted services in Homelab.
 
 <table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
     <tr>
@@ -23,13 +23,13 @@ This project utilizes IaC and GitOps practices to automate provisioning, operati
     </tr>
     <tr>
         <td><a href="https://github.com/passbolt">Passbolt</a></td>
-        <td>Passbolt is an open source, security first password manager with strong focus on collaboration</td>
+        <td>Passbolt is an open source, security first password manager with a strong focus on collaboration</td>
     </tr>
 </table>
 
 
-## Hardware 
-### Kubernetes Hardware 
+## Hardware spec
+### Kubernetes Hardware requirement
 | VM            | Cores         | Memory| Disk|
 | ------------- |:-------------:| -----:| -----:|
 | master        | 2             | 5120  | 25G   |
