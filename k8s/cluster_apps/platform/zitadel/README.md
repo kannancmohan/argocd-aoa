@@ -36,6 +36,33 @@
 3. To add users to role , navigate back to project page and select "Authorizations" from the right panel 
 4. Click new and add the select user and click continue and select the role for the user and click "save"
 
+### add zitadel action script to include groups claim to the token
+1. Select "Actions" tab from the top navigation and click "new" in scripts section
+2. Add the following details and click "Add"
+    ```
+    Name: groupsClaim
+    ```
+    ```
+    function groupsClaim(ctx, api) {
+    if (ctx.v1.user.grants === undefined || ctx.v1.user.grants.count == 0) {
+        return;
+    }
+
+    let grants = [];
+    ctx.v1.user.grants.grants.forEach(claim => {
+        claim.roles.forEach(role => {
+            grants.push(role)  
+        })
+    })
+
+    api.v1.claims.setClaim('groups', grants)
+    }
+    ```
+3. Configure Flow by selecting "Complement Token" from FlowType dropdown and click "Add trigger" button
+4. In the popup window , select "Pre Userinfo creation" from TriggerType dropdown
+5. Select above created action "groupsClaim" in Actions section and click save
+6. Repeat the process and configure another Trigger for "Pre access token creation"
+
 ### [Optional] Configuring dex project to use zitadel as identity provider 
 make sure to update the ZITADEL_CLIENT_ID and ZITADEL_CLIENT_SECRET with the clientId and clientSecret generated while creating new zitadel project 
 
