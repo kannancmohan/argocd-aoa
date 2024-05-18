@@ -18,12 +18,16 @@ A project that utilizes IaC and GitOps practices for automating provisioning and
         <td>Adguard Home is a forwarding DNS server and DNS filtering server. It supports blocking ads & tracking</td>
     </tr>
     <tr>
+        <td><a href="https://github.com/caddyserver/caddy">Caddy</a></td>
+        <td>Reverse proxy with automatic HTTPS configuration</td>
+    </tr>
+    <tr>
         <td><a href="https://unbound.docs.nlnetlabs.nl/en/latest/">Unbound DNS</a></td>
         <td>Unbound is a validating, recursive, caching DNS resolver. Unbound supports DNS-over-TLS and DNS-over-HTTPS which allows clients to encrypt their communication</td>
     </tr>
     <tr>
-        <td><a href="https://github.com/passbolt">Passbolt</a></td>
-        <td>Passbolt is an open source, security first password manager with a strong focus on collaboration</td>
+        <td><a href="https://github.com/dani-garcia/vaultwarden">Vaultwarden</a></td>
+        <td>Vaultwarden self-hosted password manager</td>
     </tr>
 </table>
 
@@ -200,11 +204,6 @@ Trivy is used for security scanning and Grafana to visualize it
         <td>Kubernetes ingress controller</td>
         <td>Installed as part of <a href="https://artifacthub.io/packages/helm/traefik/traefik">traefik</a></td>
     </tr>
-    <tr>
-        <td>External-dns</td>
-        <td></td>
-        <td>TODO</td>
-    </tr>
 </table>
 
 <table style='font-family:"Courier New", Courier, monospace; font-size:100%'>
@@ -267,36 +266,3 @@ Trivy is used for security scanning and Grafana to visualize it
         <td>kubectl port-forward svc/grafana 3000:80 -n grafana</td>
     </tr>
 </table>
-
-## Self signed certificate 
-### generate rsa private key  
-```
-openssl genrsa -out ca.key 4096
-```
-### generate a public CA certificate 
-```
-# interactive
-openssl req -new -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 365
-
-# non-interactive and 10 years expiration
-openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 3650 -nodes -subj "/C=XX/ST=StateName/L=CityName/O=CompanyName/OU=CompanySectionName/CN=CommonNameOrHostname"
-```
-
-## Certificate verification 
-### verifying certificate  of a host 
-```
-curl https://argocd.dev.local -kv
-```
-in the output check the 'Server certificate:' section
-
-### OR
-```
-curl --cacert <(kubectl -n cert-manager get secret self-signed-tls-cert -o jsonpath='{.data.ca\.crt}' | base64 -d) https://argocd.dev.local
-```
-
-### verify the ca files
-```
-openssl verify -CAfile \
-<(kubectl -n cert-manager get secret self-signed-tls-cert -o jsonpath='{.data.ca\.crt}' | base64 -d) \
-<(kubectl -n argocd get secret argocd-tls-cert -o jsonpath='{.data.tls\.crt}' | base64 -d)
-```
