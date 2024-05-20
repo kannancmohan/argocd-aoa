@@ -24,8 +24,8 @@ spec:
         - name: bitwarden-cli
           image: ghcr.io/charlesthomas/bitwarden-cli:2024.4.1
           imagePullPolicy: IfNotPresent
-          command:
-            - /entrypoint.sh
+          #command:
+          #  - /entrypoint.sh
           env:
             - name: BW_HOST
               valueFrom:
