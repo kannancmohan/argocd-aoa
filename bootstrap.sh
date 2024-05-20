@@ -32,4 +32,4 @@ helm template --namespace argocd argocd ./k8s/cluster_apps/bootstrap/root | kube
 # kubectl create secret generic dex-credential --namespace=dex --from-literal=ZITADEL_CLIENT_ID="265314121468149915@homelab" --from-literal=ZITADEL_CLIENT_SECRET="jaZO3kHqZiot2XExb1p3tnlCAbmC3d1NLQR7FnY40L7fdy0FLT0SvJcJqufUIc3W" --from-literal=GRAFANA_SSO_CLIENT_SECRET="264760171249599008@testproject" --from-literal=ARGOCD_SSO_CLIENT_SECRET="133880978119599112@argoproject"
 
 # echo "Creating bitwarden-cli secret "
-# kubectl create secret generic bitwarden-cli --from-literal=BW_HOST="192.168.0.23" --from-literal=BW_USERNAME="test@test.com" --from-literal=BW_PASSWORD="test@test.com" --namespace bitwarden-cli
+# kubectl create secret generic bitwarden-cli --from-literal=BW_HOST="https://vault.kcmeu.duckdns.org" --from-literal=BW_USERNAME="test@test.com" --from-literal=BW_PASSWORD="test@test.com" --namespace bitwarden-cli
