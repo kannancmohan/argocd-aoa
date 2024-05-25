@@ -113,3 +113,6 @@ spec:
     - namespaceSelector:
         matchLabels:
           name: external-secrets
+    ports:
+    - protocol: TCP
+      port: 8087
