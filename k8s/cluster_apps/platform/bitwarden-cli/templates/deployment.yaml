@@ -100,16 +100,14 @@ metadata:
   #namespace: bitwarden
   name: external-secret-2-bw-cli
 spec:
-  podSelector:
-    matchLabels:
-      app.kubernetes.io/instance: bitwarden-cli
-      app.kubernetes.io/name: bitwarden-cli
+  podSelector: {}
   ingress:
   - from:
     #- podSelector:
     #    matchLabels:
     #      app.kubernetes.io/instance: external-secrets
     #      app.kubernetes.io/name: external-secrets
+    - podSelector: {}
     - namespaceSelector:
         matchLabels:
           app.kubernetes.io/name: external-secrets
