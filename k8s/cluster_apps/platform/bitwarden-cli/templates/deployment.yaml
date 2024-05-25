@@ -112,7 +112,7 @@ spec:
     #      app.kubernetes.io/name: external-secrets
     - namespaceSelector:
         matchLabels:
-          name: external-secrets
+          app.kubernetes.io/name: external-secrets
     ports:
     - protocol: TCP
       port: 8087
