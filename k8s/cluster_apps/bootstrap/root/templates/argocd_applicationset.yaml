@@ -51,10 +51,10 @@ spec:
         namespace: '{{ default `{{values.appNameSpace}}` $appSet.appNamespace }}'
       project: '{{ default "default" $appSet.appProject }}'
       source:
-        # helm:
-        #   valueFiles:
-        #     - $values/k8s/cluster_apps/apps-values.yaml
-        #     - values.yaml
+        helm:
+          valueFiles:
+            - $values/k8s/cluster_apps/apps-global-values.yaml
+            - values.yaml
         repoURL: {{ $.Values.gitops.repo }}
         path: '{{ `{{ path }}` }}'
         targetRevision: {{ $.Values.gitops.revision }}

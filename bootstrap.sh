@@ -33,3 +33,6 @@ helm template --namespace argocd argocd ./k8s/cluster_apps/bootstrap/root | kube
 
 # echo "Creating bitwarden-cli secret "
 # kubectl create secret generic bitwarden-cli --from-literal=BW_HOST="https://vault.kcmeu.duckdns.org" --from-literal=BW_USERNAME="test@test.com" --from-literal=BW_PASSWORD="test@test.com" --namespace bitwarden-cli
+
+# echo "Creating grafana-credential secret "
+# kubectl create secret generic grafana-credential --from-literal=admin-user="admin@grafana.com" --from-literal=admin-password="Admin@grafana123.com" --from-literal=GRAFANA_SSO_CLIENT_SECRET="264760171249599008@testproject" --namespace grafana
