@@ -62,7 +62,7 @@ spec:
         automated:
           prune: true
           selfHeal: true
-          # allow_empty: true
+          allow_empty: true
         retry:
           limit: 10 # Maximum number of attempts for retrying a failed sync
           backoff:
