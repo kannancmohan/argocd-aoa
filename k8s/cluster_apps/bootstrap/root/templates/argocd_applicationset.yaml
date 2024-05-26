@@ -51,10 +51,11 @@ spec:
         namespace: '{{ default `{{values.appNameSpace}}` $appSet.appNamespace }}'
       project: '{{ default "default" $appSet.appProject }}'
       source:
+        # https://argo-cd.readthedocs.io/en/latest/user-guide/multiple_sources/#helm-value-files-from-external-git-repository
         helm:
           valueFiles:
             - $values/k8s/cluster_apps/apps-global-values.yaml
-            - values.yaml
+            #- values.yaml
         repoURL: {{ $.Values.gitops.repo }}
         path: '{{ `{{ path }}` }}'
         targetRevision: {{ $.Values.gitops.revision }}
