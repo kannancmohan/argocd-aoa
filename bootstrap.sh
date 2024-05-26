@@ -14,7 +14,7 @@ echo 'Waiting for argocd server to start..'
 kubectl wait -n argocd  --timeout=120s --for condition=Ready pod -l app.kubernetes.io/name=argocd-server &&
 
 ## create argocd resource Project and ApplicationSet
-helm template --namespace argocd argocd ./k8s/cluster_apps/bootstrap/root | kubectl apply -n argocd -f -
+helm template --namespace argocd argocd ./k8s/cluster_apps/bootstrap/root | kubectl apply -n argocd -f - &&
 
 # echo "Creating 'alertmanager-smtp-secret' secret..."
 # kubectl create secret generic alertmanager-smtp-secret --from-literal=auth_password="$SMTP_AUTH_PWD" --namespace kube-prometheus-stack
@@ -31,8 +31,10 @@ helm template --namespace argocd argocd ./k8s/cluster_apps/bootstrap/root | kube
 # echo "Creating dex secret..."
 # kubectl create secret generic dex-credential --namespace=dex --from-literal=ZITADEL_CLIENT_ID="265314121468149915@homelab" --from-literal=ZITADEL_CLIENT_SECRET="jaZO3kHqZiot2XExb1p3tnlCAbmC3d1NLQR7FnY40L7fdy0FLT0SvJcJqufUIc3W" --from-literal=GRAFANA_SSO_CLIENT_SECRET="264760171249599008@testproject" --from-literal=ARGOCD_SSO_CLIENT_SECRET="133880978119599112@argoproject"
 
-# echo "Creating bitwarden-cli secret "
-# kubectl create secret generic bitwarden-cli --from-literal=BW_HOST="https://vault.kcmeu.duckdns.org" --from-literal=BW_USERNAME="test@test.com" --from-literal=BW_PASSWORD="test@test.com" --namespace bitwarden-cli
+# TODO replace this
+echo "Create bitwarden-cli namespace and secret " &&
+kubectl create namespace bitwarden-cli --dry-run=client --output=yaml | kubectl apply -f - &&
+kubectl create secret generic bitwarden-cli --from-literal=BW_HOST="${VAULTWARDEN_HOST_URl}" --from-literal=BW_USERNAME="${VAULTWARDEN_K8S_USER}" --from-literal=BW_PASSWORD="${VAULTWARDEN_K8S_PWD}" --namespace bitwarden-cli
 
 # echo "Creating grafana-credential secret "
 # kubectl create secret generic grafana-credential --from-literal=admin-user="admin@grafana.com" --from-literal=admin-password="Admin@grafana123.com" --from-literal=GRAFANA_SSO_CLIENT_SECRET="264760171249599008@testproject" --namespace grafana
