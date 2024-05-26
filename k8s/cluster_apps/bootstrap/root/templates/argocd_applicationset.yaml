@@ -55,7 +55,6 @@ spec:
         helm:
           valueFiles:
             - $values/k8s/cluster_apps/apps-global-values.yaml
-            #- values.yaml
         repoURL: {{ $.Values.gitops.repo }}
         path: '{{ `{{ path }}` }}'
         targetRevision: {{ $.Values.gitops.revision }}

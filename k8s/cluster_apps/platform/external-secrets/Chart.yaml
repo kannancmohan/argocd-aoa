@@ -5,7 +5,7 @@ dependencies:
   - name: external-secrets
     version: 0.9.16
     repository: https://charts.external-secrets.io
-    condition: external-secrets.enabled
+    condition: global.external-secrets.enabled
     tags:
       - platform
       - external-secrets
