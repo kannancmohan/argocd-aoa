@@ -16,9 +16,6 @@ kubectl wait -n argocd  --timeout=120s --for condition=Ready pod -l app.kubernet
 ## create argocd resource Project and ApplicationSet
 helm template --namespace argocd argocd ./k8s/cluster_apps/bootstrap/root | kubectl apply -n argocd -f - &&
 
-# echo "Creating 'alertmanager-smtp-secret' secret..."
-# kubectl create secret generic alertmanager-smtp-secret --from-literal=smtp_auth_password="$SMTP_AUTH_PWD" --namespace kube-prometheus-stack
-
 # echo "Creating keycloak secret..."
 # kubectl create secret generic keycloak-credentials-secret --from-literal=admin-password="identity@keycloak" --from-literal=postgres-password="identity@keycloak" --from-literal=password="identity@keycloak" --namespace keycloak
 
@@ -39,3 +36,7 @@ kubectl create secret generic bitwarden-cli --from-literal=BW_HOST="${VAULTWARDE
 
 # echo "Creating dex secret..."
 # kubectl create secret generic dex-credential --namespace=dex --from-literal=ZITADEL_CLIENT_ID="265314121468149915@homelab" --from-literal=ZITADEL_CLIENT_SECRET="jaZO3kHqZiot2XExb1p3tnlCAbmC3d1NLQR7FnY40L7fdy0FLT0SvJcJqufUIc3W" --from-literal=GRAFANA_SSO_CLIENT_SECRET="264760171249599008@testproject" --from-literal=ARGOCD_SSO_CLIENT_SECRET="133880978119599112@argoproject"
+
+# echo "Creating 'alertmanager-smtp-secret' secret..."
+# kubectl create secret generic alertmanager-smtp-secret --from-literal=smtp_auth_password="$SMTP_AUTH_PWD" --namespace kube-prometheus-stack
+
