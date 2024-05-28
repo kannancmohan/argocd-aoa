@@ -17,7 +17,7 @@ spec:
         webhook:
           config:
             apiTokenSecretRef:
-              name: duckdns-token
+              name: duckdns-credential
               key: token
           groupName: acme.example.duckdns.org
           solverName: duckdns
