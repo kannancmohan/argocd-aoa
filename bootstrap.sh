@@ -40,3 +40,7 @@ kubectl create secret generic bitwarden-cli --from-literal=BW_HOST="${VAULTWARDE
 # echo "Creating 'alertmanager-smtp-secret' secret..."
 # kubectl create secret generic alertmanager-smtp-secret --from-literal=smtp_auth_password="$SMTP_AUTH_PWD" --namespace kube-prometheus-stack
 
+# echo "Creating 'duckdns-credential' secret..."
+# kubectl create secret generic duckdns-credential --from-literal=token="$TF_VAR_duckdns_token" --namespace cert-manager
+
+
