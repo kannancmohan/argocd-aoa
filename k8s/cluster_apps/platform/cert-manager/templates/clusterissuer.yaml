@@ -1,4 +1,5 @@
 {{- if index .Values "cert-manager" "enabled" }} # using index function as per https://github.com/helm/helm/issues/2192
+{{- if eq (index .Values "cert-manager" "certProvider") "self_signed" }}
 ---
 # self-signed certificate issuer 
 apiVersion: cert-manager.io/v1
@@ -44,5 +45,5 @@ metadata:
 spec:
   ca:
     secretName: self-signed-tls-cert
-
+{{- end }}
 {{- end }}

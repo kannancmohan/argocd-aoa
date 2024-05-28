@@ -2,7 +2,8 @@
 ## Helm chart values - https://github.com/cert-manager/cert-manager/blob/master/deploy/charts/cert-manager/values.yaml
 cert-manager:
   installCRDs: true
-  enabled: true
+  enabled: true #custom property
+  certProvider: self_signed #custom property
   prometheus:
     enabled: true
     servicemonitor:
