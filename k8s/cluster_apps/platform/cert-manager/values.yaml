@@ -3,7 +3,7 @@
 cert-manager:
   installCRDs: true
   enabled: true #custom property
-  certProvider: letsencrypt_duckdns #custom property
+  certProvider: self_signed #custom property - expected values letsencrypt_duckdns/self_signed
   prometheus:
     enabled: true
     servicemonitor:
